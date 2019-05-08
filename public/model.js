@@ -53,4 +53,5 @@ var QuizModel = function() {
    }],
    'correct': 'three'
  }];
+
 }
