@@ -14,65 +14,40 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
     <!-- slut på firebase-scripts -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
-    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/onsenui/css/onsen-css-components.min.css"
+    />
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Quiz walk</title>
     <!-- Länk till vår css -->
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="main.css" />
     <!-- Script vi använder oss utav -->
     <script src="cordova.js"></script>
     <script src="libs/jquery/jquery.js"></script>
     <!-- <script src="libs/evothings/evothings.js"></script>
     <script src="libs/evothings/ui/ui.js"></script> -->
-    <script src="app.js"></script> <!-- app.js är där vi läser/hanterar beacons -->
+    <script src="app.js"></script>
+    <!-- app.js är där vi läser/hanterar beacons -->
+    <script src="main.js"></script>
+    <!-- main.js innehåller alla firebase funktioner-->
   </head>
   <body>
     <div id="login">
-      
+      <button id="sign-in">click me</button>
     </div>
-    <div id="guide">
-    </div>
-    <div id="register">
-    </div>
-    <div id="joinOrStart">
-    </div>
-    <div id="startGame">
-    </div>
-    <div id="joinGame">
-    </div>
-    <div id="game">
-    </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = ["auth", "database", "messaging", "storage"].filter(
-            feature => typeof app[feature] === "function"
-          );
-          document.getElementById(
-            "load"
-          ).innerHTML = `Firebase SDK loaded with ${features.join(", ")}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById("load").innerHTML =
-            "Error loading the Firebase SDK, check the console.";
-        }
-      });
-    </script>
+    <div id="guide"></div>
+    <div id="register"></div>
+    <div id="joinOrStart"></div>
+    <div id="startGame"></div>
+    <div id="joinGame"></div>
+    <div id="game"></div>
   </body>
 </html>
