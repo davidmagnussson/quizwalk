@@ -1,6 +1,38 @@
 // JavaScript code for the Arduino Beacon example app.
 
 // Application object.
+
+$(function() {
+  var loginView = new LoginView($("#login"));
+  var loginController = new LoginController(loginView, this);
+  var guideView = new GuideView($("#guide"));
+  var guideController = new GuideController(guideView, this);
+
+	var hideAllViews = function () {
+		$('#guide').hide();
+		$("#joinOrStart").hide();
+		$("#startGame").hide();
+		$("#joinGame").hide();
+		$("#game").hide();
+    $("#login").hide();
+
+	};
+
+  this.showLogin = function () {
+    hideAllViews();
+    $('#login').show();
+  }
+
+  this.showGuide = function() {
+		hideAllViews();
+    $('#guide').show();
+	};
+
+  this.showLogin();
+
+});
+
+
 var app = {};
 
 // Regions that define which page to show for each beacon.

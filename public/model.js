@@ -1,5 +1,4 @@
 var QuizModel = function() {
-<<<<<<< HEAD
   this.getAllQuestions = () => {
     return questions;
   };
@@ -67,7 +66,6 @@ var QuizModel = function() {
     }
   ];
 };
-=======
 
   this.getAllQuestions = () => {
     return questions;
@@ -124,4 +122,3 @@ var QuizModel = function() {
  }];
 
 }
->>>>>>> dde67e776b6c5c6d395cd477c7a8916cfaaff3a0
