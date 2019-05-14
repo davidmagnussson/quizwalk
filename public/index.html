@@ -40,7 +40,7 @@
     <!-- main.js innehåller alla firebase funktioner-->
   </head>
   <body>
-
+    <!--
     <div id="login" class="col-sm-12 text-center" style="display:none">
       <nav class="navbar navbar-default">
         <div class="container-fluid justify-content-center">
@@ -60,10 +60,10 @@
               <ons-back-button id="back2Login"></ons-back-button>
               <div class="center">QuizeWalk</div>
             </ons-toolbar>
-            <!--
+
             <button type="button" id="back2Login"><</button>
             <p class="navbar-brand" id="headerPlace">QuizWalk</p>
-            -->
+
           </div>
         </div>
       </nav>
@@ -88,5 +88,148 @@
     <script src="../view/guideView.js"></script>
     <script src="../controller/guideController.js"></script>
     <script src="model.js"></script>
+  -->
+
+    <ons-navigator swipeable id="myNavigator" page="login.html"></ons-navigator>
+
+    <template id="login.html">
+      <ons-page id="login">
+        <ons-toolbar>
+          <div class="center">QuizWalk</div>
+        </ons-toolbar>
+        <div style="text-align: center; margin-top: 200px">
+          <p>
+            <ons-input id="username" placeholder="Username" modifier="underbar"></ons-input>
+          </p>
+          <p>
+            <ons-input id="password" placeholder="Password" type="password" modifier="underbar">
+            </ons-input>
+          </p>
+          <p>
+            <ons-button id="login">Login</ons-button>
+            <ons-button id="about">About</ons-button>
+          </p>
+        </div>
+      </ons-page>
+    </template>
+
+    <template id="about.html">
+      <ons-page id="about">
+        <ons-toolbar>
+          <div class="left"><ons-back-button>Back</ons-back-button></div>
+          <div class="center">QuizWalk</div>
+        </ons-toolbar>
+
+        <p>About page</p>
+      </ons-page>
+    </template>
+
+    <template id="startGame.html">
+      <ons-page id="startGame">
+        <ons-toolbar>
+          <div class="center">QuizWalk</div>
+        </ons-toolbar>
+
+        <p style="text-align: center;">Start a game!</p>
+        <div style="text-align: center; margin-top: 200px">
+          <p>
+            <ons-button id="history">History</ons-button>
+          </p>
+          <p>
+            <ons-button id="entertainment">Entertainment</ons-button>
+          </p>
+          <p>
+            <ons-button id="geography">Geography</ons-button>
+          </p>
+        </div>
+      </ons-page>
+    </template>
+
+    <template id="gamePlay.html">
+      <ons-page id="gamePlay">
+        <ons-toolbar>
+          <div class="left" id="endGame"><ons-back-button>End Game</ons-back-button></div>
+          <div class="center">QuizWalk</div>
+        </ons-toolbar>
+        <ons-page ng-controller="TabbarController">
+
+          <ons-tabbar swipeable position="auto" ons-prechange="updateTitle($event)">
+            <ons-tab page="map.html" label="Map" icon="md-pin, material:md-home" active active-icon="md-pin">
+            </ons-tab>
+            <ons-tab page="game.html" label="Quize Game" icon="md-help" active-icon="md-help">
+            </ons-tab>
+            <ons-tab page="profile.html" label="Profile" icon="md-face" active-icon="md-face">
+            </ons-tab>
+          </ons-tabbar>
+        </ons-page>
+
+        <template id="map.html">
+          <ons-page id="map">
+            <p style="text-align: center;">
+              This is the first page.
+            </p>
+          </ons-page>
+        </template>
+
+        <template id="game.html">
+          <ons-page id="game">
+            <p style="text-align: center;">
+              This is the second page.
+            </p>
+          </ons-page>
+        </template>
+
+        <template id="profile.html">
+          <ons-page id="profile">
+            <p style="text-align: center;">
+              This is the second page.
+            </p>
+          </ons-page>
+        </template>
+      </ons-page>
+    </template>
+
+
+
+    <script>
+      document.addEventListener('init', function(event) {
+        var page = event.target;
+
+        if (page.id === 'login') {
+            page.querySelector('#about').onclick = function() {
+              document.querySelector('#myNavigator').pushPage('about.html', {data: {title: 'About'}});
+            };
+            page.querySelector('#login').onclick = function() {
+              const username = document.querySelector('#username').value;
+              const password = document.querySelector('#password').value;
+
+              if (username == '' && password == '') {
+                // call the navigator to move to the new page
+                document.querySelector('#myNavigator').pushPage('startGame.html', {data: {title: 'startGame'}});
+                navigator.resetToPage('login.html');
+              }
+              else {
+                ons.notification.alert('Wrong username/password combination');
+              }
+            }
+          }
+
+        else if (page.id === 'about') {
+          document.querySelector('#myNavigator').pushPage('about.html', {data: {title: 'About'}});
+        }
+
+        else if (page.id === 'startGame') {
+          page.querySelector('#history').onclick = function() {
+            document.querySelector('#myNavigator').pushPage('gamePlay.html', {data: {title: ''}});
+          };
+          page.querySelector('#entertainment').onclick = function() {
+            document.querySelector('#myNavigator').pushPage('gamePlay.html', {data: {title: ''}});
+          };
+          page.querySelector('#geography').onclick = function() {
+            document.querySelector('#myNavigator').pushPage('gamePlay.html', {data: {title: ''}});
+          };
+        }
+      });
+    </script>
   </body>
 </html>
