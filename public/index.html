@@ -39,7 +39,7 @@
     <script src="main.js"></script>
     <!-- main.js innehåller alla firebase funktioner-->
     <style>
-      #map {
+      #map2 {
         height: 90vh;
         width: 100%;
       }
@@ -160,20 +160,19 @@
         <ons-page ng-controller="TabbarController">
 
           <ons-tabbar swipeable position="auto" ons-prechange="updateTitle($event)">
-            <ons-tab page="map.html" label="Map" icon="md-pin, material:md-home"  active-icon="md-pin">
+            <ons-tab  id="map" page="map.html" label="Map" icon="md-pin, material:md-home"  active-icon="md-pin">
             </ons-tab>
-            <ons-tab page="game.html" label="Quize Game" icon="md-help" active active-icon="md-help">
+            <ons-tab id="game" page="game.html" label="Quize Game" icon="md-help" active active-icon="md-help">
             </ons-tab>
-            <ons-tab page="profile.html" label="Profile" icon="md-face" active-icon="md-face">
+            <ons-tab id="profile" page="profile.html" label="Profile" icon="md-face" active-icon="md-face">
             </ons-tab>
           </ons-tabbar>
         </ons-page>
-      </template>
+      </ons-page>
+    </template>
 
         <template id="map.html">
-          <ons-page id="map">
             <div id="map2"></div>
-          </ons-page>
         </template>
 
         <template id="game.html">
@@ -191,18 +190,16 @@
             </p>
           </ons-page>
         </template>
-      </ons-page>
+
 
 
     <script>
       var map2;
       function initMap() {
-        document.getElementById('map2').style.backgroundColor = 'red';
-        ons.notification.alert('Hello');
-        // map = new google.maps.Map(document.getElementById('map'), {
-        //   center: {lat: -34.397, lng: 150.644},
-        //   zoom: 8
-        // });
+        map2 = new google.maps.Map(document.getElementById('map2'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
       }
 
       document.addEventListener('init', function(event) {
@@ -219,7 +216,7 @@
               if (username == '' && password == '') {
                 // call the navigator to move to the new page
                 document.querySelector('#myNavigator').pushPage('startGame.html', {data: {title: 'startGame'}});
-                navigator.resetToPage('login.html');
+
               }
               else {
                 ons.notification.alert('Wrong username/password combination');
@@ -249,12 +246,22 @@
             initMap();
           }
         }
+        else if(page.id === 'gamePlay') {
+          page.querySelector('#game').onclick  =  function(){
+            document.querySelector('#myNavigator').pushPage('game.html', {data: {title: 'game'}});
+          }
+        }
+        else if(page.id === 'gamePlay') {
+          page.querySelector('#profile').onclick  =  function(){
+            document.querySelector('#myNavigator').pushPage('profile.html', {data: {title: 'profile'}});
+          }
+        }
       });
 
     </script>
 
     <script
-      src="https://maps.googleapis.com/maps/api/js?callback=initialize" async defer>
+      src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer>
     </script>
   </body>
 </html>
