@@ -38,6 +38,12 @@
     <!-- app.js är där vi läser/hanterar beacons -->
     <script src="main.js"></script>
     <!-- main.js innehåller alla firebase funktioner-->
+    <style>
+      #map {
+        height: 90vh;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
     <!--
@@ -136,10 +142,10 @@
             <ons-button id="history">History</ons-button>
           </p>
           <p>
-            <ons-button id="entertainment">Entertainment</ons-button>
+            <ons-button id="science">Science</ons-button>
           </p>
           <p>
-            <ons-button id="geography">Geography</ons-button>
+            <ons-button id="sports">Sports</ons-button>
           </p>
         </div>
       </ons-page>
@@ -154,20 +160,19 @@
         <ons-page ng-controller="TabbarController">
 
           <ons-tabbar swipeable position="auto" ons-prechange="updateTitle($event)">
-            <ons-tab page="map.html" label="Map" icon="md-pin, material:md-home" active active-icon="md-pin">
+            <ons-tab page="map.html" label="Map" icon="md-pin, material:md-home"  active-icon="md-pin">
             </ons-tab>
-            <ons-tab page="game.html" label="Quize Game" icon="md-help" active-icon="md-help">
+            <ons-tab page="game.html" label="Quize Game" icon="md-help" active active-icon="md-help">
             </ons-tab>
             <ons-tab page="profile.html" label="Profile" icon="md-face" active-icon="md-face">
             </ons-tab>
           </ons-tabbar>
         </ons-page>
+      </template>
 
         <template id="map.html">
           <ons-page id="map">
-            <p style="text-align: center;">
-              This is the first page.
-            </p>
+            <div id="map2"></div>
           </ons-page>
         </template>
 
@@ -187,11 +192,19 @@
           </ons-page>
         </template>
       </ons-page>
-    </template>
-
 
 
     <script>
+      var map2;
+      function initMap() {
+        document.getElementById('map2').style.backgroundColor = 'red';
+        ons.notification.alert('Hello');
+        // map = new google.maps.Map(document.getElementById('map'), {
+        //   center: {lat: -34.397, lng: 150.644},
+        //   zoom: 8
+        // });
+      }
+
       document.addEventListener('init', function(event) {
         var page = event.target;
 
@@ -221,15 +234,27 @@
         else if (page.id === 'startGame') {
           page.querySelector('#history').onclick = function() {
             document.querySelector('#myNavigator').pushPage('gamePlay.html', {data: {title: ''}});
+
           };
-          page.querySelector('#entertainment').onclick = function() {
+          page.querySelector('#science').onclick = function() {
             document.querySelector('#myNavigator').pushPage('gamePlay.html', {data: {title: ''}});
           };
-          page.querySelector('#geography').onclick = function() {
+          page.querySelector('#sports').onclick = function() {
             document.querySelector('#myNavigator').pushPage('gamePlay.html', {data: {title: ''}});
           };
         }
+        else if(page.id === 'gamePlay') {
+          page.querySelector('#map').onclick  =  function(){
+            document.querySelector('#myNavigator').pushPage('map.html', {data: {title: 'map'}});
+            initMap();
+          }
+        }
       });
+
+    </script>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?callback=initialize" async defer>
     </script>
   </body>
 </html>
