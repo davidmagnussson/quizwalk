@@ -7,6 +7,7 @@
 		initial-scale=1.0" />
 
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -51,6 +52,7 @@
       position: fixed;
       bottom: 0;
       width: 100%;
+      z-index: 5;
     }
 
     button {
@@ -63,6 +65,21 @@
 
     .special .btn {
       flex: 1
+    }
+
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+
+    #profilePic {
+      border-radius: 50%;
+      padding: 20px;
+    }
+
+    #logout {
+      margin: auto;
+      text-align: center;
     }
   </style>
 
@@ -91,7 +108,32 @@
 </head>
 
 <body>
-  <div id="startpage">
+  <div id="login">
+    <div style="text-align: center; margin-top: 100px">
+      <h2>Login to play Quizwalk</h2>
+      <p style="margin-top: 50px">
+        <ons-input id="username" placeholder="Username" modifier="underbar"></ons-input>
+      </p>
+      <p>
+        <ons-input id="password" placeholder="Password" type="password" modifier="underbar">
+        </ons-input>
+      </p>
+      <p>
+        <ons-button id="loginButton">Login</ons-button>
+        <ons-button id="aboutButton">About</ons-button>
+      </p>
+    </div>
+  </div>
+
+  <div id="about" style="display: none">
+    <div style="margin-top: 30px;">
+      <h2>What is <i>QuizWalk</i></h2>
+      <span>Lorem sdiaosfäahdvöqehrvkqehrvlkhqelrvhqlkehvlkqhjv</span>
+      <button id="aboutBack" class="btn btn-info" style="margin-top: 30px;">Back</button>
+    </div>
+  </div>
+
+  <div id="startpage" style="display: none">
     <h1>Pick a subject for your Quiz!</h1>
     <!-- <button id="historyQuiz">History</button>
     <button id="scienceQuiz">Science</button>
@@ -102,7 +144,7 @@
 
   </div>
 
-  <div id="game">
+  <div id="game" style="display: none">
     <div class="my-page" id="page-default">
       <div class="my-header">
         <h1>Welcome to Tipsrundan!</h1>
@@ -211,18 +253,39 @@
     </div>
   </div>
 
-  <div id="navbar">
+  <!-- Navbar and navbar divs -->
+  <div id="navbar" style="display: none">
     <div class="btn-group special btn-group-lg" id="buttonGroup" role="group" aria-label="Basic example">
-      <button class="btn btn-info nav">Map</button>
-      <button class="btn btn-info nav">Quiz</button>
-      <button class="btn btn-info nav">Profile</button>
+      <button class="btn btn-info nav" id="navMap"><span class="ml-1"><i
+            class="material-icons">place</i>Map</span></button>
+      <button class="btn btn-info nav" id="navQuiz"><span class="ml-1"><i
+            class="material-icons">help</i>Quiz</span></button>
+      <button class="btn btn-info nav" id="navProfile"><span><i
+            class="material-icons">person_pin</i>Profile</span></button>
     </div>
+  </div>
+
+  <div id="map" style="display: none">
+
+  </div>
+  <div id="profile" style="display: none">
+    <h2>Hi {NAMN}</h2>
+    <h4>Look up your highscore!</h4>
+    <img src="poet.png" alt="Profile Picture" id="profilePic" height="20px" width="20px">
+    <ul class="list-group">
+      <li class="list-group-item">History quiz:<i>{score}</i></li>
+      <li class="list-group-item">Science quiz:<i>{score}</i></li>
+      <li class="list-group-item">Sports quiz:<i>{score}</i></li>
+    </ul>
+
+    <button class="btn btn-danger nav mt-5" id="logout"><span class="ml-2">Logout</span></button>
   </div>
 
   <script src="lib/jquery.js"></script>
   <script src="cordova.js"></script>
   <script src="model.js"></script>
   <script src="app.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
 </body>
 
 </html>

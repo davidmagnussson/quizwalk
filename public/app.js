@@ -110,16 +110,125 @@ function loadInQuiz(questions) {
   alt3div.classList.add(alternatives.three.answer);
   alt4div.classList.add(alternatives.four.answer);
 }
+function showLoginScreen() {
+  $("#login").show();
+  $("#startpage").hide();
+  $("#game").hide();
+  $("#navbar").hide();
+  $("#about").hide();
+  $("#map").hide();
+  $("#profile").hide();
+}
 
 function showStartScreen() {
   $("#startpage").show();
+  $("#login").hide();
   $("#game").hide();
-  $("#navbar").show();
+  $("#profile").hide();
 }
 
 function showGameScreen() {
   $("#startpage").hide();
   $("#game").show();
+  $("#map").hide();
+  $("#profile").hide();
+  $("#navbar").show();
+}
+
+function showAboutScreen() {
+  $("#startpage").hide();
+  $("#login").hide();
+  $("#game").hide();
+  $("#navbar").hide();
+  $("#about").show();
+  $("#profile").hide();
+  $("#navbar").hide();
+}
+function showMapScreen() {
+  $("#map").show();
+  $("#game").hide();
+  $("#startpage").hide();
+  $("#profile").hide();
+  $("#navbar").show();
+};
+
+function showProfileScreen() {
+  $("#map").hide();
+  $("#game").hide();
+  $("#startpage").hide();
+  $("#profile").show();
+  $("#navbar").show();
+}
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    // center: {lat: 59.3498092, lng: 18.0684758},
+    center: { lat: 59.34937951555808, lng: 18.07118417238007 },
+    zoom: 16,
+    mapTypeId: "hybrid", // terrain, satellite, roadmap, hybrid
+    disableDefaultUI: true, // Tar bort kontroller för att zoom osv!
+    tilt: 45, // Sätter en vinkel på vyn
+    heading: 180 // Infallsvinkeln sätts till 9
+  });
+
+  var infoLocation1 = new google.maps.InfoWindow({
+    content: "This beacon is located at R1"
+  });
+
+  var infoLocation2 = new google.maps.InfoWindow({
+    content: "This beacon is located at R2"
+  });
+
+  var infoLocation3 = new google.maps.InfoWindow({
+    content: "This beacon is located at R3"
+  });
+
+  var location1 = new google.maps.Marker({
+    draggable: false,
+    animation: google.maps.Animation.DROP,
+    position: { lat: 59.34738170626336, lng: 18.073741370144717 },
+    map: map
+  });
+  var location2 = new google.maps.Marker({
+    draggable: false,
+    animation: google.maps.Animation.DROP,
+    position: { lat: 59.34739947036459, lng: 18.07094813798676 },
+    map: map
+  });
+  var location3 = new google.maps.Marker({
+    draggable: false,
+    animation: google.maps.Animation.DROP,
+    position: { lat: 59.349341228486146, lng: 18.071291460740667 },
+    map: map
+  });
+
+  location1.addEventListener('click', function () {
+    alert("test");
+    // infoLocation1.open(map, location1);
+  });
+
+  location2.addEventListener('click', function () {
+    alert("test");
+    // infoLocation2.open(map, location2);
+  });
+
+  location3.addEventListener('click', function () {
+    alert("test");
+    // infoLocation3.open(map, location3);
+  });
+
+  // var infoLocation1 = new google.maps.InfoWindow({
+  // 	content: "hej"
+  // });
+
+  // var location1 = new google.maps.Marker({
+  // 	position: { lat: 59.34937951555808, lng: 18.07118417238007 },
+  // 	map: map,
+  // 	title: 'Uluru (Ayers Rock)'
+  // });
+  // marker.addListener('click', function () {
+  // 	infowindow.open(map, location1);
+  // });
 }
 // FOR TESTING -------------
 // startQuiz('science');
@@ -271,8 +380,10 @@ app.hidePage = function (pageId) {
 // Set up the application.
 
 app.initialize();
-showStartScreen();
+showLoginScreen();
+// initMap();
 
+// Listeners for all buttons/events
 document.getElementById('historyQuiz').addEventListener("click", function () {
   startQuiz('history');
   showGameScreen();
@@ -284,5 +395,29 @@ document.getElementById('scienceQuiz').addEventListener("click", function () {
 document.getElementById('sportsQuiz').addEventListener("click", function () {
   startQuiz('sports');
   showGameScreen();
+});
+
+document.getElementById('loginButton').addEventListener("click", function () {
+  showStartScreen();
+});
+
+document.getElementById('aboutButton').addEventListener("click", function () {
+  showAboutScreen();
+});
+
+document.getElementById('aboutBack').addEventListener("click", function () {
+  showLoginScreen();
+});
+
+document.getElementById('navMap').addEventListener("click", function () {
+  showMapScreen();
+});
+
+document.getElementById('navQuiz').addEventListener("click", function () {
+  showGameScreen();
+});
+
+document.getElementById('navProfile').addEventListener("click", function () {
+  showProfileScreen();
 });
 
