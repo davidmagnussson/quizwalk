@@ -111,8 +111,18 @@ function loadInQuiz(questions) {
   alt4div.classList.add(alternatives.four.answer);
 }
 
+function showStartScreen() {
+  $("#startpage").show();
+  $("#game").hide();
+  $("#navbar").show();
+}
+
+function showGameScreen() {
+  $("#startpage").hide();
+  $("#game").show();
+}
 // FOR TESTING -------------
-startQuiz('science');
+// startQuiz('science');
 // -------------------------
 // Regions that define which pa to show for each beacon.
 app.beaconRegions = [
@@ -230,7 +240,7 @@ app.didRangeBeaconsInRegion = function (pluginResult) {
   }
 
   // If the beacon represents the current page but is far away,
-  // then show the default page.
+  // then show the default pe.
   if (
     (beacon.proximity == "ProximityFar" ||
       beacon.proximity == "ProximityNear") &&
@@ -259,4 +269,20 @@ app.hidePage = function (pageId) {
 };
 
 // Set up the application.
+
 app.initialize();
+showStartScreen();
+
+document.getElementById('historyQuiz').addEventListener("click", function () {
+  startQuiz('history');
+  showGameScreen();
+});
+document.getElementById('scienceQuiz').addEventListener("click", function () {
+  startQuiz('science');
+  showGameScreen();
+});
+document.getElementById('sportsQuiz').addEventListener("click", function () {
+  startQuiz('sports');
+  showGameScreen();
+});
+

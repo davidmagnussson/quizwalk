@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+    <html lang="en" dir="ltr">
+    <head>
+    <title>JavaScript V4 SDK for Realtime Apps | PubNub</title>
+        <link rel="shortcut icon" href="/sites/all/themes/pubnub/favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1" />
+<meta property="fb:app_id" content="1699513143641850" />
+<meta name="description" content="JavaScript V4 SDK for building Realtime Web and Mobile Applications on PubNub. Learn about PubNub features and get tutorials and access APIs." />
+<link rel="canonical" href="https://www.pubnub.com/docs/web-javascript/pubnub-javascript-sdk" />
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "@id": "https://www.pubnub.com",
+                "name": "PubNub global Data Stream Network"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "@id": "https://www.pubnub.com/docs",
+                "name": "SDKs and code examples for building realtime apps"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "@id": "https://www.pubnub.com/docs/web-javascript/pubnub-javascript-sdk",
+                "name": "PubNub JavaScript V4 SDK 4.23.0"
+            }
+        }
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "TechArticle",
+    "mainEntityOfPage": "https://www.pubnub.com/docs/web-javascript/pubnub-javascript-sdk",
+    "headline": "PubNub JavaScript V4 SDK 4.23.0",
+    "description": "JavaScript V4 SDK for building Realtime Web and Mobile Applications on PubNub. Learn about PubNub features and get tutorials and access APIs.",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.pubnub.com/static/images/structure/pubnub.png",
+        "height": 112,
+        "width": 513
+    },
+    "datePublished": "2015-03-12T04:57:28-07:00",
+    "dateModified": "2019-03-25T00:05:09-07:00",
+    "author": {
+        "@type": "Person",
+        "name": "PubNub Team"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "PubNub",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.pubnub.com/wp-content/uploads/2016/01/pubnub-publisher-logo.jpg",
+            "width": 138,
+            "height": 34
+        }
+    }
+}
+</script>
+<meta property="og:site_name" content="PubNub" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="PubNub JavaScript V4 SDK 4.23.0" />
+<meta property="og:url" content="https://www.pubnub.com/docs/web-javascript/pubnub-javascript-sdk" />
+<meta property="og:description" content="JavaScript V4 SDK for building Realtime Web and Mobile Applications on PubNub. Learn about PubNub features and get tutorials and access APIs." />
+<meta property="og:updated_time" content="2019-03-25T00:05:09-07:00" />
+<meta property="og:image" content="https://www.pubnub.com/wp-content/uploads/2016/04/pubnub-share.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@PubNub" />
+<meta name="twitter:creator" content="@PubNub" />
+<meta name="twitter:title" content="PubNub JavaScript V4 SDK 4.23.0" />
+<meta name="twitter:url" content="https://www.pubnub.com/docs/web-javascript/pubnub-javascript-sdk" />
+<meta name="twitter:description" content="JavaScript V4 SDK for building Realtime Web and Mobile Applications on PubNub. Learn about PubNub features and get tutorials and access APIs." />
+<meta name="twitter:image" content="https://www.pubnub.com/wp-content/uploads/2016/04/pubnub-share.png" />
+<meta property="article:published_time" content="2015-03-12T04:57:28-07:00" />
+<meta property="article:modified_time" content="2019-03-25T00:05:09-07:00" />
+<meta name="dcterms.title" content="PubNub JavaScript V4 SDK 4.23.0" />
+<meta name="dcterms.creator" content="PubNub" />
+<meta name="dcterms.description" content="JavaScript V4 SDK for building Realtime Web and Mobile Applications on PubNub. Learn about PubNub features and get tutorials and access APIs." />
+<meta name="dcterms.publisher" content="PubNub" />
+<meta name="dcterms.date" content="2015-03-12T04:57-07:00" />
+<meta name="dcterms.type" content="Text" />
+<meta name="dcterms.format" content="text/html" />
+<meta name="dcterms.identifier" content="https://www.pubnub.com/docs/web-javascript/pubnub-javascript-sdk" />
+<meta name="dcterms.language" content="en" />
+<meta name="dcterms.modified" content="2019-03-25T00:05-07:00" />
+    <link rel="alternate" type="application/rss+xml" title="Realtime Data Stream Network Blog Feed from PubNub" href="https://www.pubnub.com/blog/feed/" />
+    <!-- iPhone -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/wp-content/themes/pubnub/images/touch-icon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/wp-content/themes/pubnub/images/touch-icon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/wp-content/themes/pubnub/images/touch-icon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/wp-content/themes/pubnub/images/touch-icon/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/pubnub/images/touch-icon/apple-touch-icon-180x180.png" />
+
+    <!-- Windows -->
+    <meta name="msapplication-TileColor" content="#d02129">
+    <meta name="msapplication-TileImage" content="/wp-content/themes/pubnub/images/touch-icon/apple-touch-icon-180x180.png">
+    <meta name="msapplication-square57x57logo" content="/wp-content/themes/pubnub/images/touch-icon/apple-touch-icon-57x57.png"/>
+    <meta name="msapplication-square76x76logo" content="/wp-content/themes/pubnub/images/touch-icon/apple-touch-icon-76x76.png"/>
+    <meta name="msapplication-square152x152logo" content="/wp-content/themes/pubnub/images/touch-icon/apple-touch-icon-152x152.png"/>
+    <meta name="msapplication-square180x180logo" content="/wp-content/themes/pubnub/images/touch-icon/apple-touch-icon-180x180.png"/>
+    <script type="application/ld+json">
+    {
+    "@context" : "http://schema.org",
+    "@type" : "Organization",
+    "name" : "PubNub",
+    "url" : "https://www.pubnub.com",
+    "logo" : "https://www.pubnub.com/wp-content/uploads/2016/04/pubnub-share.png",
+    "founder" : "Stephen Blum, Todd Greene",
+    "foundingDate" : "2010",
+    "sameAs" :
+    ["https://twitter.com/PubNub",
+    "https://www.facebook.com/PubNub",
+    "https://www.linkedin.com/company/pubnub",
+    "https://en.wikipedia.org/wiki/PubNub",
+    "https://www.youtube.com/c/PubNub"],
+    "contactPoint" : {
+    "@type" : "ContactPoint",
+    "contactType" : "Customer Support",
+    "telephone" : "+1-415-223-7552",
+    "areaServed" : "Worldwide",
+    "availableLanguage" : "English",
+    "email" : "support@pubnub.com"
+    }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "PubNub",
+    "alternateName": "PubNub",
+    "url": "https://www.pubnub.com",
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.pubnub.com/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+    }
+    }
+    </script>
+    
+    <!-- HTML5 element support for IE6-8 -->
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link type="text/css" rel="stylesheet" href="/sites/default/files/css/css_AQF5T9fS2pZxc22Yb-pUIapsHaKOQsBinz9UMOSO-LM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/sites/default/files/css/css_NgsVVwy2MtaAoj_J2sctgOtJfQ-8KzY-YXZVcPpbUQI.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/sites/default/files/css/css_tQJVejIevn_aJxFHxBtNRndyORMTCSaTbmWSTcgxUIo.css" media="all" />
+    </head>
+    <body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-642 node-type-home gold" >
+    <!-- Google Tag Manager --> <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PZWSZ2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PZWSZ2');</script> <!-- End Google Tag Manager -->
+		
+        <!-- Segment Start -->
+    <script>!function () {var analytics = window.analytics = window.analytics || [];if (!analytics.initialize)if (analytics.invoked)window.console && console.error && console.error("Segment snippet included twice."); else {analytics.invoked = !0;analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"];analytics.factory = function (t) {return function () {var e = Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics
+}};for (var t = 0; t < analytics.methods.length; t++)
+
+{var e = analytics.methods[t];analytics[e] = analytics.factory(e) }
+analytics.load = function (t)
+
+{var e = document.createElement("script");e.type = "text/javascript";e.async = !0;e.src = ("https:" === document.location.protocol ? "https://" : "http://") + "cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js"; var n = document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e, n) }
+;analytics.SNIPPET_VERSION = "4.0.0";analytics.load("OdINAt6BhYOBsN2n1ulSDi5S9SipTaqu");analytics.page();}}();</script>
+    <!-- Segment End -->
+            <div id="header-menu"><div class="top-pannel"><div class="container"> <a href="https://support.pubnub.com/support/home" title="Support">Support</a><a href="http://status.pubnub.com/" title="Network Status">Network Status</a><div class="login-menu-btn login"><a title="Login" href="https://dashboard.pubnub.com/login">Login<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 19.06 13.39" width="20" height="10"><defs><style>.a{fill:#d02129;}</style></defs><title>More Icon</title><path class="a" d="M18.9,6.33,12.72.15a.51.51,0,0,0-.72,0,.52.52,0,0,0,0,.73l5.3,5.3H.51a.52.52,0,0,0,0,1H17.3L12,12.51a.52.52,0,0,0,0,.73.51.51,0,0,0,.36.15.55.55,0,0,0,.37-.15l6.18-6.18a.52.52,0,0,0,0-.73Z"/></svg></a></div></div></div><div class="navbar-fixed-top pn-header"><div class="menu-bar"><div class="container"><div class="row"><div class="logo pull-left"> <a href="/" title="PubNub secure global data stream network and easy to use API for realtime Apps"> <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 720 271.11" width="150"> <defs><style>.cls-1{
+fill :none;
+}
+.cls-2{
+fill :#d02129;
+}</style></defs><title>PubNub_Logo</title> <rect class="cls-1" width="720" height="271.11"/> <path class="cls-2" d="M290.58,200.56l-5.49-.59a116.57,116.57,0,0,1-28-6.4,2.15,2.15,0,0,1-1.62-2.41q.06-59.42,0-118.85V70.55H273.8v40.81l2.82-1a71.44,71.44,0,0,1,27.82-4.56c15.17.66,26.5,8.82,31.89,23A58.79,58.79,0,0,1,339.87,149a86.26,86.26,0,0,1-2.76,24.8c-4,14.43-13.58,22.79-28.15,25.59-2.23.43-4.5.59-6.75.89a8.94,8.94,0,0,0-1,.28Zm-16.74-47.33c0,9.38,0,18.76,0,28.15a1.84,1.84,0,0,0,1.48,2.05,63.59,63.59,0,0,0,17.07,3.7,37.27,37.27,0,0,0,12.31-.8c7.72-2,12.25-7.25,14.34-14.69a75.29,75.29,0,0,0,1.51-33A24.35,24.35,0,0,0,315,126.12c-4.64-5.24-10.76-7.07-17.49-7.16a60,60,0,0,0-22.3,4.13,1.79,1.79,0,0,0-1.39,2c.06,9.38,0,18.76,0,28.15"/> <path class="cls-2" d="M600.52,200.56,595,200a116,116,0,0,1-28-6.38,2.16,2.16,0,0,1-1.66-2.41q.07-59.49,0-119V70.56h18.27v40.79c1.26-.44,2.29-.79,3.31-1.16a70,70,0,0,1,27.29-4.39c15.48.7,26.77,9,32.13,23.49,3,8,3.6,16.36,3.34,24.8a76.47,76.47,0,0,1-3.39,21.78c-4.21,12.81-13.11,20.34-26.1,23.21-2.71.6-5.5.81-8.25,1.22-.41.06-.8.18-1.2.27Zm-16.77-47.39q0,14.21,0,28.43c0,.81.09,1.35,1,1.68a61,61,0,0,0,24.43,3.91c4.91-.28,9.51-1.62,13.34-4.91,3.61-3.09,5.56-7.17,6.71-11.63a77.18,77.18,0,0,0,1.34-31.35,25.49,25.49,0,0,0-5.18-12.6c-4.64-5.64-10.94-7.62-17.93-7.72A59.5,59.5,0,0,0,585,123.13a1.7,1.7,0,0,0-1.3,1.89c0,9.38,0,18.76,0,28.15"/> <path class="cls-2" d="M69.83,78.05s28.81-.08,42.33,0A64.49,64.49,0,0,1,131.1,80.7c11.14,3.48,17.7,11.5,19,23.11a56.42,56.42,0,0,1-.68,18c-2.26,10.6-8.89,17.24-18.94,20.73A54.31,54.31,0,0,1,113,145.3c-7.66.09-15.32,0-23,0H88.19v53H69.83ZM88.23,132c.38,0,.6.06.83.06,7.06,0,14.12.1,21.18-.06a45.21,45.21,0,0,0,8.81-1.13c6-1.35,10.39-4.61,12-10.84a35.33,35.33,0,0,0,.57-15.45c-1.12-6.11-4.64-10.22-10.71-11.66a57.34,57.34,0,0,0-11.12-1.55c-6.68-.25-13.37-.07-20.06-.07-.49,0-1,0-1.53.07Z"/> <path class="cls-2" d="M194.7,200.56c-2.24-.29-4.49-.54-6.72-.88a39.92,39.92,0,0,1-15-5.22c-7.17-4.42-10.83-11-11.66-19.25-.23-2.35-.28-4.73-.28-7.09q0-29.26,0-58.52v-1.73h18.33v1.81q0,26.27,0,52.53A43.91,43.91,0,0,0,181,175.13c2.15,6.94,7,10.89,14.06,11.74a66.39,66.39,0,0,0,25.75-2.33,1.84,1.84,0,0,0,1.57-2.13q-.06-36.37,0-72.75v-1.83h18.32v1.81q0,41.39,0,82.77a1.93,1.93,0,0,1-1.7,2.28,168.56,168.56,0,0,1-32.71,5.63,7.1,7.1,0,0,0-1.06.24Z"/> <path class="cls-2" d="M504.64,200.56c-2.24-.29-4.49-.54-6.72-.88a40.08,40.08,0,0,1-14.78-5.07c-7.26-4.36-11-10.93-11.89-19.25a63.94,63.94,0,0,1-.28-6.53q0-29.61,0-59.23v-1.75h18.33v1.78q0,26.76,0,53.52a39.93,39.93,0,0,0,1.79,12.34c2.23,6.83,7.08,10.56,14,11.39a68.22,68.22,0,0,0,25.23-2.19,2.3,2.3,0,0,0,2-2.68q-.09-36.17,0-72.33v-1.85h18.23c0,.52.08,1,.08,1.5q0,41.67,0,83.33a1.65,1.65,0,0,1-1.42,1.92,167.1,167.1,0,0,1-32.84,5.71,8.22,8.22,0,0,0-1.2.25Z"/> <path class="cls-2" d="M453.24,198.31h-17c-3.21,0-6.42,0-9.62,0a2,2,0,0,1-2.15-1.25q-11.16-21.64-22.39-43.24l-30.63-59a2.21,2.21,0,0,0-.86-.94V198.22h-16V78.12c.43,0,.88-.07,1.32-.07,8.36,0,16.72,0,25.08,0a1.84,1.84,0,0,1,1.92,1.17q26.65,51.37,53.37,102.72a2.27,2.27,0,0,0,.87,1V78.15h16.14Z"/> </svg> </a></div><div class="navigation-spacing"><div id="mobile-expand" class="expand"></div> <button title="Search" class="search-menu-btn-mobile">Search</button> <nav><div id="menu-wrap-primary"><ul id="menu-primary"><li class=" dropdown menu-item open"> <a class="title menu-link" href="/solutions/" title="Solutions">Solutions</a><div class="sub-menu solution-child "><div><h3>BY USE CASE</h3><ul class="main-menu"><li> <a href="/solutions/chat/" title="Chat">Chat</a> <span><a href="/solutions/chat/" title="Chat">Flexible and feature-rich realtime chat APIs for web, IOS, Android and connected devices.</a></span></li><li> <a href="/solutions/iot/" title="IoT Device Control">IoT Device Control</a> <span><a href="/solutions/iot/" title="IoT Device Control">Securely monitor, control, provision and stream data between internet-connected devices.</a></span></li><li> <a href="/solutions/realtime-updates/" title="Realtime Updates">Realtime Updates</a> <span><a href="/solutions/realtime-updates/" title="Realtime Updates">From geotracking, to alerts, to up-to-the-millisecond updates, keep everyone, and everything realtime.</a></span></li><li> <a href="/solutions/" title="See All Use Cases">See All</a></li></ul></div><div><h3>BY FRAMEWORK</h3><ul class="main-menu"><li> <a href="/products/chatengine/" title="ChatEngine"> <span>ChatEngine</span> </a> <span><a href="/products/chatengine/" title="ChatEngine">A framework that accelerates mobile, web, and desktop chat development and deployment.</a></span></li><li> <a href="/developers/eon/" title="Project EON"> <span>Project EON</span> </a> <span><a href="/developers/eon/" title="Project EON">A framework for deploying realtime graphs, maps, and dashboards.</a></span></li></ul></div><div><h3>BY FEATURE</h3><ul class="main-menu"><li> <a href="/products/realtime-messaging/" title="Realtime Pub/Sub Messaging" class="realtime-pubsub-fm">Realtime Pub/Sub Messaging</a></li><li> <a href="/products/functions/" title="PubNub Functions" class="pubnub-functions-fm">PubNub Functions</a></li><li> <a href="/products/presence/" title="User Presence" class="user-presence-fm">User Presence</a></li><li> <a href="/products/mobile-push-notifications/" title="Mobile Push Notifications" class="mobile-push-notifications-fm">Mobile Push Notifications</a></li><li> <a href="/products/security-overview/" title="Security Overview" class="security-overview-fm">Security Overview</a></li><li> <a href="/docs" title="SDKs" >SDKs</a></li></ul></div></div></li><li class=" menu-item no-dropdown"> <a class="title menu-link" href="/what-we-do/" title="What We Do">What We Do</a></li><li class=" menu-item no-dropdown"> <a class="title menu-link" href="/pricing/" title="Pricing">Pricing</a></li><li class=" menu-item dropdown"> <a href="/developers/" class="title menu-link">Developers</a><div class="sub-menu developer"><div><ul class="main-menu"><li class="active"> <a href="/developers/" title="Developer Resources">Developer Resources</a></li><li> <a href="/docs" title="SDK Documentation">SDK Documentation</a></li><li> <a href="/developers/tech/how-pubnub-works/" title="How Pubnub Works">How PubNub Works</a></li></ul></div></div></li><li class=" dropdown menu-item"> <a class="title menu-link" href="/learn/resources/" title="Resources">Resources</a><div class="sub-menu resources"><div><ul class="main-menu"><li> <a href="/learn/resources/#ebooks" title="eBooks">eBooks</a></li><li> <a href="/developers/training/" title="Tutorials">Tutorials</a></li><li> <a href="/learn/resources/#data-sheets" title="Data Sheets">Data Sheets</a></li><li> <a href="/blog/" title="On the Blog">On the Blog</a></li><li> <a href="/customers/" title="Customers">Customers</a></li></ul></div></div></li></ul></div><div class="menu-login-search"><div class="search-area"> <button title="Search" class="search-menu-btn">Search</button></div><div id="navigation-register-desktop"> <a href="#" class=" portal-get-started btn-get-started-nav" title="Get Started " target="_blank">Get Started </a></div><div class="talktosale-menu-btn"> <a title="Talk to Sales" href="/company/talk-to-sales/">Talk to Sales</a></div></div> </nav><div id="navigation-register-mobile"> <a href="#" class=" portal-get-started btn-get-started-nav pull-right" title="Get Started " target="_blank">Get Started </a></div><div class="search-area"><div class="header-search-form "><form action="/search/" id="search-form" class="form "><div class="form-fields"> <input class="form-control" id="search-input" name="query" type="text" placeholder="Search product, features, blog posts, APIs, or docs" value="" autocomplete="off"/> <span class="dropdown-menu" id="search-suggestion"></span> <span id="close-search-mobile"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20"> <path d="M8.114 10L.944 2.83 0 1.885 1.886 0l.943.943L10 8.113l7.17-7.17.944-.943L20 1.886l-.943.943-7.17 7.17 7.17 7.17.943.944L18.114 20l-.943-.943-7.17-7.17-7.17 7.17-.944.943L0 18.114l.943-.943L8.113 10z" fill-rule="evenodd"></path> </svg> </span> <span id="close-src" class="clear-search"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20"> <path d="M8.114 10L.944 2.83 0 1.885 1.886 0l.943.943L10 8.113l7.17-7.17.944-.943L20 1.886l-.943.943-7.17 7.17 7.17 7.17.943.944L18.114 20l-.943-.943-7.17-7.17-7.17 7.17-.944.943L0 18.114l.943-.943L8.113 10z" fill-rule="evenodd"></path> </svg> </span> <input class="hidden" id="search-btn" type="submit" value="Search"></div><div id="featured-search-menu" class="feature resources"><h4 class="title">Featured Resource</h4> <a href="/learn/ebooks/why-time-is-everything-for-businesses/" class="content-sec"> <img src="/wp-content/uploads/2018/07/time-is-everything-ebook-cover.png" alt="Featured Resource" title="Featured Resource" width="42" height="44"> <span class="description">Why Time is Everything for Businesses</span> </a></div><div id="recommended-search-data" class="recommended resources"><h4 class="title">Recommended Search</h4><ul><li> <a href="javascript:void(0)"> <code class="recomended-searches">JavaScript chat</code> </a></li><li> <a href="javascript:void(0)"> <code class="recomended-searches">Python SDK</code> </a></li><li> <a href="javascript:void(0)"> <code class="recomended-searches">Live dashboards</code> </a></li><li> <a href="javascript:void(0)"> <code class="recomended-searches">Android</code> </a></li><li> <a href="javascript:void(0)"> <code class="recomended-searches">Device control</code> </a></li><li> <a href="javascript:void(0)"> <code class="recomended-searches">Raspberry Pi</code> </a></li><li> <a href="javascript:void(0)"> <code class="recomended-searches">iOS Push Notification</code> </a></li><li> <a href="javascript:void(0)"> <code class="recomended-searches">Cognitive Services</code> </a></li><li> <a href="javascript:void(0)"> <code class="recomended-searches">Serverless</code> </a></li></ul></div></form></div></div></div></div></div></div></div></div><div id="page" class="clearfix page-unify"><div id="main-content"><div class="container-fluid"><div class="rows"> <aside class="col-sm-3 col-md-3"> <section id="sidebar-first" class="sidebar clearfix"><h4 class="hidden">referance menu</h4><div class="region region-sidebar-first"><div id="block-menu-menu-docs" class="block block-menu clearfix"><div class="content"><ul class="menu"><li class="expanded active-trail"><span title="JavaScript (Web)" class="active-trail nolink">JavaScript</span><ul class="menu"><li class="first expanded active-trail unify-menu unify-menu-124 collapsed" id="tid-124"><a href="/docs/web-javascript/pubnub-javascript-sdk" class="active-trail active">JavaScript V4 SDK</a><ul class="menu"><li class="first leaf active-trail"><a href="/docs/web-javascript/pubnub-javascript-sdk" class="active-trail active">Getting Started</a></li><li class="expanded unify-api-menu-api collapsed"><a href="/docs/web-javascript/api-reference-configuration" title="API Reference" class="unify-api-menu">API Reference</a><ul class="menu"><li class="first leaf outer"><a href="/docs/web-javascript/api-reference-configuration" title="Configuration">Configuration</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-configuration#init" title="Initialization" class="inner">Initialization</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-configuration#uuid" title="UUID" class="inner">UUID</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-configuration#auth" title="Authentication Key" class="inner">Authentication Key</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-configuration#filter-expression" title="Filter Expression" class="inner">Filter Expression</a></li><li class="leaf outer"><a href="/docs/web-javascript/api-reference-publish-and-subscribe" title="Publish &amp; Subscribe">Publish &amp; Subscribe</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-publish-and-subscribe#publish" title="Publish" class="inner">Publish</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-publish-and-subscribe#fire" title="Fire" class="inner">Fire</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-publish-and-subscribe#subscribe" title="Subscribe" class="inner">Subscribe</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-publish-and-subscribe#unsubscribe" title="Unsubscribe" class="inner">Unsubscribe</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-publish-and-subscribe#unsubscribe_all" title="Unsubscribe All" class="inner">Unsubscribe All</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-publish-and-subscribe#listeners" title="Listeners" class="inner">Listeners</a></li><li class="leaf outer"><a href="/docs/web-javascript/api-reference-presence" title="Presence">Presence</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-presence#here_now" title="Here Now" class="inner">Here Now</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-presence#where_now" title="Where Now" class="inner">Where Now</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-presence#user-state" title="User State" class="inner">User State</a></li><li class="leaf outer"><a href="/docs/web-javascript/api-reference-access-manager" title="Access Manager">Access Manager</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-access-manager#grant" title="Grant" class="inner">Grant</a></li><li class="leaf outer"><a href="/docs/web-javascript/api-reference-channel-groups" title="Channel Groups">Channel Groups</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-channel-groups#adding-channels" title="Adding Channels" class="inner">Adding Channels</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-channel-groups#listing-channels" title="Listing Channels" class="inner">Listing Channels</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-channel-groups#removing-channels" title="Removing Channels" class="inner">Removing Channels</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-channel-groups#deleting-channel-group" title="Deleting Channel Group" class="inner">Deleting Channel Group</a></li><li class="leaf outer"><a href="/docs/web-javascript/api-reference-storage-and-playback" title="Storage &amp; Playback">Storage &amp; Playback</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-storage-and-playback#history" title="History" class="inner">History</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-storage-and-playback#batch-history" title="Batch History" class="inner">Batch History</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-storage-and-playback#delete-messages-from-history" title="Delete Messages from History" class="inner">Delete Messages from History</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-storage-and-playback#message-counts-history" title="Message Counts" class="inner">Message Counts</a></li><li class="leaf outer"><a href="/docs/web-javascript/api-reference-mobile-push" title="Mobile Push">Mobile Push</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-mobile-push#adding-device-channel" title="Adding Device to Channel" class="inner">Adding Device to Channel</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-mobile-push#listing-channels-device" title="Listing Channels For Device" class="inner">Listing Channels For Device</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-mobile-push#removing-device-channel" title="Removing Device From Channel" class="inner">Removing Device From Channel</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-mobile-push#remove_all_push_notifications" title="Remove all push notifications" class="inner">Remove all push notifications</a></li><li class="leaf outer"><a href="/docs/web-javascript/api-reference-misc" title="Miscellaneous">Miscellaneous</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-misc#close-pubnub" title="Close PubNub" class="inner">Close PubNub</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-misc#decrypt" title="Decrypt" class="inner">Decrypt</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-misc#encrypt" title="Encrypt" class="inner">Encrypt</a></li><li class="leaf"><a href="/docs/web-javascript/api-reference-misc#reconnect" title="Reconnect" class="inner">Reconnect</a></li><li class="last leaf"><a href="/docs/web-javascript/api-reference-misc#time" title="Time" class="inner">Time</a></li></ul></li><li class="leaf"><a href="/docs/web-javascript/pubnub-network-lifecycle" title="Network Lifecycle">Network Lifecycle</a></li><li class="expanded collapsed"><a href="/docs/web-javascript/data-streams-publish-and-subscribe">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/docs/web-javascript/data-streams-publish-and-subscribe" title="Publish/Subscribe">Publish/Subscribe</a></li><li class="leaf"><a href="/docs/web-javascript/stream-controller" title="Stream Controller">Stream Controller</a></li><li class="leaf"><a href="/docs/web-javascript/presence" title="Presence">Presence</a></li><li class="leaf"><a href="/docs/web-javascript/mobile-gateway" title="Mobile Push Gateway">Mobile Push Gateway</a></li><li class="leaf"><a href="/docs/web-javascript/pam-security" title="Access Manager">Access Manager</a></li><li class="leaf"><a href="/docs/web-javascript/storage-and-history" title="Storage &amp; Playback">Storage &amp; Playback</a></li><li class="leaf"><a href="/docs/web-javascript/chat-fundamentals" title="Chat Fundamentals">Chat Fundamentals</a></li><li class="last leaf"><a href="/docs/web-javascript/stream-filtering-tutorial" title="Stream Filter">Stream Filter</a></li></ul></li><li class="expanded collapsed"><a href="/docs/web-javascript/best-practices-playbook" title="Design Patterns">Design Patterns</a><ul class="menu"><li class="first leaf"><a href="/docs/web-javascript/best-practices-playbook" title="Introduction">Introduction</a></li><li class="leaf"><a href="/docs/web-javascript/server-message-aggregation" title="Server Message Aggregation">Server Message Aggregation</a></li><li class="leaf"><a href="/docs/web-javascript/advanced-channel-groups" title="Advanced Channel Groups">Advanced Channel Groups</a></li><li class="leaf"><a href="/docs/web-javascript/inbound-channel-pattern" title="Inbound Channel Pattern">Inbound Channel Pattern</a></li><li class="leaf"><a href="/docs/web-javascript/message-update-delete" title="Message Updates and Deletes">Message Updates and Deletes</a></li><li class="leaf"><a href="/docs/web-javascript/single-multichannel-message-state" title="Single &amp; Multichannel Message State">Single &amp; Multichannel Message State</a></li><li class="leaf"><a href="/docs/web-javascript/message-metadata" title="Message Metadata">Message Metadata</a></li><li class="last leaf"><a href="/docs/web-javascript/chat-user-identification" title="Chat User Identification">Chat User Identification</a></li></ul></li><li class="leaf"><a href="/docs/web-javascript/status-events" title="Status Events">Status Events</a></li><li class="leaf"><a href="/docs/web-javascript/pubnub-javascript-sdk-troubleshooting-guide" title="Troubleshooting">Troubleshooting</a></li><li class="leaf"><a href="/docs/web-javascript/soft-and-hard-limitations" title="Soft &amp; Hard Limitations">Soft &amp; Hard Limitations</a></li><li class="leaf"><a href="/docs/web-javascript/migration-guide-from-v3" title="Migration Guide">Migration Guide</a></li><li class="leaf"><a href="/docs/web-javascript/changelog" title="Changelog">Changelog</a></li><li class="leaf"><a href="/docs/web-javascript/features-matrix" title="Features Matrix">Features Matrix</a></li><li class="leaf"><a href="/docs/web-javascript/supported-platforms" title="Supported Platforms">Supported Platforms</a></li><li class="last leaf more-sdks-item"><span title="More JavaScript-Based SDKs" class="more-sdks nolink">More JavaScript-Based SDKs</span></li></ul></li><li class="expanded unify-menu unify-menu-125 collapsed"><a href="/docs/nodejs-javascript/pubnub-javascript-sdk">Node.js V4 SDK</a><ul class="menu"><li class="first leaf"><a href="/docs/nodejs-javascript/pubnub-javascript-sdk" title="Getting Started">Getting Started</a></li><li class="expanded unify-api-menu-api collapsed"><a href="/docs/nodejs-javascript/api-reference-configuration" title="API Reference" class="unify-api-menu">API Reference</a><ul class="menu"><li class="first leaf outer"><a href="/docs/nodejs-javascript/api-reference-configuration" title="Configuration">Configuration</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-configuration#init" title="Initialization" class="inner">Initialization</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-configuration#uuid" title="UUID" class="inner">UUID</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-configuration#auth" title="Authentication Key" class="inner">Authentication Key</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-configuration#filter-expression" title="Filter Expression" class="inner">Filter Expression</a></li><li class="leaf outer"><a href="/docs/nodejs-javascript/api-reference-publish-and-subscribe" title="Publish &amp; Subscribe">Publish &amp; Subscribe</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-publish-and-subscribe#publish" title="Publish" class="inner">Publish</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-publish-and-subscribe#fire" title="Fire" class="inner">Fire</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-publish-and-subscribe#subscribe" title="Subscribe" class="inner">Subscribe</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-publish-and-subscribe#unsubscribe" title="Unsubscribe" class="inner">Unsubscribe</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-publish-and-subscribe#unsubscribe_all" title="Unsubscribe All" class="inner">Unsubscribe All</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-publish-and-subscribe#listeners" title="Listeners" class="inner">Listeners</a></li><li class="leaf outer"><a href="/docs/nodejs-javascript/api-reference-presence" title="Presence">Presence</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-presence#here_now" title="Here Now" class="inner">Here Now</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-presence#where_now" title="Where Now" class="inner">Where Now</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-presence#user-state" title="User State" class="inner">User State</a></li><li class="leaf outer"><a href="/docs/nodejs-javascript/api-reference-access-manager" title="Access Manager">Access Manager</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-access-manager#grant" title="Grant" class="inner">Grant</a></li><li class="leaf outer"><a href="/docs/nodejs-javascript/api-reference-channel-groups" title="Channel Groups">Channel Groups</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-channel-groups#adding-channels" title="Adding Channels" class="inner">Adding Channels</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-channel-groups#listing-channels" title="Listing Channels" class="inner">Listing Channels</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-channel-groups#removing-channels" title="Removing Channels" class="inner">Removing Channels</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-channel-groups#deleting-channel-group" title="Deleting Channel Group" class="inner">Deleting Channel Group</a></li><li class="leaf outer"><a href="/docs/nodejs-javascript/api-reference-storage-and-playback" title="Storage &amp; Playback">Storage &amp; Playback</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-storage-and-playback#history" title="History" class="inner">History</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-storage-and-playback#batch-history" title="Batch History" class="inner">Batch History</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-storage-and-playback#delete-messages-from-history" title="Delete Messages from History" class="inner">Delete Messages from History</a></li><li class="leaf outer"><a href="/docs/nodejs-javascript/api-reference-mobile-push" title="Mobile Push">Mobile Push</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-mobile-push#adding-device-channel" title="Adding Device to Channel" class="inner">Adding Device to Channel</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-mobile-push#listing-channels-device" title="Listing Channels For Device" class="inner">Listing Channels For Device</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-mobile-push#removing-device-channel" title="Removing Device From Channel" class="inner">Removing Device From Channel</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-mobile-push#remove_all_push_notifications" title="Remove all push notifications" class="inner">Remove all push notifications</a></li><li class="leaf outer"><a href="/docs/nodejs-javascript/api-reference-misc" title="Miscellaneous">Miscellaneous</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-misc#close-pubnub" title="Close PubNub" class="inner">Close PubNub</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-misc#decrypt" title="Decrypt" class="inner">Decrypt</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-misc#encrypt" title="Encrypt" class="inner">Encrypt</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-misc#reconnect" title="Reconnect" class="inner">Reconnect</a></li><li class="leaf"><a href="/docs/nodejs-javascript/api-reference-misc#set-proxy" title="setProxy" class="inner">setProxy</a></li><li class="last leaf"><a href="/docs/nodejs-javascript/api-reference-misc#time" title="Time" class="inner">Time</a></li></ul></li><li class="leaf"><a href="/docs/nodejs-javascript/pubnub-network-lifecycle" title="Network Lifecycle">Network Lifecycle</a></li><li class="expanded collapsed"><a href="/docs/nodejs-javascript/data-streams-publish-and-subscribe" title="Tutorials">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/docs/nodejs-javascript/data-streams-publish-and-subscribe" title="Publish/Subscribe">Publish/Subscribe</a></li><li class="leaf"><a href="/docs/nodejs-javascript/stream-controller" title="Stream Controller">Stream Controller</a></li><li class="leaf"><a href="/docs/nodejs-javascript/presence" title="Presence">Presence</a></li><li class="leaf"><a href="/docs/nodejs-javascript/mobile-gateway" title="Mobile Push Gateway">Mobile Push Gateway</a></li><li class="leaf"><a href="/docs/nodejs-javascript/pam-security" title="Access Manager">Access Manager</a></li><li class="leaf"><a href="/docs/nodejs-javascript/storage-and-history" title="Storage &amp; Playback">Storage &amp; Playback</a></li><li class="last leaf"><a href="/docs/nodejs-javascript/stream-filtering-tutorial" title="Stream Filter">Stream Filter</a></li></ul></li><li class="leaf"><a href="/docs/nodejs-javascript/status-events" title="Status Events">Status Events</a></li><li class="leaf"><a href="/docs/nodejs-javascript/pubnub-javascript-sdk-troubleshooting-guide" title="Troubleshooting">Troubleshooting</a></li><li class="leaf"><a href="/docs/nodejs-javascript/soft-and-hard-limitations" title="Soft &amp; Hard Limitations">Soft &amp; Hard Limitations</a></li><li class="leaf"><a href="/docs/nodejs-javascript/migration-guide-from-v3" title="Migration Guide">Migration Guide</a></li><li class="leaf"><a href="/docs/nodejs-javascript/changelog" title="Changelog">Changelog</a></li><li class="leaf"><a href="/docs/nodejs-javascript/features-matrix" title="Features Matrix">Features Matrix</a></li><li class="leaf"><a href="/docs/nodejs-javascript/supported-platforms" title="Supported Platforms">Supported Platforms</a></li><li class="last leaf more-sdks-item"><span title="More JavaScript-Based SDKs" class="more-sdks nolink">More JavaScript-Based SDKs</span></li></ul></li><li class="expanded unify-menu unify-menu-130 collapsed"><a href="/docs/phonegap-javascript/pubnub-javascript-sdk" title="PhoneGap V4 SDK">PhoneGap V4 SDK</a><ul class="menu"><li class="first leaf"><a href="/docs/phonegap-javascript/pubnub-javascript-sdk">Getting Started</a></li><li class="expanded unify-api-menu-api collapsed"><a href="/docs/phonegap-javascript/api-reference-configuration" title="API Reference" class="unify-api-menu">API Reference</a><ul class="menu"><li class="first leaf outer"><a href="/docs/phonegap-javascript/api-reference-configuration" title="Configuration">Configuration</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-configuration#init" title="Initialization" class="inner">Initialization</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-configuration#uuid" title="UUID" class="inner">UUID</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-configuration#auth" title="Authentication Key" class="inner">Authentication Key</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-configuration#filter-expression" title="Filter Expression" class="inner">Filter Expression</a></li><li class="leaf outer"><a href="/docs/phonegap-javascript/api-reference-publish-and-subscribe" title="Publish &amp; Subscribe">Publish &amp; Subscribe</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-publish-and-subscribe#publish" title="Publish" class="inner">Publish</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-publish-and-subscribe#fire" title="Fire" class="inner">Fire</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-publish-and-subscribe#subscribe" title="Subscribe" class="inner">Subscribe</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-publish-and-subscribe#unsubscribe" title="Unsubscribe" class="inner">Unsubscribe</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-publish-and-subscribe#unsubscribe_all" title="Unsubscribe All" class="inner">Unsubscribe All</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-publish-and-subscribe#listeners" title="Listeners" class="inner">Listeners</a></li><li class="leaf outer"><a href="/docs/phonegap-javascript/api-reference-presence" title="Presence">Presence</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-presence#here_now" title="Here Now" class="inner">Here Now</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-presence#where_now" title="Where Now" class="inner">Where Now</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-presence#user-state" title="User State" class="inner">User State</a></li><li class="leaf outer"><a href="/docs/phonegap-javascript/api-reference-access-manager" title="Access Manager">Access Manager</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-access-manager#grant" title="Grant" class="inner">Grant</a></li><li class="leaf outer"><a href="/docs/phonegap-javascript/api-reference-channel-groups" title="Channel Groups">Channel Groups</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-channel-groups#adding-channels" title="Adding Channels" class="inner">Adding Channels</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-channel-groups#listing-channels" title="Listing Channels" class="inner">Listing Channels</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-channel-groups#removing-channels" title="Removing Channels" class="inner">Removing Channels</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-channel-groups#deleting-channel-group" title="Deleting Channel Group" class="inner">Deleting Channel Group</a></li><li class="leaf outer"><a href="/docs/phonegap-javascript/api-reference-storage-and-playback" title="Storage &amp; Playback">Storage &amp; Playback</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-storage-and-playback#history" title="History" class="inner">History</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-storage-and-playback#batch-history" title="Batch History" class="inner">Batch History</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-storage-and-playback#delete-messages-from-history" title="Delete Messages from History" class="inner">Delete Messages from History</a></li><li class="leaf outer"><a href="/docs/phonegap-javascript/api-reference-mobile-push" title="Mobile Push">Mobile Push</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-mobile-push#adding-device-channel" title="Adding Device to Channel" class="inner">Adding Device to Channel</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-mobile-push#listing-channels-device" title="Listing Channels For Device" class="inner">Listing Channels For Device</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-mobile-push#removing-device-channel" title="Removing Device From Channel" class="inner">Removing Device From Channel</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-mobile-push#remove_all_push_notifications" title="Remove all push notifications" class="inner">Remove all push notifications</a></li><li class="leaf outer"><a href="/docs/phonegap-javascript/api-reference-misc" title="Miscellaneous">Miscellaneous</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-misc#close-pubnub" title="Close PubNub" class="inner">Close PubNub</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-misc#decrypt" title="Decrypt" class="inner">Decrypt</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-misc#encrypt" title="Encrypt" class="inner">Encrypt</a></li><li class="leaf"><a href="/docs/phonegap-javascript/api-reference-misc#reconnect" title="Reconnect" class="inner">Reconnect</a></li><li class="last leaf"><a href="/docs/phonegap-javascript/api-reference-misc#time" title="Time" class="inner">Time</a></li></ul></li><li class="leaf"><a href="/docs/phonegap-javascript/pubnub-network-lifecycle" title="Network Lifecycle">Network Lifecycle</a></li><li class="expanded collapsed"><a href="/docs/phonegap-javascript/data-streams-publish-and-subscribe" title="Tutorials">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/docs/phonegap-javascript/data-streams-publish-and-subscribe" title="Publish/Subscribe">Publish/Subscribe</a></li><li class="leaf"><a href="/docs/phonegap-javascript/stream-controller" title="Stream Controller">Stream Controller</a></li><li class="leaf"><a href="/docs/phonegap-javascript/presence" title="Presence">Presence</a></li><li class="leaf"><a href="/docs/phonegap-javascript/mobile-gateway" title="Mobile Push Gateway">Mobile Push Gateway</a></li><li class="leaf"><a href="/docs/phonegap-javascript/pam-security" title="Access Manager">Access Manager</a></li><li class="leaf"><a href="/docs/phonegap-javascript/storage-and-history" title="Storage &amp; Playback">Storage &amp; Playback</a></li><li class="last leaf"><a href="/docs/phonegap-javascript/stream-filtering-tutorial" title="Stream Filter">Stream Filter</a></li></ul></li><li class="leaf"><a href="/docs/phonegap-javascript/status-events" title="Status Events">Status Events</a></li><li class="leaf"><a href="/docs/phonegap-javascript/pubnub-javascript-sdk-troubleshooting-guide" title="Troubleshooting">Troubleshooting</a></li><li class="leaf"><a href="/docs/phonegap-javascript/soft-and-hard-limitations">Soft &amp; Hard Limitations</a></li><li class="leaf"><a href="/docs/phonegap-javascript/migration-guide-from-v3" title="Migration Guide">Migration Guide</a></li><li class="leaf"><a href="/docs/phonegap-javascript/changelog" title="Changelog">Changelog</a></li><li class="leaf"><a href="/docs/phonegap-javascript/features-matrix" title="Features Matrix">Features Matrix</a></li><li class="leaf"><a href="/docs/phonegap-javascript/supported-platforms" title="Supported Platforms">Supported Platforms</a></li><li class="last leaf more-sdks-item"><span title="More JavaScript-Based SDKs" class="more-sdks nolink">More JavaScript-Based SDKs</span></li></ul></li><li class="last expanded unify-menu unify-menu-156 collapsed" id="tid-156"><a href="/docs/react-native-javascript/pubnub-javascript-sdk" title="React">React SDK</a><ul class="menu"><li class="first leaf"><a href="/docs/react-native-javascript/pubnub-javascript-sdk" title="Getting Started">Getting Started</a></li><li class="expanded unify-api-menu-api collapsed"><a href="/docs/react-native-javascript/api-reference-configuration" title="API Reference" class="unify-api-menu">API Reference</a><ul class="menu"><li class="first leaf outer"><a href="/docs/react-native-javascript/api-reference-configuration" title="Configuration">Configuration</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-configuration#init" title="Initialization" class="inner">Initialization</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-configuration#uuid" title="UUID" class="inner">UUID</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-configuration#auth" title="Authentication Key" class="inner">Authentication Key</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-configuration#filter-expression" title="Filter Expression" class="inner">Filter Expression</a></li><li class="leaf outer"><a href="/docs/react-native-javascript/api-reference-publish-and-subscribe" title="Publish &amp; Subscribe">Publish &amp; Subscribe</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-publish-and-subscribe#publish" title="Publish" class="inner">Publish</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-publish-and-subscribe#fire" title="Fire" class="inner">Fire</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-publish-and-subscribe#subscribe" title="Subscribe" class="inner">Subscribe</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-publish-and-subscribe#unsubscribe" title="Unsubscribe" class="inner">Unsubscribe</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-publish-and-subscribe#unsubscribe_all" title="Unsubscribe All" class="inner">Unsubscribe All</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-publish-and-subscribe#listeners" title="Listeners" class="inner">Listeners</a></li><li class="leaf outer"><a href="/docs/react-native-javascript/api-reference-presence" title="Presence">Presence</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-presence#here_now" title="Here Now" class="inner">Here Now</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-presence#where_now" title="Where Now" class="inner">Where Now</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-presence#user-state" title="User State" class="inner">User State</a></li><li class="leaf outer"><a href="/docs/react-native-javascript/api-reference-access-manager" title="Access Manager">Access Manager</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-access-manager#grant" title="Grant" class="inner">Grant</a></li><li class="leaf outer"><a href="/docs/react-native-javascript/api-reference-channel-groups" title="Channel Groups">Channel Groups</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-channel-groups#adding-channels" title="Adding Channels" class="inner">Adding Channels</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-channel-groups#listing-channels" title="Listing Channels" class="inner">Listing Channels</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-channel-groups#removing-channels" title="Removing Channels" class="inner">Removing Channels</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-channel-groups#deleting-channel-group" title="Deleting Channel Group" class="inner">Deleting Channel Group</a></li><li class="leaf outer"><a href="/docs/react-native-javascript/api-reference-storage-and-playback" title="Storage &amp; Playback">Storage &amp; Playback</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-storage-and-playback#history" title="History" class="inner">History</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-storage-and-playback#batch-history" title="Batch History" class="inner">Batch History</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-storage-and-playback#delete-messages-from-history" title="Delete Messages from History" class="inner">Delete Messages from History</a></li><li class="leaf outer"><a href="/docs/react-native-javascript/api-reference-mobile-push" title="Mobile Push">Mobile Push</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-mobile-push#adding-device-channel" title="Adding Device to Channel" class="inner">Adding Device to Channel</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-mobile-push#listing-channels-device" title="Listing Channels For Device" class="inner">Listing Channels For Device</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-mobile-push#removing-device-channel" title="Removing Device From Channel" class="inner">Removing Device From Channel</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-mobile-push#remove_all_push_notifications" title="Remove all push notifications" class="inner">Remove all push notifications</a></li><li class="leaf outer"><a href="/docs/react-native-javascript/api-reference-misc" title="Miscellaneous">Miscellaneous</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-misc#close-pubnub" title="Close PubNub" class="inner">Close PubNub</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-misc#decrypt" title="Decrypt" class="inner">Decrypt</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-misc#encrypt" title="Encrypt" class="inner">Encrypt</a></li><li class="leaf"><a href="/docs/react-native-javascript/api-reference-misc#reconnect" title="Reconnect" class="inner">Reconnect</a></li><li class="last leaf"><a href="/docs/react-native-javascript/api-reference-misc#time" title="Time" class="inner">Time</a></li></ul></li><li class="leaf"><a href="/docs/react-native-javascript/pubnub-network-lifecycle" title="Network Lifecycle">Network Lifecycle</a></li><li class="expanded collapsed"><a href="/docs/react-native-javascript/data-streams-publish-and-subscribe" title="Tutorials">Tutorials</a><ul class="menu"><li class="first leaf"><a href="/docs/react-native-javascript/data-streams-publish-and-subscribe" title="Publish/Subscribe">Publish/Subscribe</a></li><li class="leaf"><a href="/docs/react-native-javascript/stream-controller" title="Stream Controller">Stream Controller</a></li><li class="leaf"><a href="/docs/react-native-javascript/presence" title="Presence">Presence</a></li><li class="leaf"><a href="/docs/react-native-javascript/mobile-gateway" title="Mobile Push Gateway">Mobile Push Gateway</a></li><li class="leaf"><a href="/docs/react-native-javascript/pam-security" title="Access Manager">Access Manager</a></li><li class="leaf"><a href="/docs/react-native-javascript/storage-and-history" title="Storage &amp; Playback">Storage &amp; Playback</a></li><li class="last leaf"><a href="/docs/react-native-javascript/stream-filtering-tutorial" title="Stream Filter">Stream Filter</a></li></ul></li><li class="expanded collapsed"><a href="/docs/react-native-javascript/best-practices-playbook" title="Design Patterns">Design Patterns</a><ul class="menu"><li class="first leaf"><a href="/docs/react-native-javascript/best-practices-playbook" title="Introduction">Introduction</a></li><li class="leaf"><a href="/docs/react-native-javascript/server-message-aggregation" title="Server Message Aggregation">Server Message Aggregation</a></li><li class="leaf"><a href="/docs/react-native-javascript/advanced-channel-groups" title="Advanced Channel Groups">Advanced Channel Groups</a></li><li class="leaf"><a href="/docs/react-native-javascript/inbound-channel-pattern" title="Inbound Channel Pattern">Inbound Channel Pattern</a></li><li class="leaf"><a href="/docs/react-native-javascript/message-update-delete" title="Message Updates and Deletes">Message Updates and Deletes</a></li><li class="leaf"><a href="/docs/react-native-javascript/single-multichannel-message-state" title="Single &amp; Multichannel Message State">Single &amp; Multichannel Message State</a></li><li class="leaf"><a href="/docs/react-native-javascript/message-metadata" title="Message Metadata">Message Metadata</a></li><li class="last leaf"><a href="/docs/react-native-javascript/chat-user-identification" title="Chat User Identification">Chat User Identification</a></li></ul></li><li class="leaf"><a href="/docs/react-native-javascript/status-events" title="Status Events">Status Events</a></li><li class="leaf"><a href="/docs/react-native-javascript/pubnub-javascript-sdk-troubleshooting-guide" title="Troubleshooting">Troubleshooting</a></li><li class="leaf"><a href="/docs/react-native-javascript/soft-and-hard-limitations" title="Soft &amp; Hard Limitations">Soft &amp; Hard Limitations</a></li><li class="leaf"><a href="/docs/react-native-javascript/changelog">Change Log</a></li><li class="leaf"><a href="/docs/react-native-javascript/features-matrix">Features Matrix</a></li><li class="leaf"><a href="/docs/react-native-javascript/supported-platforms">Supported Platforms</a></li><li class="last leaf more-sdks-item"><span title="More JavaScript-Based SDKs" class="more-sdks nolink">More JavaScript-Based SDKs</span></li></ul></li></ul></li></ul></div></div></div> </section> </aside> <section class="col-md-9 col-md-10" id="right-section"><h4 class="hidden">referance content</h4><div id="main" class="clearfix"><div id="breadcrumb" class="clearfix"><div id="breadcrumb-inside" class="clearfix"><ol class="breadcrumb"><li><a href="/" title="Realtime apps powered by global Data Stream Network">Realtime apps powered by global Data Stream Network</a></li><li><span title="JavaScript (Web)" class="nolink">JavaScript</span></li><li><a href="/docs/web-javascript/pubnub-javascript-sdk" class="active">JavaScript V4 SDK</a></li></ol></div></div><div id="content-wrapper"><h1 class="page-title"><span class="unify-header header"><a href="javascript:void(0)" title="Web" class="slct-sub-lng width-auto">Web</a><span class="header-dd"><a href="javascript:void(0)" class="pterm current-sdk" title="Web" data-rel="124" tabindex="1">Web</a><a href="javascript:void(0)" class="pterm " title="Node.js" data-rel="125" tabindex="2">Node.js</a><a href="javascript:void(0)" class="pterm " title="PhoneGap" data-rel="130" tabindex="3">PhoneGap</a><a href="javascript:void(0)" class="pterm " title="React V4" data-rel="156" tabindex="4">React V4</a></span></span><a id="slct-lng" href="javascript:void(0)" title="JavaScript" class="btn">JavaScript</a><span rel="unify-124" class="term-124 child-code-snippet unify first">PubNub JavaScript V4 SDK 4.23.0</span><span rel="unify-125" class="term-125 child-code-snippet unify hidden">PubNub Node.js V4 SDK 4.23.0</span><span rel="unify-130" class="term-130 child-code-snippet unify hidden">PubNub PhoneGap V4 SDK 4.23.0</span><span rel="unify-156" class="term-156 child-code-snippet unify hidden">PubNub React V4 SDK 1.3.0</span></h1><ul id="language-list"><li class="nolink"><a href="/docs/chat-engine/getting-started" title="ChatEngine">ChatEngine</a></li><li class="nolink"><a href="/docs/blocks/key-concepts" title="PubNub Functions">PubNub Functions</a></li><li class="nolink"><a href="/docs/ios-objective-c/pubnub-objective-c-sdk" title="Objective-C">Objective-C</a></li><li class="nolink"><a href="/docs/swift/pubnub-swift-sdk" title="Swift">Swift</a></li><li class="nolink"><a href="/docs/java-se-java/pubnub-java-sdk" title="Java">Java</a></li><li class="nolink"><a href="/docs/android-java/pubnub-java-sdk" title="Android">Android</a></li><li class="nolink"><a href="/docs/web-javascript/pubnub-javascript-sdk" title="JavaScript">JavaScript</a></li><li class="nolink"><a href="/docs/angular2-javascript/pubnub-javascript-sdk" title="Angular2">Angular2</a></li><li class="nolink"><a href="/docs/vue-javascript/pubnub-javascript-sdk" title="Vue">Vue</a></li><li class="nolink"><a href="/docs/angularjs-javascript/pubnub-javascript-sdk" title="AngularJS">AngularJS</a></li><li class="nolink"><a href="/docs/c-sharp-dot-net-c-sharp/pubnub-c-sharp-sdk" title="C#">C#</a></li><li class="nolink"><a href="/docs/titanium-javascript/pubnub-javascript-sdk" title="Titanium V4">Titanium V4</a></li><li class="nolink"><a href="/docs/unity3d-c-sharp/pubnub-c-sharp-sdk" title="Unity">Unity</a></li><li class="nolink"><a href="/docs/python/pubnub-python-sdk" title="Python">Python</a></li><li class="nolink"><a href="/docs/go/pubnub-go-sdk" title="Go">Go</a></li><li class="nolink"><a href="/docs/ruby/pubnub-ruby-sdk" title="Ruby">Ruby</a></li><li class="nolink"><a href="/docs/php/pubnub-php-sdk" title="PHP">PHP</a></li><li class="nolink"><a href="/docs/posix-c/pubnub-c-sdk" title="C">C</a></li><li class="nolink"><a href="/docs/posix-cpp/pubnub-cpp-sdk" title="C++">C++</a></li><li class="nolink"><a href="/docs/eon-chart/pubnub-eon-sdk" title="EON">EON</a></li><li class="nolink"><a href="/docs" title="View All 70+ PubNub SDKs">View All 70+ PubNub SDKs</a></li></ul><div class="tabs"></div><div class="region region-content"><div id="block-system-main" class="block block-system clearfix"><div class="content"> <article id="node-642" class="node node-home clearfix" about="/docs/web-javascript/pubnub-javascript-sdk" typeof="sioc:Item foaf:Document"> <header> <span property="dc:title" content="PubNub JavaScript V4 SDK 4.23.0" class="rdf-meta element-hidden"></span> </header><div class="content"><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><div id="unify-124" rel="unify-124" class="term-124 child-code-snippet unify first" data-mtitle="JavaScript V4 SDK for Realtime Apps | PubNub" data-mdesc="JavaScript V4 SDK for building Realtime Web and Mobile Applications on PubNub. Learn about PubNub features and get tutorials and access APIs."><h2 class="inpage-link tag-link"><a href="#how_to_get_it_cdn" data-id="how_to_get_it_cdn" title="Get Code" class="title-red">Get Code:</a></h2><div><div class="copy-to-clipboard"><a href="https://github.com/pubnub/javascript/releases" title="Latest Version" data-id="cb-1" target="_blank">https://github.com/pubnub/javascript/releases</a><button class="clipboardjs-button" data-clipboard-text="https://github.com/pubnub/javascript/releases" title="Copy to Clipboard">Copy to Clipboard</button></div></div><h2 class="inpage-link tag-link"><a href="#how_to_get_it_cdn" data-id="how_to_get_it_cdn" title="Get Code CDN" class="title-red">Get Code: CDN</a></h2><div><h3 class="light-gray">Latest version</h3><div class="copy-to-clipboard"><a href="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.js" title="Latest Version" data-id="cb-1" target="_blank">https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.js</a><button class="clipboardjs-button" data-clipboard-text="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.js" title="Copy to Clipboard">Copy to Clipboard</button></div><h3 class="light-gray">Latest minified version</h3><div class="copy-to-clipboard"><a href="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.min.js" title="Latest minified version" data-id="cb-2" target="_blank">https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.min.js</a><button class="clipboardjs-button" data-clipboard-text="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.min.js" title="Copy to Clipboard">Copy to Clipboard</button></div></div><h2 class="inpage-link tag-link"><a href="#how_to_get_it_source" data-id="how_to_get_it_source" title="Get Code Source" class="title-red" >Get Code: Source</a></h2><div class="copy-to-clipboard"><a href="https://github.com/pubnub/javascript" title="JavaScript V4 Source Code" target="_BLANK" data-id="cb-4">https://github.com/pubnub/javascript</a><button class="clipboardjs-button" data-clipboard-text="https://github.com/pubnub/javascript" title="Copy to Clipboard">Copy to Clipboard</button></div><br/><br/><a href="/docs/web-javascript/supported-platforms" title ="supported-platforms">View Supported Platforms</a><br/><hr><h2 class="inpage-link tag-link main-placeholder"><a href="#hello_world" data-id="hello_world" title="Hello World" class="title-red">Hello World</a></h2><p>You must include the PubNub JavaScript SDK in your code before initializing the client.</p><div class="inpage-plink tag-link"><a href="#include_pubnub_javascript_sdk_1" data-id="include_pubnub_javascript_sdk_1" title="Include PubNub JavaScript SDK" class="title-red">Include PubNub JavaScript SDK</a></div>
+<pre class="brush:jscript; auto-links: false;">
+&lt;script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.js"&gt;&lt;/script&gt;
+</pre>
+
+<h3 class="inpage-link tag-link main-placeholder"><a href="#hello_world_example" data-id="hello_world_example" title="Hello World Example" class="title-red">Example</a></h3> <pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">function publish() {
+  
+    pubnub = new PubNub({
+        publishKey : 'demo',
+        subscribeKey : 'demo'
+    })
+      
+    function publishSampleMessage() {
+        console.log("Since we're publishing on subscribe connectEvent, we're sure we'll receive the following publish.");
+        var publishConfig = {
+            channel : "hello_world",
+            message: { 
+                title: "greeting",
+                description: "hello world!"
+            }
+        }
+        pubnub.publish(publishConfig, function(status, response) {
+            console.log(status, response);
+        })
+    }
+      
+    pubnub.addListener({
+        status: function(statusEvent) {
+            if (statusEvent.category === "PNConnectedCategory") {
+                publishSampleMessage();
+            }
+        },
+        message: function(msg) {
+            console.log(msg.message.title);
+            console.log(msg.message.description);
+        },
+        presence: function(presenceEvent) {
+            // handle presence
+        }
+    })      
+    console.log("Subscribing..");
+    pubnub.subscribe({
+        channels: ['hello_world'] 
+    });
+};</pre> <h2 class="inpage-link tag-link"><a href="#copy_and_paste_examples" data-id="copy_and_paste_examples" class="title-red" title="Copy and paste examples">Copy and paste examples</a></h2><div>In addition to the Hello World sample code, we also provide some copy and paste snippets of common API functions:</div><h3 class="inpage-link tag-link"><a href="#init" data-id="init" class="title-red" title="Init">Init</a></h3><div><p>Instantiate a new Pubnub instance. Only the <code>subscribeKey</code> is mandatory. Also include <code>publishKey</code> if you intend to publish from this instance, and the <code>secretKey</code> if you wish to perform PAM administrative operations from this JavaScript V4 instance.</p></div><table><tbody><tr><td class="icon"><i class="fa icon icon-important" title="important">&nbsp;</i></td><td><p>It is not a best practice to include the <code>secretKey</code> in client-side code for security reasons.</p><p>When you init with <code>secretKey</code>, you get root permissions for the Access Manager. With this feature you don't have to grant access to your servers to access channel data. The servers get all access on all channels.</p></td></tr></tbody></table><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note">&nbsp;</i></td><td><div>Set <code>restore</code> as <code>true</code> to allow catch up on the front-end applications.</div></td></tr></tbody></table><h4 class="inpage-link tag-link"><a href="#initializing-the-client" data-id="initializing-the-client" title="Initializing the client" class="title-red">Initializing the client</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">var pubnub = new PubNub({
+	subscribeKey: "mySubscribeKey",
+	publishKey: "myPublishKey",
+	ssl: true
+})</pre>
+<h3 class="inpage-link tag-link"><a href="#listeners" data-id="listeners" title="Listeners" class="title-red">Listeners</a></h3><h4 class="inpage-link tag-link"><a href="#subscribe-adding-listeners" data-id="subscribe-adding-listeners" title="Adding Listeners" class="title-red active-processed">Adding Listeners</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.addListener({
+    message: function(m) {
+        // handle message
+        var channelName = m.channel; // The channel for which the message belongs
+        var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
+        var pubTT = m.timetoken; // Publish timetoken
+        var msg = m.message; // The Payload
+        var publisher = m.publisher; //The Publisher
+    },
+    presence: function(p) {
+        // handle presence
+        var action = p.action; // Can be join, leave, state-change or timeout
+        var channelName = p.channel; // The channel for which the message belongs
+        var occupancy = p.occupancy; // No. of users connected with the channel
+        var state = p.state; // User State
+        var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
+        var publishTime = p.timestamp; // Publish timetoken
+        var timetoken = p.timetoken;  // Current timetoken
+        var uuid = p.uuid; // UUIDs of users who are connected with the channel
+    },
+    status: function(s) {
+        var affectedChannelGroups = s.affectedChannelGroups;
+        var affectedChannels = s.affectedChannels;
+        var category = s.category;
+        var operation = s.operation;
+    }
+});</pre>
+<h4 class="inpage-link tag-link"><a href="#subscribe-removing-listeners" data-id="subscribe-removing-listeners" title="Removing Listeners" class="title-red active-processed">Removing Listeners</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">var existingListener = {
+    message: function() {
+    } 
+}
+
+pubnub.removeListener(existingListener)</pre>
+<h4 class="inpage-link tag-link"><a href="#listeners-categories" data-id="listeners-categories" title="Listeners Categories" class="title-red">listeners status events</a></h4><div class="table-responsive"><table class="table table-striped cd"><thead><tr><th>Categories</th><th>Description</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkUpCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK detected that network is online.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkDownCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">The SDK will announce this when connection is not available or this is not able to reach the PubNub Data Stream Network.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkIssuesCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">A subscribe event experienced an exception when running. The SDK is not being to able reach the PubNub Data Stream Network because the machine or device are not connected to Internet or this has been lost, your ISP (Internet Service Provider) is having to troubles or perhaps or the SDK is behind of a proxy.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNReconnectedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK was able to reconnect to pubnub.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNConnectedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK subscribed with a new mix of channels (fired every time the <code>channel</code> / <code>channel group</code> mix changed).</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNAccessDeniedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">PAM permission failure.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNMalformedResponseCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">JSON parsing crashed.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNBadRequestCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">The server responded with bad response because the request is malformed.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNDecryptionErrorCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">If using decryption strategies and the decryption fails.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNTimeoutCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">Failure to establish connection due to timeout.</div></td></tr><tr><td><code>PNRequestMessageCountExceedCategory</code></td><td>The SDK will announce this error if <code>requestMessageCountThreshold</code> is set and the number of messages arrived from (PubNub in memory cache messages) are greater than this.</td></tr><tr><td><code>PNUnknownCategory</code></td><td>This status code is returned when the subscriber get’s a non 200 HTTP response code from the server.</td></tr></tbody></table></div><h3 class="inpage-link tag-link"><a href="#time" data-id="time" class="title-red" title="Time">Time</a></h3><div>Call <code>time()</code> to verify the client connectivity to the origin:</div>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">// assuming an initialized PubNub instance already exists
+pubnub.time(function(status, response) {
+	if (status.error) {
+		// handle error if something went wrong based on the status object
+	} else {
+		console.log(response.timetoken);
+	}
+})
+</pre>
+
+<h3 class="inpage-link tag-link"><a href="#subscribe" data-id="subscribe" class="title-red" title="Subscribe">Subscribe</a></h3><h4 class="inpage-link tag-link"> <a href="#subscribe-channel" data-id="subscribe-channel" class="title-red active-processed" title="Subscribe a channel">Subscribe (listen on) a channel</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.subscribe({
+    channels: ['my_channel'],
+});
+</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table><h3 class="inpage-link tag-link"><a href="#publish" data-id="publish" class="title-red" title="Publish">Publish</a></h3><div>Publish a message to a channel:</div>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.publish(
+    {
+        message: {
+            such: 'object'
+        },
+        channel: 'ch1',
+        sendByPost: false, // true to send via POST
+        storeInHistory: false, //override default storage options
+        meta: {
+            "cool": "meta"
+        } // publish extra meta with the request
+    },
+    function (status, response) {
+        // handle status, response
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#here_now" data-id="here_now" class="title-red" title="Here Now">Here Now</a></h3><div>Get occupancy of who's <code>here now</code> on the channel by UUID:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Presence</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.hereNow(
+    {
+        channels: ["ch1"], 
+        channelGroups : ["cg1"],
+        includeUUIDs: true,
+        includeState: true 
+    },
+    function (status, response) {
+        // handle status, response
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#presence" data-id="presence" class="title-red" title="Presence">Presence</a></h3><div>Subscribe to realtime Presence events, such as <code>join</code>, <code>leave</code>, and <code>timeout</code>, by UUID. Setting the presence attribute to a callback will subscribe to presents events on <code>my_channel</code>:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Presence</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.subscribe({
+	channels: ['my_channel'],
+	withPresence: true
+});
+</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table><h3 class="inpage-link tag-link"><a href="#history" data-id="history" class="title-red" title="History">History</a></h3><div>Retrieve published messages from archival storage:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Storage and Playback</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.history(
+    {
+        channel: 'history_channel',
+        count: 100, // how many items to fetch
+        stringifiedTimeToken: true, // false is the default
+    },
+    function (status, response) {
+        // handle status, response
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#unsubscribe" data-id="unsubscribe" class="title-red" title="Unsubscribe">Unsubscribe</a></h3><h4 class="inpage-link tag-link"><a href="#unsubscribe-channel" data-id="unsubscribe-channel" class="title-red active-processed" title="Stop subscribing to a channel">Stop subscribing (listening) to a channel.</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.unsubscribe({
+    channels: ['my_channel']
+})</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table></div><div id="unify-125" rel="unify-125" class="term-125 child-code-snippet unify hidden" data-mtitle="Node.js V4 SDK for Realtime Apps | PubNub" data-mdesc="Node.js V4 SDK for building Realtime Web and Mobile Applications on PubNub. Learn about PubNub features and get tutorials and access APIs."><h2 class="inpage-link tag-link"><a href="#how_to_get_it_cdn" data-id="how_to_get_it_cdn" class="title-red">Get Code:</a></h2><div class="copy-to-clipboard">npm install pubnub<button class="clipboardjs-button" data-clipboard-text="npm install pubnub" title="Copy to Clipboard">Copy to Clipboard</button></div><p></p><h2 class="inpage-link tag-link"><a href="#how_to_get_it_source" data-id="how_to_get_it_source" class="title-red" title="Get Code Source">Get Code: Source</a></h2><div class="copy-to-clipboard"><a href="https://github.com/pubnub/javascript" title="Node.js V4 Source Code" target="_BLANK">https://github.com/pubnub/javascript</a><button data-clipboard-text="https://github.com/pubnub/javascript" title="Copy to Clipboard" class="clipboardjs-button" >Copy to Clipboard</button></div><br/><br/><a href="/docs/nodejs-javascript/supported-platforms" title ="supported-platforms">View Supported Platforms</a><br/><hr><h2 class="inpage-link tag-link main-placeholder"><a href="#hello_world" data-id="hello_world" title="Hello World" class="title-red">Hello World</a></h2><p>You must include the PubNub JavaScript SDK in your code before initializing the client.</p><div class="inpage-plink tag-link"><a href="#include_pubnub_javascript_sdk_1" data-id="include_pubnub_javascript_sdk_1" title="Include PubNub JavaScript SDK" class="title-red">Include PubNub JavaScript SDK</a></div>
+<pre class="brush:jscript;">
+var PubNub = require('pubnub')
+</pre>
+
+<h3 class="inpage-link tag-link main-placeholder"><a href="#hello_world_example" data-id="hello_world_example" title="Hello World Example" class="title-red">Example</a></h3> <pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">function publish() {
+  
+    pubnub = new PubNub({
+        publishKey : 'demo',
+        subscribeKey : 'demo'
+    })
+      
+    function publishSampleMessage() {
+        console.log("Since we're publishing on subscribe connectEvent, we're sure we'll receive the following publish.");
+        var publishConfig = {
+            channel : "hello_world",
+            message : {
+            	title: "greeting",
+            	description: "hello world!"
+            }
+        }
+        pubnub.publish(publishConfig, function(status, response) {
+            console.log(status, response);
+        })
+    }
+      
+    pubnub.addListener({
+        status: function(statusEvent) {
+            if (statusEvent.category === "PNConnectedCategory") {
+                publishSampleMessage();
+            }
+        },
+        message: function(msg) {
+            console.log(msg.message.title);
+            console.log(msg.message.description);
+        },
+        presence: function(presenceEvent) {
+            // handle presence
+        }
+    })      
+    console.log("Subscribing..");
+    pubnub.subscribe({
+        channels: ['hello_world'] 
+    });
+};</pre> <h2 class="inpage-link tag-link"><a href="#copy_and_paste_examples" data-id="copy_and_paste_examples" class="title-red" title="Copy and paste examples">Copy and paste examples</a></h2><div>In addition to the Hello World sample code, we also provide some copy and paste snippets of common API functions:</div><h3 class="inpage-link tag-link"><a href="#init" data-id="init" class="title-red" title="Init">Init</a></h3><div><p>Instantiate a new Pubnub instance. Only the <code>subscribeKey</code> is mandatory. Also include <code>publishKey</code> if you intend to publish from this instance, and the <code>secretKey</code> if you wish to perform PAM administrative operations from this Node.js V4 instance.</p></div><table><tbody><tr><td class="icon"><i class="fa icon icon-important" title="important">&nbsp;</i></td><td><p>It is not a best practice to include the <code>secretKey</code> in client-side code for security reasons.</p><p>When you init with <code>secretKey</code>, you get root permissions for the Access Manager. With this feature you don't have to grant access to your servers to access channel data. The servers get all access on all channels.</p></td></tr></tbody></table><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note">&nbsp;</i></td><td><div>Set <code>restore</code> as <code>true</code> to allow catch up on the front-end applications.</div></td></tr></tbody></table><h4 class="inpage-link tag-link"><a href="#initializing-the-client" data-id="initializing-the-client" title="Initializing the client" class="title-red">Initializing the client</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">// PubNub = require('pubnub'); 		ES5
+import PubNub from 'pubnub';		ES6
+
+var pubnub = new PubNub({
+	subscribeKey: "mySubscribeKey",
+	publishKey: "myPublishKey",
+	secretKey: "secretKey",
+	ssl: true
+})</pre>
+<h3 class="inpage-link tag-link"><a href="#listeners" data-id="listeners" title="Listeners" class="title-red">Listeners</a></h3><h4 class="inpage-link tag-link"><a href="#subscribe-adding-listeners" data-id="subscribe-adding-listeners" title="Adding Listeners" class="title-red active-processed">Adding Listeners</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.addListener({
+    message: function(m) {
+        // handle message
+        var channelName = m.channel; // The channel for which the message belongs
+        var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
+        var pubTT = m.timetoken; // Publish timetoken
+        var msg = m.message; // The Payload
+        var publisher = m.publisher; //The Publisher
+    },
+    presence: function(p) {
+        // handle presence
+        var action = p.action; // Can be join, leave, state-change or timeout
+        var channelName = p.channel; // The channel for which the message belongs
+        var occupancy = p.occupancy; // No. of users connected with the channel
+        var state = p.state; // User State
+        var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
+        var publishTime = p.timestamp; // Publish timetoken
+        var timetoken = p.timetoken;  // Current timetoken
+        var uuid = p.uuid; // UUIDs of users who are connected with the channel
+    },
+    status: function(s) {
+        var affectedChannelGroups = s.affectedChannelGroups;
+        var affectedChannels = s.affectedChannels;
+        var category = s.category;
+        var operation = s.operation;
+    }
+});</pre>
+<h4 class="inpage-link tag-link"><a href="#subscribe-removing-listeners" data-id="subscribe-removing-listeners" title="Removing Listeners" class="title-red active-processed">Removing Listeners</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">var existingListener = {
+    message: function() {
+    } 
+}
+
+pubnub.removeListener(existingListener)</pre>
+<h4 class="inpage-link tag-link"><a href="#listeners-categories" data-id="listeners-categories" title="Listeners Categories" class="title-red">listeners status events</a></h4><div class="table-responsive"><table class="table table-striped cd"><thead><tr><th>Categories</th><th>Description</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkUpCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK detected that network is online.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkDownCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">The SDK will announce this when connection is not available or this is not able to reach the PubNub Data Stream Network.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkIssuesCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">A subscribe event experienced an exception when running. The SDK is not being to able reach the PubNub Data Stream Network because the machine or device are not connected to Internet or this has been lost, your ISP (Internet Service Provider) is having to troubles or perhaps or the SDK is behind of a proxy.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNReconnectedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK was able to reconnect to pubnub.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNConnectedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK subscribed with a new mix of channels (fired every time the <code>channel</code> / <code>channel group</code> mix changed).</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNAccessDeniedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">PAM permission failure.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNMalformedResponseCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">JSON parsing crashed.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNBadRequestCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">The server responded with bad response because the request is malformed.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNDecryptionErrorCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">If using decryption strategies and the decryption fails.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNTimeoutCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">Failure to establish connection due to timeout.</div></td></tr><tr><td><code>PNRequestMessageCountExceedCategory</code></td><td>The SDK will announce this error if <code>requestMessageCountThreshold</code> is set and the number of messages arrived from (PubNub in memory cache messages) are greater than this.</td></tr><tr><td><code>PNUnknownCategory</code></td><td>This status code is returned when the subscriber get’s a non 200 HTTP response code from the server.</td></tr></tbody></table></div><h3 class="inpage-link tag-link"><a href="#time" data-id="time" class="title-red" title="Time">Time</a></h3><div>Call <code>time()</code> to verify the client connectivity to the origin:</div>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">// assuming an initialized PubNub instance already exists
+pubnub.time(function(status, response) {
+	if (status.error) {
+		// handle error if something went wrong based on the status object
+	} else {
+		console.log(response.timetoken);
+	}
+})
+</pre>
+
+<h3 class="inpage-link tag-link"><a href="#subscribe" data-id="subscribe" class="title-red" title="Subscribe">Subscribe</a></h3><h4 class="inpage-link tag-link"> <a href="#subscribe-channel" data-id="subscribe-channel" class="title-red active-processed" title="Subscribe a channel">Subscribe (listen on) a channel</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.subscribe({
+    channels: ['my_channel'],
+});
+</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table><h3 class="inpage-link tag-link"><a href="#publish" data-id="publish" class="title-red" title="Publish">Publish</a></h3><div>Publish a message to a channel:</div>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.publish(
+    {
+        message: {
+            such: 'object'
+        },
+        channel: 'ch1',
+        sendByPost: false, // true to send via POST
+        storeInHistory: false, //override default storage options
+        meta: {
+            "cool": "meta"
+        } // publish extra meta with the request
+    },
+    function (status, response) {
+        // handle status, response
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#here_now" data-id="here_now" class="title-red" title="Here Now">Here Now</a></h3><div>Get occupancy of who's <code>here now</code> on the channel by UUID:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Presence</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.hereNow(
+    {
+        channels: ["ch1"], 
+        channelGroups : ["cg1"],
+        includeUUIDs: true,
+        includeState: true 
+    },
+    function (status, response) {
+        // handle status, response
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#presence" data-id="presence" class="title-red" title="Presence">Presence</a></h3><div>Subscribe to realtime Presence events, such as <code>join</code>, <code>leave</code>, and <code>timeout</code>, by UUID. Setting the presence attribute to a callback will subscribe to presents events on <code>my_channel</code>:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Presence</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.subscribe({
+	channels: ['my_channel'],
+	withPresence: true
+});
+</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table><h3 class="inpage-link tag-link"><a href="#history" data-id="history" class="title-red" title="History">History</a></h3><div>Retrieve published messages from archival storage:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Storage and Playback</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.history(
+    {
+        channel: 'history_channel',
+        count: 100, // how many items to fetch
+        stringifiedTimeToken: true, // false is the default
+    },
+    function (status, response) {
+        // handle status, response
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#unsubscribe" data-id="unsubscribe" class="title-red" title="Unsubscribe">Unsubscribe</a></h3><h4 class="inpage-link tag-link"><a href="#unsubscribe-channel" data-id="unsubscribe-channel" class="title-red active-processed" title="Stop subscribing to a channel">Stop subscribing (listening) to a channel.</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.unsubscribe({
+    channels: ['my_channel']
+})</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table></div><div id="unify-130" rel="unify-130" class="term-130 child-code-snippet unify hidden" data-mtitle="PhoneGap V4 SDK for Realtime Apps | PubNub" data-mdesc="PhoneGap V4 SDK for building Realtime Web and Mobile Applications on PubNub. Learn about PubNub features and get tutorials and access APIs."><h2 class="inpage-link tag-link"><a href="#how_to_get_it_cdn" data-id="how_to_get_it_cdn" title="Get Code" class="title-red">Get Code:</a></h2><div><div class="copy-to-clipboard"><a href="https://github.com/pubnub/javascript/releases" title="Latest Version" data-id="cb-1" target="_blank">https://github.com/pubnub/javascript/releases</a><button class="clipboardjs-button" data-clipboard-text="https://github.com/pubnub/javascript/releases" title="Copy to Clipboard">Copy to Clipboard</button></div></div><h2 class="inpage-link tag-link"><a href="#how_to_get_it_cdn" data-id="how_to_get_it_cdn" title="Get Code CDN" class="title-red">Get Code: CDN</a></h2><div><h3 class="light-gray">Latest version</h3><div class="copy-to-clipboard"><a href="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.js" title="Latest Version" data-id="cb-1" target="_blank">https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.js</a><button class="clipboardjs-button" data-clipboard-text="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.js" title="Copy to Clipboard">Copy to Clipboard</button></div><h3 class="light-gray">Latest minified version</h3><div class="copy-to-clipboard"><a href="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.min.js" title="Latest minified version" data-id="cb-2" target="_blank">https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.min.js</a><button class="clipboardjs-button" data-clipboard-text="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.min.js" title="Copy to Clipboard">Copy to Clipboard</button></div></div><h2 class="inpage-link tag-link"><a href="#how_to_get_it_source" data-id="how_to_get_it_source" title="Get Code Source" class="title-red" >Get Code: Source</a></h2><div class="copy-to-clipboard"><a href="https://github.com/pubnub/javascript" title="PhoneGap V4 Source Code" target="_blank" data-id="cb-4">https://github.com/pubnub/javascript</a><button class="clipboardjs-button" data-clipboard-text="https://github.com/pubnub/javascript" title="Copy to Clipboard">Copy to Clipboard</button></div><br/><br/><a href="/docs/phonegap-javascript/supported-platforms" title ="supported-platforms">View Supported Platforms</a><br/><hr><h2 class="inpage-link tag-link main-placeholder"><a href="#hello_world" data-id="hello_world" title="Hello World" class="title-red">Hello World</a></h2><p>You must include the PubNub JavaScript SDK in your code before initializing the client.</p><div class="inpage-plink tag-link"><a href="#include_pubnub_javascript_sdk_1" data-id="include_pubnub_javascript_sdk_1" title="Include PubNub JavaScript SDK" class="title-red">Include PubNub JavaScript SDK</a></div>
+<pre class="brush:jscript; auto-links: false;">
+&lt;script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.js"&gt;&lt;/script&gt;
+</pre>
+
+<h3 class="inpage-link tag-link main-placeholder"><a href="#hello_world_example" data-id="hello_world_example" title="Hello World Example" class="title-red">Example</a></h3> <pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">function publish() {
+  
+    pubnub = new PubNub({
+        publishKey : 'demo',
+        subscribeKey : 'demo'
+    })
+      
+    function publishSampleMessage() {
+        console.log("Since we're publishing on subscribe connectEvent, we're sure we'll receive the following publish.");
+        var publishConfig = {
+            channel : "hello_world",
+            message: { 
+                title: "greeting",
+                description: "hello world!"
+            }
+        }
+        pubnub.publish(publishConfig, function(status, response) {
+            console.log(status, response);
+        })
+    }
+      
+    pubnub.addListener({
+        status: function(statusEvent) {
+            if (statusEvent.category === "PNConnectedCategory") {
+                publishSampleMessage();
+            }
+        },
+        message: function(msg) {
+            console.log(msg.message.title);
+            console.log(msg.message.description);
+        },
+        presence: function(presenceEvent) {
+            // handle presence
+        }
+    })      
+    console.log("Subscribing..");
+    pubnub.subscribe({
+        channels: ['hello_world'] 
+    });
+};</pre> <h2 class="inpage-link tag-link"><a href="#copy_and_paste_examples" data-id="copy_and_paste_examples" class="title-red" title="Copy and paste examples">Copy and paste examples</a></h2><div>In addition to the Hello World sample code, we also provide some copy and paste snippets of common API functions:</div><h3 class="inpage-link tag-link"><a href="#init" data-id="init" class="title-red" title="Init">Init</a></h3><div><p>Instantiate a new Pubnub instance. Only the <code>subscribeKey</code> is mandatory. Also include <code>publishKey</code> if you intend to publish from this instance, and the <code>secretKey</code> if you wish to perform PAM administrative operations from this PhoneGap V4 instance.</p></div><table><tbody><tr><td class="icon"><i class="fa icon icon-important" title="important">&nbsp;</i></td><td><p>It is not a best practice to include the <code>secretKey</code> in client-side code for security reasons.</p><p>When you init with <code>secretKey</code>, you get root permissions for the Access Manager. With this feature you don't have to grant access to your servers to access channel data. The servers get all access on all channels.</p></td></tr></tbody></table><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note">&nbsp;</i></td><td><div>Set <code>restore</code> as <code>true</code> to allow catch up on the front-end applications.</div></td></tr></tbody></table><h4 class="inpage-link tag-link"><a href="#initializing-the-client" data-id="initializing-the-client" title="Initializing the client" class="title-red">Initializing the client</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">var pubnub = new PubNub({
+	subscribeKey: "mySubscribeKey",
+	publishKey: "myPublishKey",
+	ssl: true
+})</pre>
+<h3 class="inpage-link tag-link"><a href="#listeners" data-id="listeners" title="Listeners" class="title-red">Listeners</a></h3><h4 class="inpage-link tag-link"><a href="#subscribe-adding-listeners" data-id="subscribe-adding-listeners" title="Adding Listeners" class="title-red active-processed">Adding Listeners</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.addListener({
+    message: function(m) {
+        // handle message
+        var channelName = m.channel; // The channel for which the message belongs
+        var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
+        var pubTT = m.timetoken; // Publish timetoken
+        var msg = m.message; // The Payload
+        var publisher = m.publisher; //The Publisher
+    },
+    presence: function(p) {
+        // handle presence
+        var action = p.action; // Can be join, leave, state-change or timeout
+        var channelName = p.channel; // The channel for which the message belongs
+        var occupancy = p.occupancy; // No. of users connected with the channel
+        var state = p.state; // User State
+        var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
+        var publishTime = p.timestamp; // Publish timetoken
+        var timetoken = p.timetoken;  // Current timetoken
+        var uuid = p.uuid; // UUIDs of users who are connected with the channel
+    },
+    status: function(s) {
+        var affectedChannelGroups = s.affectedChannelGroups;
+        var affectedChannels = s.affectedChannels;
+        var category = s.category;
+        var operation = s.operation;
+    }
+});</pre>
+<h4 class="inpage-link tag-link"><a href="#subscribe-removing-listeners" data-id="subscribe-removing-listeners" title="Removing Listeners" class="title-red active-processed">Removing Listeners</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">var existingListener = {
+    message: function() {
+    } 
+}
+
+pubnub.removeListener(existingListener)</pre>
+<h4 class="inpage-link tag-link"><a href="#listeners-categories" data-id="listeners-categories" title="Listeners Categories" class="title-red">listeners status events</a></h4><div class="table-responsive"><table class="table table-striped cd"><thead><tr><th>Categories</th><th>Description</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkUpCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK detected that network is online.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkDownCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">The SDK will announce this when connection is not available or this is not able to reach the PubNub Data Stream Network.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkIssuesCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">A subscribe event experienced an exception when running. The SDK is not being to able reach the PubNub Data Stream Network because the machine or device are not connected to Internet or this has been lost, your ISP (Internet Service Provider) is having to troubles or perhaps or the SDK is behind of a proxy.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNReconnectedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK was able to reconnect to pubnub.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNConnectedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK subscribed with a new mix of channels (fired every time the <code>channel</code> / <code>channel group</code> mix changed).</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNAccessDeniedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">PAM permission failure.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNMalformedResponseCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">JSON parsing crashed.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNBadRequestCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">The server responded with bad response because the request is malformed.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNDecryptionErrorCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">If using decryption strategies and the decryption fails.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNTimeoutCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">Failure to establish connection due to timeout.</div></td></tr><tr><td><code>PNRequestMessageCountExceedCategory</code></td><td>The SDK will announce this error if <code>requestMessageCountThreshold</code> is set and the number of messages arrived from (PubNub in memory cache messages) are greater than this.</td></tr><tr><td><code>PNUnknownCategory</code></td><td>This status code is returned when the subscriber get’s a non 200 HTTP response code from the server.</td></tr></tbody></table></div><h3 class="inpage-link tag-link"><a href="#time" data-id="time" class="title-red" title="Time">Time</a></h3><div>Call <code>time()</code> to verify the client connectivity to the origin:</div>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">// assuming an initialized PubNub instance already exists
+pubnub.time(function(status, response) {
+	if (status.error) {
+		// handle error if something went wrong based on the status object
+	} else {
+		console.log(response.timetoken);
+	}
+})
+</pre>
+
+<h3 class="inpage-link tag-link"><a href="#subscribe" data-id="subscribe" class="title-red" title="Subscribe">Subscribe</a></h3><h4 class="inpage-link tag-link"> <a href="#subscribe-channel" data-id="subscribe-channel" class="title-red active-processed" title="Subscribe a channel">Subscribe (listen on) a channel</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.subscribe({
+    channels: ['my_channel'],
+});
+</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table><h3 class="inpage-link tag-link"><a href="#publish" data-id="publish" class="title-red" title="Publish">Publish</a></h3><div>Publish a message to a channel:</div>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.publish(
+    {
+        message: {
+            such: 'object'
+        },
+        channel: 'ch1',
+        sendByPost: false, // true to send via POST
+        storeInHistory: false, //override default storage options
+        meta: {
+            "cool": "meta"
+        } // publish extra meta with the request
+    },
+    function (status, response) {
+        // handle status, response
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#here_now" data-id="here_now" class="title-red" title="Here Now">Here Now</a></h3><div>Get occupancy of who's <code>here now</code> on the channel by UUID:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Presence</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.hereNow(
+    {
+        channels: ["ch1"], 
+        channelGroups : ["cg1"],
+        includeUUIDs: true,
+        includeState: true 
+    },
+    function (status, response) {
+        // handle status, response
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#presence" data-id="presence" class="title-red" title="Presence">Presence</a></h3><div>Subscribe to realtime Presence events, such as <code>join</code>, <code>leave</code>, and <code>timeout</code>, by UUID. Setting the presence attribute to a callback will subscribe to presents events on <code>my_channel</code>:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Presence</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.subscribe({
+	channels: ['my_channel'],
+	withPresence: true
+});
+</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table><h3 class="inpage-link tag-link"><a href="#history" data-id="history" class="title-red" title="History">History</a></h3><div>Retrieve published messages from archival storage:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Storage and Playback</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.history(
+    {
+        channel: 'history_channel',
+        count: 100, // how many items to fetch
+        stringifiedTimeToken: true, // false is the default
+    },
+    function (status, response) {
+        // handle status, response
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#unsubscribe" data-id="unsubscribe" class="title-red" title="Unsubscribe">Unsubscribe</a></h3><h4 class="inpage-link tag-link"><a href="#unsubscribe-channel" data-id="unsubscribe-channel" class="title-red active-processed" title="Stop subscribing to a channel">Stop subscribing (listening) to a channel.</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">pubnub.unsubscribe({
+    channels: ['my_channel']
+})</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table></div><div id="unify-156" rel="unify-156" class="term-156 child-code-snippet unify hidden" data-mtitle="React V4 SDK for Realtime Apps | PubNub" data-mdesc="React V4 SDK for building Realtime Web and Mobile Applications on PubNub. Learn about PubNub features and get tutorials and access APIs."><h2 class="inpage-link tag-link"><a href="#how_to_get_it_source" data-id="how_to_get_it_source" title="Get Code Source" class="title-red" >Get Code: Source</a></h2><div class="copy-to-clipboard"><a href="https://github.com/pubnub/react" title="React and React Native V4 Source Code" target="_BLANK" data-id="cb-4">https://github.com/pubnub/react</a><button class="clipboardjs-button" data-clipboard-text="https://github.com/pubnub/react" title="Copy to Clipboard">Copy to Clipboard</button></div><h2 class="inpage-link tag-link"><a href="#how-to-get-it-npm" data-id="how-to-get-it-npm" title="Get Code NPM" class="title-red" >Get Code: NPM</a></h2><div class="copy-to-clipboard">npm install --save pubnub pubnub-react<button class="clipboardjs-button" data-clipboard-text="npm install --save pubnub pubnub-react" title="Copy to Clipboard">Copy to Clipboard</button></div><br/><br/><a href="/docs/web-javascript/supported-platforms" title ="supported-platforms">View Supported Platforms</a><br/><hr><h2 class="inpage-link tag-link main-placeholder"><a href="#hello_world" data-id="hello_world" title="Hello World" class="title-red">Hello World</a></h2><div><p><strong>PubNub</strong> React is a wrapper of PubNub JavaScript SDK version 4 that adds a few of extra features to simplify the integration with React\React Native:</p><ul><li>Trigger Events: <code>getMessage</code>, <code>getPresence</code>, <code>getStatus</code> will make your life easier in the React' World.</li><li>Autoload: An easy and fast way to recovery the history messages of your channel.</li></ul><p>You can still use the native PubNub JavaScript SDK if you feel this will be more suitable for your situation.</p><h3 class="inpage-link tag-link"><a href="#differences-with-native-javascript-sdk" data-id="differences-with-native-javascript-sdk" title="Differences in usage with native Javascript SDK" class="title-red">Differences in usage with native Javascript SDK</a></h3><p><strong>PubNub React</strong> is a wrapper of <strong>PubNub Javascript</strong>, which offers the same feature and in the same way like Javascript SDK makes, So if you have experience using Javascript SDK will be fast to learn the features included for React SDK in other way if you want to learn more about <strong>PubNub JavaScript</strong> features refer to native <a href="/docs/web-javascript/pubnub-javascript-sdk" title="PubNub JavaScript SDK">PubNub JavaScript SDK</a> manual.</p><h3 class="inpage-link tag-link"><a href="#differences-between-react-and-react-native" data-id="differences-between-react-and-react-native" title="Differences between React and React Native" class="title-red">Differences between React and React Native</a></h3><p><strong>PubNub React</strong> works for both frameworks seamlessly the only difference will be how to you are going to implement all UI elements into the <code>render()</code> if your app is done with React or React Native.</p><p>That's it, you are ready to start using <strong>PubNub React SDK</strong>.</p></div><h3 class="inpage-link tag-link main-placeholder"><a href="#hello_world_example" data-id="hello_world_example" title="Hello World Example" class="title-red">Example</a></h3><h2 class="inpage-link tag-link"><a href="#hello-world-example" data-id="hello-world-example" title="Hello World Example" class="title-red">Hello World Example</a></h2><h5 class="inpage-link tag-link"><a href="#hello-world-example-react" data-id="hello-world-example-react" title="Hello World Example using React" class="title-red">Hello World Example using React</a></h5>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">import React, { Component } from 'react';
+import PubNubReact from 'pubnub-react';
+
+export default class extends Component {
+    constructor(props) {
+        super(props);
+        this.pubnub = new PubNubReact({
+            publishKey: 'YOUR PUBLISH KEY',
+            subscribeKey: 'YOUR SUBSCRIBE KEY'
+        });
+        this.pubnub.init(this);
+    }
+
+    componentWillMount() {
+        this.pubnub.subscribe({
+            channels: ['channel1'],
+            withPresence: true
+        });
+
+        this.pubnub.getMessage('channel1', (msg) =&gt; {
+            console.log(msg);
+        });
+
+        this.pubnub.getStatus((st) =&gt; {
+            this.pubnub.publish({
+                message: 'hello world from react',
+                channel: 'channel1'
+            });
+        });
+    }
+
+    componentWillUnmount() {
+        this.pubnub.unsubscribe({
+            channels: ['channel1']
+        });
+    }
+
+    render() {
+        const messages = this.pubnub.getMessage('channel1');
+        return (
+            &lt;div&gt;
+                &lt;ul&gt;
+                    {messages.map((m, index) =&gt; &lt;li key={'message' + index}&gt;{m.message}&lt;/li&gt;)}
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        );
+    }
+}</pre>
+
+<h5 class="inpage-link tag-link"><a href="#hello-world-example-react-native" data-id="hello-world-example-react-native" title="Hello World Example using React Native" class="title-red">Hello World Example using React Native</a></h5> 
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">import React, { Component } from 'react';
+import PubNubReact from 'pubnub-react';
+
+export default class extends Component {
+    constructor(props) {
+        super(props);
+        this.pubnub = new PubNubReact({
+            publishKey: 'YOUR PUBLISH KEY',
+            subscribeKey: 'YOUR SUBSCRIBE KEY'
+        });
+        this.pubnub.init(this);
+    }
+
+    componentWillMount() {
+        this.pubnub.subscribe({
+            channels: ['channel1'],
+            withPresence: true        
+        });
+
+        this.pubnub.getMessage('channel1', (msg) =&gt; {
+            console.log(msg);
+        });
+
+        this.pubnub.getStatus((st) =&gt; {
+            this.pubnub.publish({
+                message: 'hello world from react',
+                channel: 'channel1'
+            });
+        });
+    }
+
+    componentWillUnmount() {
+        this.pubnub.unsubscribe({
+            channels: ['channel1']
+        });
+    }
+
+    render() {
+        const messages = this.pubnub.getMessage('channel1');
+        return (
+            &lt;View&gt;
+                {messages.map((m, index) =&gt; &lt;Text key={'message' + index}&gt;{m.message}&lt;/Text&gt;)}
+            &lt;/View&gt;
+        );
+    }
+}</pre>
+<h2 class="inpage-link tag-link"><a href="#how-to-use-pubnubreact" data-id="how-to-use-pubnubreact" title="How to use PubNubReact" class="title-red">How to use PubNubReact</a></h2><div><p>In order to get the integration between your React's Component and PubNub, <strong>PubNubReact</strong> will be the way to get this without any kind of difficulty or extra job when you need render data in your UI.</p><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note">&nbsp;</i></td><td><ul><li>An instance of <strong>PubNubReact</strong> can be associated to only a Component.<li>Create and initialize your <strong>PubNubReact</strong> from the constructor.<li>If you want to subscribe a channel automatically as soon as the component will be displayed on the screen, you will have to subscribe it from the mounting point with the usage of <code>componentWillMount()</code> provided by React.<li>SDK will have created three states which are handled by the instance directly and these are <code>pn_messages</code>, <code>pn_presence</code> and <code>pn_status</code> please only use them in reading mode if you want to use them for any reason. In addition the trigger events will give you some extra features to manage the data allocated in theses states.</ul></td></tr></tbody></table>
+
+    <pre class="brush:javascript;">
+    import PubNubReact from 'pubnub-react';
+    </pre>
+
+    <pre class="brush:javascript;">
+    constructor(props) {
+        super(props);
+        this.pubnub = new PubNubReact({
+            publishKey: 'YOUR PUBLISH KEY',
+            subscribeKey: 'YOUR SUBSCRIBE KEY'
+        });
+        this.pubnub.init(this);
+    }
+    </pre>
+
+    <pre class="brush:javascript;">
+    componentWillMount() {
+        this.pubnub.subscribe({
+            channels: ['channel1']
+        });
+  
+        this.pubnub.getMessage('channel1', (msg) =&gt; {
+            console.log(msg);
+        });
+    }
+    </pre>
+</div><h2 class="inpage-link tag-link"><a href="#angular-events" data-id="angular-events" title="Events" class="title-red">Events</a></h2><div><p>Another key feature of this SDK is the ability to use trigger events, in addition to pass callbacks, getting all messages through states and inject them directly in your UI of your React\React Native Component in an easy and fast way.</p><h3 class="inpage-link tag-link"><a href="#triggering-listening-events-for-subscribe-method" data-id="triggering-listening-events-for-subscribe-method" title="Triggering and listening to events for the subscribe method" class="title-red">Triggering and listening to events for the subscribe method</a></h3><p>With Javascript SDK V4, you can find three different events (message, presence and status).</p><h4 class="inpage-link tag-link"><a href="#triggering-events" data-id="triggering-events" title="Triggering the events" class="title-red">Triggering the events:</a></h4><p>With the trigger events you can find a way to get real time apps with <strong>PubNub React</strong> very fast because it will be resolved the synchronization between the data received and the user interface through of updating of the states to invoke the render of the React's Component.</p><p>The trigger events are methods which encapsulate the events (<code>message</code>, <code>presence</code> and <code>status</code>) with extra functionality to offer integration and get the process of development faster because will be resolved different scenarios which you can find when you are working with React\React Native.</p><p>To execute the trigger events you have to execute the <code>init()</code> method first, in this way <code>getMessage</code>, <code>getPresence</code> and <code>getStatus</code> will be available; these trigger events have the responsability to register a channel or a channelGroup in order to capture any real time message as soon as this is received and update the state then the Component renders automatically the user interface.</p><p>The <code>getStatus</code> will only say to the Component that this has to render again if there is an update in the global state of the network.</p><p>To use <code>getPresence</code> you will have to add the argument <code>withPresence: true</code> when you are subscribing your channels.</p>
+
+    <pre class="brush:javascript;">
+    this.pubnub.getStatus();
+
+    this.pubnub.getMessage('channel1');
+    this.pubnub.getMessage('channel2');
+    this.pubnub.getMessage('channelGroup1');
+
+    this.pubnub.getPresence('channel1');
+    this.pubnub.getPresence('channel2');
+    </pre>
+
+	<h4 class="inpage-link tag-link"><a href="#get-message" data-id="get-message" title="getMessage" class="title-red">getMessage</a></h4><p>Rendering real time messages from React</p>
+    <pre class="brush:javascript;">
+    ...
+
+    componentWillMount() {
+        this.pubnub.getMessage('channel1');
+
+        ...
+    }
+
+    render() {
+        const messages = this.pubnub.getMessage('channel1');
+        return (
+            &lt;div&gt;
+                &lt;ul&gt;
+                    {messages.map((m, index) =&gt; &lt;li key={'message' + index}&gt;{m.message}&lt;/li&gt;)}
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        );
+    }
+
+    ...
+    </pre>
+
+    <p>Rendering real time messages from React Native</p>
+    <pre class="brush:javascript;">
+    ...
+
+    componentWillMount() {
+        this.pubnub.getMessage('channel1');
+
+        ...
+    }
+
+    render() {
+        const messages = this.pubnub.getMessage('channel1');
+        return (
+            &lt;View&gt;
+                {messages.map((m) =&gt; &lt;Text&gt;{m.message}&lt;/Text&gt;)}
+            &lt;/View&gt;
+        );
+    }
+
+    ...
+    </pre>
+
+    <p>In addition to be used to register channels or channelGroups you can also catch each message if you want to give it some kind of procedure to each message.</p>
+    <pre class="brush:javascript;">
+    this.pubnub.getMessage('channel1', (msg) =&gt; {
+        console.log(msg);
+    });
+    </pre>
+
+    <p>When you are using <code>getMessage</code> this going to keep the latest 100 messages received by default. But you can change this value when you attach the channel for first time with <code>getMessage</code>.</p>
+    <pre class="brush:javascript;">
+    this.pubnub.getMessage('channel1', (msg) =&gt; {
+        console.log(msg);
+    }, 20);
+
+    this.pubnub.getMessage('channel2', 30);
+    </pre>
+
+	<h4 class="inpage-link tag-link"><a href="#get-presence" data-id="get-presence" title="getPresence" class="title-red">getPresence</a></h4><p>Rendering presence object from react</p>
+    <pre class="brush:javascript;">
+    ...
+
+    componentWillMount() {
+        this.pubnub.getPresence('channel1', (presence) =&gt; {
+            console.log(presence);
+        });
+
+        ...
+    }
+
+    render() {
+      const presence = this.pubnub.getPresence('channel1');
+      return (
+        &lt;div&gt;
+            &lt;p&gt;{presence.action}&lt;/p&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    ...
+    </pre>
+
+    <p>Rendering presence object from React Native</p>
+    <pre class="brush:javascript;">
+    ...
+
+    componentWillMount() {
+        this.pubnub.getPresence('channel1', (presence) =&gt; {
+            console.log(presence);
+        });
+
+    ...
+    }
+
+    render() {
+        const presence = this.pubnub.getPresence('channel1');
+        return (
+            &lt;View&gt;
+                &lt;Text&gt;{presence.action}&lt;/Text&gt;
+            &lt;/View&gt;
+        );
+    }
+
+    ...
+    </pre>
+    
+    <h4 class="inpage-link tag-link"><a href="#listening-global-status" data-id="listening-global-status" title="Listening to the global status" class="title-red">Listening to the global status</a></h4><p>Via the status listener, you can receive different events such as: when the network is online (<code>PNNetworkUpCategory</code>), when the SDK is connected to a set of channels (<code>PNConnectedCategory</code>), etc... See the list of events available in the <a href="/docs/web-javascript/api-reference-configuration" title="API Reference">API Reference</a>.</p> Rendering the global status from React
+    <pre class="brush:javascript;">
+    ...
+
+    componentWillMount() {
+        this.pubnub.getStatus((status) =&gt; {
+            console.log(status);
+        });
+
+    ...
+    }
+
+    render() {
+        const status = this.pubnub.getStatus();
+        return (
+            &lt;div&gt;
+                &lt;p&gt;{status.category}&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+
+    ...
+    </pre>
+
+    Rendering the global status from React Native
+    <pre class="brush:javascript;">
+    ...
+
+    componentWillMount() {
+        this.pubnub.getStatus((status) =&gt; {
+            console.log(status);
+        });
+
+    ...
+    }
+
+    render() {
+        const status = this.pubnub.getStatus();
+        return (
+            &lt;View&gt;
+                &lt;Text&gt;{status.category}&lt;/Text&gt;
+            &lt;/View&gt;
+        );
+    }
+
+    ...
+    </pre>
+
+    <h4 class="inpage-link tag-link"><a href="#cleaning-and-releasing" data-id="cleaning-and-releasing" title="Cleaning and Releasing" class="title-red">Cleaning and Releasing</a></h4><p>You can execute clean to remove all message cached in the state of the Component by the instance in running time without affecting the capture of new incoming messages for the trigger events.</p>
+    <pre class="brush:javascript;">
+    this.pubnub.clean('myChannel1');
+
+    this.pubnub.clean('myGroup1');
+    </pre>
+    
+    <p>You can execute release if you want to remove all message cached and stop of capturing new incoming messages for the trigger events.</p>
+    <pre class="brush:javascript;">
+    this.pubnub.release('myChannel1');
+
+    this.pubnub.release('myGroup1');
+
+    this.pubnub.release(['myChannel1', 'myChannel2']);
+    </pre>
+
+    <h4 class="inpage-link tag-link"><a href="#getting-history-with-autoload" data-id="getting-history-with-autoload" title="Getting the history with autoload" class="title-red">Getting the history with autoload</a></h4><p>At the moment that you are subscribing a channel you can pass the optional parameter autoload this value has to contain a value from 1 to 100 in order to retrieve the last messages published in the channel. When the <code>getMessage</code> is called this going to retrieve the history. You can use a callback to know when the retrieving process has finished also this will take effect inside of state pn_message which will invoke a new render in your Component.</p>
+    <pre class="brush:javascript;">
+    this.pubnub.subscribe({
+        channels: ['myChannel1'],
+        triggerEvents: true,
+        withPresence: true,
+        autoload: 100
+    });
+
+    let messages = this.pubnub.getMessage('myChannel1', () =&gt; {
+        console.log(messages);
+    });
+    </pre>
+</div><h2 class="inpage-link tag-link"><a href="#copy_and_paste_examples" data-id="copy_and_paste_examples" class="title-red" title="Copy and paste examples">Copy and paste examples</a></h2><div>In addition to the Hello World sample code, we also provide some copy and paste snippets of common API functions:</div><h3 class="inpage-link tag-link"><a href="#init" data-id="init" class="title-red" title="Init">Init</a></h3><div><p>Instantiate a new Pubnub instance. Only the <code>subscribeKey</code> is mandatory. Also include <code>publishKey</code> if you intend to publish from this instance, and the <code>secretKey</code> if you wish to perform PAM administrative operations from this React V4 instance.</p></div><table><tbody><tr><td class="icon"><i class="fa icon icon-important" title="important">&nbsp;</i></td><td><p>It is not a best practice to include the <code>secretKey</code> in client-side code for security reasons.</p><p>When you init with <code>secretKey</code>, you get root permissions for the Access Manager. With this feature you don't have to grant access to your servers to access channel data. The servers get all access on all channels.</p></td></tr></tbody></table><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note">&nbsp;</i></td><td><div>Set <code>restore</code> as <code>true</code> to allow catch up on the front-end applications.</div></td></tr></tbody></table><h4 class="inpage-link tag-link"><a href="#initializing-the-client" data-id="initializing-the-client" title="Initializing the client" class="title-red">Initializing the client</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">this.pubnub = new PubNubReact({
+    publishKey: 'YOUR PUBLISH KEY',
+    subscribeKey: 'YOUR SUBSCRIBE KEY',
+    ssl: true 
+});
+</pre>
+<h3 class="inpage-link tag-link"><a href="#listeners" data-id="listeners" title="Listeners" class="title-red">Listeners</a></h3><h4 class="inpage-link tag-link"><a href="#subscribe-adding-listeners" data-id="subscribe-adding-listeners" title="Adding Listeners" class="title-red active-processed">Adding Listeners</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">this.pubnub.addListener({
+    status: (st) =&gt; {
+        if (st.category === "PNUnknownCategory") {
+            var newState = {new: 'error'};
+            pubnub.setState(
+                {
+                    state: newState
+                },
+                function (status) {
+                    console.log(st.errorData.message);
+                }
+            );
+        }
+    },
+    message: (message) =&gt; {
+        console.log(message);
+    }
+});
+
+this.pubnub.subscribe({ 
+    channels: ['my_channel'] 
+});</pre>
+<h4 class="inpage-link tag-link"><a href="#subscribe-removing-listeners" data-id="subscribe-removing-listeners" title="Removing Listeners" class="title-red active-processed">Removing Listeners</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">var existingListener = {
+    message: function() {
+    } 
+}
+ 
+this.pubnub.removeListener(existingListener)</pre>
+<h4 class="inpage-link tag-link"><a href="#listeners-categories" data-id="listeners-categories" title="Listeners Categories" class="title-red">listeners status events</a></h4><div class="table-responsive"><table class="table table-striped cd"><thead><tr><th>Categories</th><th>Description</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkUpCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK detected that network is online.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkDownCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">The SDK will announce this when connection is not available or this is not able to reach the PubNub Data Stream Network.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNNetworkIssuesCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">A subscribe event experienced an exception when running. The SDK is not being to able reach the PubNub Data Stream Network because the machine or device are not connected to Internet or this has been lost, your ISP (Internet Service Provider) is having to troubles or perhaps or the SDK is behind of a proxy.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNReconnectedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK was able to reconnect to pubnub.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNConnectedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">SDK subscribed with a new mix of channels (fired every time the <code>channel</code> / <code>channel group</code> mix changed).</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNAccessDeniedCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">PAM permission failure.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNMalformedResponseCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">JSON parsing crashed.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNBadRequestCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">The server responded with bad response because the request is malformed.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNDecryptionErrorCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">If using decryption strategies and the decryption fails.</div></td></tr><tr><td class="tableblock halign-left valign-top"><div class="paragraph"><code>PNTimeoutCategory</code></div></td><td class="tableblock halign-left valign-top"><div class="tableblock">Failure to establish connection due to timeout.</div></td></tr><tr><td><code>PNRequestMessageCountExceedCategory</code></td><td>The SDK will announce this error if <code>requestMessageCountThreshold</code> is set and the number of messages arrived from (PubNub in memory cache messages) are greater than this.</td></tr><tr><td><code>PNUnknownCategory</code></td><td>This status code is returned when the subscriber get’s a non 200 HTTP response code from the server.</td></tr></tbody></table></div><h3 class="inpage-link tag-link"><a href="#time" data-id="time" class="title-red" title="Time">Time</a></h3><div>Call <code>time()</code> to verify the client connectivity to the origin:</div>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">this.pubnub.time((status, response) =&gt; {
+    if (status.error) {
+        console.log(status.error);
+    } else {
+        console.log(response.timetoken);
+    }
+});</pre>
+
+<h3 class="inpage-link tag-link"><a href="#subscribe" data-id="subscribe" class="title-red" title="Subscribe">Subscribe</a></h3><h4 class="inpage-link tag-link"> <a href="#subscribe-channel" data-id="subscribe-channel" class="title-red active-processed" title="Subscribe a channel">Subscribe (listen on) a channel</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">this.pubnub.subscribe({
+    channels: ['my_channel'],
+});</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table><h3 class="inpage-link tag-link"><a href="#publish" data-id="publish" class="title-red" title="Publish">Publish</a></h3><div>Publish a message to a channel:</div>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">this.pubnub.publish(
+    {
+        message: {
+            such: 'object'
+        },
+        channel: 'ch1',
+        sendByPost: false, // true to send via POST
+        storeInHistory: false, //override default storage options
+        meta: {
+            "cool": "meta"
+        } // publish extra meta with the request
+    },
+    (status, response) =&gt; {
+        // handle status, response
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#here_now" data-id="here_now" class="title-red" title="Here Now">Here Now</a></h3><div>Get occupancy of who's <code>here now</code> on the channel by UUID:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Presence</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">this.pubnub.hereNow(
+    {
+        channels: ["my_channel"],
+        channelGroups : ["my_channelGroup"],
+        includeUUIDs: true,
+        includeState: true
+    },
+    (status, response) =&gt; {
+        console.log(status);
+        console.log(response);
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#presence" data-id="presence" class="title-red" title="Presence">Presence</a></h3><div>Subscribe to realtime Presence events, such as <code>join</code>, <code>leave</code>, and <code>timeout</code>, by UUID. Setting the presence attribute to a callback will subscribe to presents events on <code>my_channel</code>:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Presence</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">this.pubnub.subscribe({
+    channels: ['my_channel'],
+    withPresence: true
+});</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table><h3 class="inpage-link tag-link"><a href="#history" data-id="history" class="title-red" title="History">History</a></h3><div>Retrieve published messages from archival storage:</div><table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>Requires that the <code>Storage and Playback</code> add-on is enabled for your key. How do I enable add-on features for my keys? - see <a href="http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys">http://www.pubnub.com/knowledge-base/discussion/644/how-do-i-enable-add-on-features-for-my-keys</a></div></td></tr></tbody></table>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">this.pubnub.history(
+    {
+        channel: 'my_channel',
+        count: 100, // 100 is the default
+        stringifiedTimeToken: true // false is the default
+    },
+    (status, response) =&gt; {
+        console.log(response);
+    }
+);</pre>
+
+<h3 class="inpage-link tag-link"><a href="#unsubscribe" data-id="unsubscribe" class="title-red" title="Unsubscribe">Unsubscribe</a></h3><h4 class="inpage-link tag-link"><a href="#unsubscribe-channel" data-id="unsubscribe-channel" class="title-red active-processed" title="Stop subscribing to a channel">Stop subscribing (listening) to a channel.</a></h4>
+<pre class="brush: javascript; auto-links: true; collapse: false; toolbar: false; codetag" title = "">this.pubnub.unsubscribe({
+    channels : ['my_channel']
+});</pre>
+<table><tbody><tr><td class="icon"><i class="fa icon icon-note" title="note"></i></td><td><div>The response of the call is handled by adding a Listener. Please see the <a href="#listeners" title="Listeners section">Listeners section</a> for more details. Listeners should be added before calling the method.</div></td></tr></tbody></table></div></div></div></div><div id="same-more-sdk-pages" style="display: none;"><ul id="list-more-sdks" class="menu list-more-sdks"><li><a href="/docs/web-javascript/pubnub-javascript-sdk" title="JavaScript V4" data-tid="124">JavaScript V4</a></li><li><a href="/docs/nodejs-javascript/pubnub-javascript-sdk" title=" Node.js V4" data-tid="125"> Node.js V4</a></li><li><a href="/docs/phonegap-javascript/pubnub-javascript-sdk" title=" PhoneGap V4" data-tid="130"> PhoneGap V4</a></li><li><a href="/docs/react-native-javascript/pubnub-javascript-sdk" title=" React V4" data-tid="156"> React V4</a></li><li><a href="/docs/titanium-javascript/pubnub-javascript-sdk" title=" Titanium V4" data-tid="155"> Titanium V4</a></li><li><a href="/docs/vue-javascript/pubnub-javascript-sdk" title=" Vue V4" data-tid="166"> Vue V4</a></li></ul></div><div class="os-share-widget-interface" data-share-url="https://www.pubnub.com/docs/web-javascript/pubnub-javascript-sdk" data-share-description="JavaScript V4 SDK for building Realtime Web and Mobile Applications on PubNub. Learn about PubNub features and get tutorials and access APIs." data-share-imageurl=""></div></div> </article></div></div></div></div></div> </section></div></div></div></div><footer class="footer-section" id="footer"><div id="footer-top"><div class="grey footer-top"><div class="container"><div class="row"><div class="footer-col-1 foot-col"><h4 class="footer-title">Solutions</h4><ul class="footer-menu-list"><li> <a title="Project EON" href="/developers/eon/">Project EON</a></li><li> <a href="/solutions/chat/" title="Chat">Chat</a></li><li> <a href="/solutions/iot/" title="IoT Device Control">IoT Device Control</a></li><li> <a href="/solutions/realtime-updates/" title="Realtime Updates">Realtime Updates</a></li><li> <a href="/solutions/collaboration/" title="Collaboration">Collaboration</a></li><li> <a href="/solutions/multiplayer-games/" title="Multiplayer Gaming">Multiplayer Gaming</a></li><li> <a href="/solutions/healthcare/" title="Healthcare">Healthcare</a></li><li> <a href="/solutions/cryptocurrency/" title="Cryptocurrency">Cryptocurrency</a></li><li> <a href="/solutions/webrtc-and-voip-signaling/" title="WebRTC and VoIP Signaling">WebRTC and VoIP Signaling</a></li><li> <a href="/customers/" title="Customer Case Studies">Customer Case Studies</a></li></ul></div><div class="footer-col-2 foot-col"><h4 class="footer-title">Features</h4><ul class="footer-menu-list"><li> <a href="/products/global-data-stream-network/" title="Data Stream Network">Data Stream Network</a></li><li> <a href="/products/realtime-messaging/" title="Realtime Messaging">Realtime Messaging</a></li><li> <a href="/products/presence/" title="Device & User Presence">Device & User Presence</a></li><li> <a href="/products/functions/" title="PubNub Functions">PubNub Functions</a></li><li> <a href="/products/security-overview/" title="Security & Compliance">Security & Compliance</a></li><li> <a href="/products/security/gdpr/" title="GDPR Resource Center">GDPR Resource Center</a></li><li> <a href="/products/mobile-push-notifications/" title="Mobile Push Notifications">Mobile Push Notifications</a></li><li> <a href="/docs/feature-updates" title="Product Feature Updates">Product Feature Updates</a></li></ul></div><div class="footer-col-3 foot-col"><h4 class="footer-title">Developers</h4><ul class="footer-menu-list"><li> <a href="/docs" title="70+ SDKs and Full Documentation">70+ SDKs and Full Documentation</a></li><li> <a href="/developers/tech/how-pubnub-works/" title="How PubNub Works">How PubNub Works</a></li><li> <a href="/tutorials/pubnub-publish-subscribe/" title="Quickstarts">Quickstarts</a></li><li> <a href="/developers/training/" title="Tutorials & Webinars">Tutorials & Webinars</a></li><li> <a href="/docs/console" title="Dev Console">Dev Console</a></li><li> <a href="/developers/demos/" title="Realtime Demo Applications">Realtime Demo Applications</a></li><li> <a href="/developers/realtime-data-streams/" title="Realtime Data Streams Examples">Realtime Data Streams Examples</a></li></ul></div><div class="footer-col-4 foot-col"><h4 class="footer-title">Support</h4><ul class="footer-menu-list"><li> <a href="https://support.pubnub.com/support/home" title="Help &amp; Support">Help &amp; Support</a></li><li> <a href="/learn/resources/" title="Resource Center">Resource Center</a></li><li> <a href="https://support.pubnub.com/support/solutions" title="Knowledge Base">Knowledge Base</a></li><li> <a href="/learn/glossary/" title="Glossary">Glossary</a></li><li> <a href="/services/professional-services/" title="Professional Services">Professional Services</a></li><li> <a href="http://status.pubnub.com/" target="_blank" title="Network Status">Network Status</a></li></ul> <a href="/schedule-a-demo/" title="Schedule a Demo" class="button-widget schedule-demo-footer">Schedule a Demo</a></div></div></div></div><div class="white footer-top"><div class="container"><div class="row"><div class="foot-col"> <a href="/" title="PubNub secure global data stream network and easy to use API for realtime Apps"><svg data-name="Layer 1" id="pubnub-footer-logo" viewbox="0 0 720 271.11" xmlns="http://www.w3.org/2000/svg" width="150"> <defs><style>
+.cls-1{ fill: none } .cls-2{ fill: #d02129 }
+</style></defs> <rect class="cls-1" height="271.11" width="720"></rect> <path class="cls-2" d="M290.58,200.56l-5.49-.59a116.57,116.57,0,0,1-28-6.4,2.15,2.15,0,0,1-1.62-2.41q.06-59.42,0-118.85V70.55H273.8v40.81l2.82-1a71.44,71.44,0,0,1,27.82-4.56c15.17.66,26.5,8.82,31.89,23A58.79,58.79,0,0,1,339.87,149a86.26,86.26,0,0,1-2.76,24.8c-4,14.43-13.58,22.79-28.15,25.59-2.23.43-4.5.59-6.75.89a8.94,8.94,0,0,0-1,.28Zm-16.74-47.33c0,9.38,0,18.76,0,28.15a1.84,1.84,0,0,0,1.48,2.05,63.59,63.59,0,0,0,17.07,3.7,37.27,37.27,0,0,0,12.31-.8c7.72-2,12.25-7.25,14.34-14.69a75.29,75.29,0,0,0,1.51-33A24.35,24.35,0,0,0,315,126.12c-4.64-5.24-10.76-7.07-17.49-7.16a60,60,0,0,0-22.3,4.13,1.79,1.79,0,0,0-1.39,2c.06,9.38,0,18.76,0,28.15"></path> <path class="cls-2" d="M600.52,200.56,595,200a116,116,0,0,1-28-6.38,2.16,2.16,0,0,1-1.66-2.41q.07-59.49,0-119V70.56h18.27v40.79c1.26-.44,2.29-.79,3.31-1.16a70,70,0,0,1,27.29-4.39c15.48.7,26.77,9,32.13,23.49,3,8,3.6,16.36,3.34,24.8a76.47,76.47,0,0,1-3.39,21.78c-4.21,12.81-13.11,20.34-26.1,23.21-2.71.6-5.5.81-8.25,1.22-.41.06-.8.18-1.2.27Zm-16.77-47.39q0,14.21,0,28.43c0,.81.09,1.35,1,1.68a61,61,0,0,0,24.43,3.91c4.91-.28,9.51-1.62,13.34-4.91,3.61-3.09,5.56-7.17,6.71-11.63a77.18,77.18,0,0,0,1.34-31.35,25.49,25.49,0,0,0-5.18-12.6c-4.64-5.64-10.94-7.62-17.93-7.72A59.5,59.5,0,0,0,585,123.13a1.7,1.7,0,0,0-1.3,1.89c0,9.38,0,18.76,0,28.15"></path> <path class="cls-2" d="M69.83,78.05s28.81-.08,42.33,0A64.49,64.49,0,0,1,131.1,80.7c11.14,3.48,17.7,11.5,19,23.11a56.42,56.42,0,0,1-.68,18c-2.26,10.6-8.89,17.24-18.94,20.73A54.31,54.31,0,0,1,113,145.3c-7.66.09-15.32,0-23,0H88.19v53H69.83ZM88.23,132c.38,0,.6.06.83.06,7.06,0,14.12.1,21.18-.06a45.21,45.21,0,0,0,8.81-1.13c6-1.35,10.39-4.61,12-10.84a35.33,35.33,0,0,0,.57-15.45c-1.12-6.11-4.64-10.22-10.71-11.66a57.34,57.34,0,0,0-11.12-1.55c-6.68-.25-13.37-.07-20.06-.07-.49,0-1,0-1.53.07Z"></path> <path class="cls-2" d="M194.7,200.56c-2.24-.29-4.49-.54-6.72-.88a39.92,39.92,0,0,1-15-5.22c-7.17-4.42-10.83-11-11.66-19.25-.23-2.35-.28-4.73-.28-7.09q0-29.26,0-58.52v-1.73h18.33v1.81q0,26.27,0,52.53A43.91,43.91,0,0,0,181,175.13c2.15,6.94,7,10.89,14.06,11.74a66.39,66.39,0,0,0,25.75-2.33,1.84,1.84,0,0,0,1.57-2.13q-.06-36.37,0-72.75v-1.83h18.32v1.81q0,41.39,0,82.77a1.93,1.93,0,0,1-1.7,2.28,168.56,168.56,0,0,1-32.71,5.63,7.1,7.1,0,0,0-1.06.24Z"></path> <path class="cls-2" d="M504.64,200.56c-2.24-.29-4.49-.54-6.72-.88a40.08,40.08,0,0,1-14.78-5.07c-7.26-4.36-11-10.93-11.89-19.25a63.94,63.94,0,0,1-.28-6.53q0-29.61,0-59.23v-1.75h18.33v1.78q0,26.76,0,53.52a39.93,39.93,0,0,0,1.79,12.34c2.23,6.83,7.08,10.56,14,11.39a68.22,68.22,0,0,0,25.23-2.19,2.3,2.3,0,0,0,2-2.68q-.09-36.17,0-72.33v-1.85h18.23c0,.52.08,1,.08,1.5q0,41.67,0,83.33a1.65,1.65,0,0,1-1.42,1.92,167.1,167.1,0,0,1-32.84,5.71,8.22,8.22,0,0,0-1.2.25Z"></path> <path class="cls-2" d="M453.24,198.31h-17c-3.21,0-6.42,0-9.62,0a2,2,0,0,1-2.15-1.25q-11.16-21.64-22.39-43.24l-30.63-59a2.21,2.21,0,0,0-.86-.94V198.22h-16V78.12c.43,0,.88-.07,1.32-.07,8.36,0,16.72,0,25.08,0a1.84,1.84,0,0,1,1.92,1.17q26.65,51.37,53.37,102.72a2.27,2.27,0,0,0,.87,1V78.15h16.14Z"></path></svg></a></div><div class="foot-col"><ul class=" footer-menu-list"><li> <a href="/company/" title="About PubNub">About PubNub</a></li><li> <a href="/company/leadership/" title="Leadership">Leadership</a></li><li> <a href="/company/careers/" title="Careers">Careers</a></li><li> <a title="PubNub Ambassador" href="/pubnub-ambassador/">PubNub Ambassador</a></li></ul></div><div class="foot-col"><ul class=" footer-menu-list"><li> <a href="/blog/" title="Blog">Blog</a></li><li> <a href="/company/events/" title="Events">Events</a></li><li> <a href="/company/news-coverage/" title="News Coverage">News Coverage</a></li><li> <a href="/company/press-releases/" title="Press Releases">Press Releases</a></li></ul></div><div class="foot-col"><ul class=" footer-menu-list"><li> <a href="/company/contact-us/" title="Contact PubNub">Contact PubNub</a></li><li> <a href="/privacy-policy/" title="Privacy Policy">Privacy Policy</a></li><li> <a href="/terms-and-conditions/" title="Terms and Conditions">Terms and Conditions</a></li></ul></div></div></div></div></div><div class="footer-bottom" id="footer-bottom"><div class="container"><div class="row"><div class="bottom-left"><div class="copyright"> © 2010 - 2019 PubNub Inc. All Rights Reserved. PUBNUB, ChatEngine, the PUBNUB logo and the ChatEngine logo are trademarks or registered trademarks of PubNub Inc. in the U.S. and other countries as well.</div></div><div class="bottom-right"><div class="social-footer"> <a class="social-link facebook" href="https://www.facebook.com/PubNub" target="_blank" title="Follow PubNub on FaceBook">FaceBook</a> <a class="social-link twitter" href="https://twitter.com/PubNub" target="_blank" title="Follow PubNub on Twitter">Twitter</a> <a class="social-link linkedin" href="https://www.linkedin.com/company/pubnub" target="_blank" title="Follow PubNub on LinkedIn">LinkedIn</a> <a class="social-link youtube" href="https://www.youtube.com/c/PubNub" target="_blank" title="Follow PubNub on YouTube">YouTube</a> <a class="social-link vimeo" href="https://vimeo.com/pubnub" target="_blank" title="Follow PubNub on Vimeo">Vimeo</a></div></div></div></div></div></footer>    <script src="/sites/default/files/js/js_e2xtdNbO1yQeBXDIP6TKSkdl53EUaCl7B4LCWBzfHXw.js"></script>
+<script src="//cdn.optimizely.com/js/5637050687.js"></script>
+<script src="/sites/default/files/js/js_H_CUgzDGQwBzYPn-gJCNShA2mpqqCn5x0aZCvWqMsS4.js"></script>
+<script src="/sites/default/files/js/js_zVAPRowMkKvRXizFYm4mDVEtkSjKF01eaWRT6MRAn1I.js"></script>
+<script src="/sites/default/files/js/js_dV9fNAf72A1P9UXfFxz99WZ3bQvbHA5BZQPuZy_L3mA.js"></script>
+<script src="/sites/default/files/js/js_4NMIHkOHp_t2zVraXXAgCU8qa0_HUu3jNsU-lDGURxU.js"></script>
+<script>
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"pubnub","theme_token":"_QdsBqZ7deWOOOAxuMGVG5eivCJnlvjtndURFMMU5PU","js":{"sites\/all\/modules\/custom\/ckeditor_syntaxhighlighter\/ckeditor_syntaxhighlighter_autoloader.js":1,"sites\/all\/modules\/simplified_social_share\/js\/opensocialshare_widget.js":1,"https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.7.2\/jquery.min.js":1,"sites\/all\/modules\/custom\/placeholders\/js\/jquery.min.1.7.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"\/\/cdn.optimizely.com\/js\/5637050687.js":1,"misc\/ui\/jquery.effects.core.min.js":1,"misc\/ajax.js":1,".\/sites\/all\/modules\/custom\/ckeditor_syntaxhighlighter\/library\/syntaxhighlighter_3.0.83\/scripts\/shCore.js":1,".\/sites\/all\/modules\/custom\/ckeditor_syntaxhighlighter\/library\/syntaxhighlighter_3.0.83\/scripts\/shAutoloader.js":1,"sites\/all\/modules\/back_to_top\/js\/back_to_top.js":1,"sites\/all\/modules\/custom\/placeholders\/js\/jquery-1.11.3.min.js":1,"sites\/all\/modules\/custom\/placeholders\/js\/jquery-noconflict.js":1,"sites\/all\/modules\/custom\/placeholders\/js\/jq11.js":1,"sites\/all\/modules\/custom\/placeholders\/js\/placeholders.js":1,"sites\/all\/modules\/custom\/placeholders\/js\/jquery.form.js":1,"sites\/all\/themes\/pubnub\/js\/features-filter.js":1,"sites\/all\/libraries\/qtip\/jquery.qtip.min.js":1,"sites\/all\/libraries\/zeroclipboard\/dist\/ZeroClipboard.js":1,"sites\/all\/modules\/zeroclipboard\/zeroclipboard.js":1,"misc\/progress.js":1,"sites\/all\/modules\/clipboardjs\/\/js\/clipboard.js":1,"sites\/all\/libraries\/clipboard\/dist\/clipboard.min.js":1,"sites\/all\/modules\/qtip\/js\/qtip.js":1,"sites\/all\/modules\/simplified_social_share\/js\/opensocialshare.js":1,"sites\/all\/modules\/simplified_social_share\/js\/opensocialsharedefaulttheme.js":1,"sites\/all\/themes\/pubnub\/js\/script.2.1.min.js":1,"sites\/all\/themes\/pubnub\/js\/header.js":1},"css":{"sites\/all\/modules\/date\/date_api\/date.css":1,".\/sites\/all\/modules\/custom\/ckeditor_syntaxhighlighter\/library\/syntaxhighlighter_3.0.83\/styles\/shCore.css":1,".\/sites\/all\/modules\/custom\/ckeditor_syntaxhighlighter\/library\/syntaxhighlighter_3.0.83\/styles\/shThemeDefault.css":1,"sites\/all\/modules\/custom\/placeholders\/css\/placeholders.css":1,"sites\/all\/libraries\/qtip\/jquery.qtip.min.css":1,"sites\/all\/modules\/qtip\/css\/qtip.css":1,"sites\/all\/modules\/simplified_social_share\/css\/os-share-widget-style.css":1,"sites\/all\/themes\/pubnub\/css\/bootstrap.min.css":1,"sites\/all\/themes\/pubnub\/css\/style.min.css":1,"sites\/all\/themes\/pubnub\/css\/local.min.css":1,"sites\/all\/themes\/pubnub\/css\/header.min.css":1,"sites\/all\/themes\/pubnub\/css\/jquery.ui.themes.autocomplete.get-started-popup-back-to-top.css":1,"sites\/all\/themes\/pubnub\/css\/main-menu.css":1}},"ckeditor_syntaxhighlighter":{"library_path_scrpits":"\/sites\/all\/modules\/custom\/ckeditor_syntaxhighlighter\/library\/syntaxhighlighter_3.0.83\/scripts\/","server_path":"\/\/www.pubnub.com"},"urlIsAjaxTrusted":{"https:\/\/www.pubnub.com":true,"https:\/\/www.pubnub.com\/docs":true,"\/views\/ajax":true},"instances":"{\u0022default\u0022:{\u0022content\u0022:{\u0022text\u0022:\u0022\u0022},\u0022style\u0022:{\u0022tip\u0022:false,\u0022classes\u0022:\u0022\u0022},\u0022position\u0022:{\u0022at\u0022:\u0022bottom right\u0022,\u0022adjust\u0022:{\u0022method\u0022:\u0022\u0022},\u0022my\u0022:\u0022top left\u0022,\u0022viewport\u0022:false},\u0022show\u0022:{\u0022event\u0022:\u0022mouseenter \u0022},\u0022hide\u0022:{\u0022event\u0022:\u0022mouseleave \u0022}},\u0022placeholder_values\u0022:{\u0022content\u0022:{\u0022button\u0022:\u0022x\u0022,\u0022text\u0022:\u0022\u0022},\u0022style\u0022:{\u0022tip\u0022:false,\u0022classes\u0022:\u0022qtip-dark qtip-shadow qtip-rounded\u0022},\u0022position\u0022:{\u0022at\u0022:\u0022top left\u0022,\u0022adjust\u0022:{\u0022method\u0022:\u0022\u0022},\u0022my\u0022:\u0022bottom right\u0022,\u0022viewport\u0022:false},\u0022show\u0022:{\u0022event\u0022:\u0022mouseenter click \u0022,\u0022solo\u0022:true},\u0022hide\u0022:{\u0022event\u0022:\u0022mouseleave \u0022}},\u0022sdk_info\u0022:{\u0022content\u0022:{\u0022button\u0022:true,\u0022text\u0022:\u0022\u0022},\u0022style\u0022:{\u0022tip\u0022:{\u0022width\u0022:9,\u0022height\u0022:9,\u0022border\u0022:0,\u0022mimic\u0022:\u0022left center\u0022,\u0022offset\u0022:7,\u0022corner\u0022:\u0022left top\u0022},\u0022classes\u0022:\u0022qtip-dark qtip-shadow\u0022},\u0022position\u0022:{\u0022at\u0022:\u0022top right\u0022,\u0022my\u0022:\u0022left top\u0022,\u0022adjust\u0022:{\u0022method\u0022:\u0022flip\u0022},\u0022viewport\u0022:false},\u0022show\u0022:{\u0022event\u0022:\u0022mouseenter \u0022,\u0022solo\u0022:true},\u0022hide\u0022:{\u0022event\u0022:\u0022click \u0022,\u0022fixed\u0022:1}}}","qtipDebug":"{\u0022leaveElement\u0022:0}","zeroClipboard":{"moviePath":"\/sites\/all\/libraries\/zeroclipboard\/dist\/ZeroClipboard.swf","selectorsToProcess":[[]]},"advanceopensocialshare":{"horizontal":true,"providers":"facebook,twitter,linkedin","widgets":"Facebook Like,Google+ +1,Pinterest Pin it,LinkedIn Share","isHorizontalLayout":1,"emailMessage":"","emailSubject":"","isEmailContentReadOnly":"false","theme":"OpenSocialShareDefaultTheme","isShortenUrl":"false","facebookAppId":"","isTotalShare":"false","isOpenSingleWindow":"false","twittermention":"","twitterhashtags":"","popupWindowSize":"","isMobileFriendly":"false","totalShareContainer":"os-share-count","customOption":"","divwidget":"os-share-widget-interface","isCounterWidgetTheme":0,"isHorizontalCounter":0,"widgetIconSize":"32","widgetStyle":"square"},"back_to_top":{"back_to_top_button_trigger":"100","back_to_top_button_text":"Back to top","#attached":{"library":[["system","ui"]]}},"password":{"strengthTitle":"Password compliance:"},"type":"setting"});
+//--><!]]>
+</script>
+    <script src="/sites/default/files/js/js_9WXLBGxaCPzgAIFuKDi7j-22vi8LaJLz7ZsKi58L3K0.js"></script>
+<script src="/sites/default/files/js/js_lw_MVz5pIe2YMzVdSnzvd1LxqOFRgCXBcyMACuThxk0.js"></script>
+    <script src="/sites/all/themes/pubnub/js/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.0.min.js"></script>
+    <script src="/static/js/main.min.js?ts=1536135401"></script>
+    
+    <script>
+    <!--
+    $ = jQuery.noConflict( true );
+    $(function($) {
+            //new header sub menu
+            $('.navigation-spacing #menu-wrap-primary > ul.menu > li.expanded, .navigation-spacing #menu-wrap-primary-mobile > ul.menu > li.expanded').each(function(e){
+                var sub_menu = (360 - ($(this).width()-30))/2;
+                sub_menu = sub_menu - 15;
+               $(' > ul.menu', this).css('margin-left',-sub_menu);
+            });
+    });
+    //-->
+    </script>
+
+    
+    <script>
+      document.addEventListener("DOMContentLoaded",function(){var t=document.createElement("script");t.type="text/javascript",t.src="https://wchat.freshchat.com/js/widget.js",document.getElementsByTagName("head")[0].appendChild(t),setTimeout(function(){window.fcWidget.init({token:"620375ee-3335-4925-97c1-159cc93e91a3",host:"https://wchat.freshchat.com"})},6e3)});
+    </script>
+
+        <script src="https://s3.amazonaws.com/assets.freshdesk.com/widget/freshwidget.js"></script>
+    <script>FreshWidget.init("",{"queryString":"&widgetType=popup&formTitle=Support&submitTitle=Submit&submitThanks=Thank+you+for+your+inquiry.+Someone+will+get+back+to+you+as+soon+as+possible.&captcha=yes&helpdesk_ticket[custom_field][language_348428]=JavaScript&helpdesk_ticket[custom_field][sdk_348428]=Web&helpdesk_ticket[custom_field][link_348428]=https://www.pubnub.com/docs/web-javascript/pubnub-javascript-sdk&disable[custom_field][link_348428]=true&helpdesk_ticket[ticket_type]=Technical", "utf8": "✓", "widgetType": "popup", "buttonType": "text", "buttonText": "Support", "buttonColor": "white", "buttonBg": "#19A2C6", "alignment": "2", "offset": "500px", "submitThanks": "Thank you for your inquiry. Someone will get back to you as soon as possible.", "formHeight": "500px", "captcha": "yes", "url": "https://support.pubnub.com"});</script>
+  </body>
+</html>
