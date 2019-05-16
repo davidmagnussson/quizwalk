@@ -43,6 +43,16 @@
         height: 90vh;
         width: 100%;
       }
+
+      #navTab {
+        position: fixed;
+        bottom: 0;
+        background-color: gray;
+        width: 100%;
+      }
+      #endGameBtn{
+        color: red;
+      }
     </style>
   </head>
   <body>
@@ -125,7 +135,6 @@
           <div class="left"><ons-back-button>Back</ons-back-button></div>
           <div class="center">QuizWalk</div>
         </ons-toolbar>
-
         <p>About page</p>
       </ons-page>
     </template>
@@ -154,52 +163,109 @@
     <template id="gamePlay.html">
       <ons-page id="gamePlay">
         <ons-toolbar>
-          <div class="left" id="endGame"><ons-back-button>End Game</ons-back-button></div>
+          <div class="left" id="endGame"><button id="endGameBtn">End Game</button></div>
           <div class="center">QuizWalk</div>
         </ons-toolbar>
-        <ons-page ng-controller="TabbarController">
 
-          <ons-tabbar swipeable position="auto" ons-prechange="updateTitle($event)">
-            <ons-tab  id="map" page="map.html" label="Map" icon="md-pin, material:md-home"  active-icon="md-pin">
-            </ons-tab>
-            <ons-tab id="game" page="game.html" label="Quize Game" icon="md-help" active active-icon="md-help">
-            </ons-tab>
-            <ons-tab id="profile" page="profile.html" label="Profile" icon="md-face" active-icon="md-face">
-            </ons-tab>
-          </ons-tabbar>
-        </ons-page>
+        <ul id="navTab" class="nav nav-tabs">
+          <li class="nav-item">
+            <p class="nav-link active" id="map">Map</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link" id="game">Quiz Game</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link" id="profile">Profile</p>
+          </li>
+        </ul>
+
       </ons-page>
     </template>
 
-        <template id="map.html">
-            <div id="map2"></div>
-        </template>
+    <template id="map.html">
+      <ons-page id="map">
+        <ons-toolbar>
+          <div class="left" id="endGame"><button id="endGameBtn">End Game</button></div>
+          <div class="center">QuizWalk</div>
+        </ons-toolbar>
 
-        <template id="game.html">
-          <ons-page id="game">
-            <p style="text-align: center;">
-              This is the second page.
-            </p>
-          </ons-page>
-        </template>
+        <div id="map2"></div>
 
-        <template id="profile.html">
-          <ons-page id="profile">
-            <p style="text-align: center;">
-              This is the second page.
-            </p>
-          </ons-page>
-        </template>
+        <ul id="navTab" class="nav nav-tabs">
+          <li class="nav-item">
+            <p class="nav-link active" id="map">Map</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link" id="game">Quiz Game</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link" id="profile">Profile</p>
+          </li>
+        </ul>
 
+      </ons-page>
+    </template>
+
+    <template id="game.html">
+      <ons-page id="game">
+        <ons-toolbar>
+          <div class="left" id="endGame"><button id="endGameBtn">End Game</button></div>
+          <div class="center">QuizWalk</div>
+        </ons-toolbar>
+        <p style="text-align: center;">
+          game page
+        </p>
+        <ul id="navTab" class="nav nav-tabs">
+          <li class="nav-item">
+            <p class="nav-link" id="map">Map</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link active" id="game">Quiz Game</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link" id="profile">Profile</p>
+          </li>
+        </ul>
+      </ons-page>
+    </template>
+
+    <template id="profile.html">
+      <ons-page id="profile">
+        <ons-toolbar>
+          <div class="left" id="endGame"><button id="endGameBtn">End Game</button></div>
+          <div class="center">QuizWalk</div>
+        </ons-toolbar>
+        <p style="text-align: center;">
+          profile page
+        </p>
+        <ul id="navTab" class="nav nav-tabs">
+          <li class="nav-item">
+            <p class="nav-link" id="map">Map</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link" id="game">Quiz Game</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link active" id="profile">Profile</p>
+          </li>
+        </ul>
+      </ons-page>
+    </template>
 
 
     <script>
-      var map2;
       function initMap() {
-        map2 = new google.maps.Map(document.getElementById('map2'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
+        var placement = document.getElementById('map2');
+        var mapOptions = {
+        center: {lat: 59.3498092, lng: 18.0684758},
+        zoom: 18,
+        mapTypeId: 'hybrid'
+        }
+        var map3 = new google.maps.Map(placement, mapOptions);
+        // map3 = new google.maps.Map(document.getElementById('map2'), {
+        //   center: {lat: -34.397, lng: 150.644},
+        //   zoom: 8
+        // });
       }
 
       document.addEventListener('init', function(event) {
@@ -240,24 +306,25 @@
             document.querySelector('#myNavigator').pushPage('gamePlay.html', {data: {title: ''}});
           };
         }
-        else if(page.id === 'gamePlay') {
+
+        else if(page.id === 'gamePlay' ||page.id === 'map' || page.id === 'game' || page.id === 'profile') {
           page.querySelector('#map').onclick  =  function(){
             document.querySelector('#myNavigator').pushPage('map.html', {data: {title: 'map'}});
             initMap();
           }
-        }
-        else if(page.id === 'gamePlay') {
+
           page.querySelector('#game').onclick  =  function(){
             document.querySelector('#myNavigator').pushPage('game.html', {data: {title: 'game'}});
           }
-        }
-        else if(page.id === 'gamePlay') {
+
           page.querySelector('#profile').onclick  =  function(){
             document.querySelector('#myNavigator').pushPage('profile.html', {data: {title: 'profile'}});
           }
+          page.querySelector('#endGame').onclick  =  function(){
+            document.querySelector('#myNavigator').resetToPage('startGame.html', {data: {title: ''}});
+          }
         }
       });
-
     </script>
 
     <script
