@@ -7,6 +7,7 @@ const allQuestions = model.getAllQuestions();
 const historyQuestions = allQuestions[0].history;
 const scienceQuestions = allQuestions[0].science;
 const sportsQuestions = allQuestions[0].sports;
+const dialog = document.getElementById("my-alert-dialog");
 
 
 
@@ -18,7 +19,27 @@ function startQuiz(subject) {
   } else {
     loadInQuiz(sportsQuestions);
   }
+
+  enterGame();
 };
+
+function enterGame() {
+  // TODO: Fyll i, ska ankallas när man startar/trycker på en kategori och börjar spela!
+};
+
+function exitGame() {
+  // TODO: Fyll i, ska ankallas när man trycker exit game. Poängen resettas och man kommer tillbaka till startgamescreen  
+  dialog.show();
+};
+
+function alertChoice(choice) {
+  if (choice) {
+    dialog.hide();
+    showStartScreen();
+  } else {
+    dialog.hide();
+  }
+}
 
 function loadInQuiz(questions) {
   const firstQuestion = questions[0];
@@ -118,6 +139,7 @@ function showLoginScreen() {
   $("#about").hide();
   $("#map").hide();
   $("#profile").hide();
+  $("#header").hide();
 }
 
 function showStartScreen() {
@@ -125,6 +147,9 @@ function showStartScreen() {
   $("#login").hide();
   $("#game").hide();
   $("#profile").hide();
+  $("#header").hide();
+  $("#navbar").hide();
+  $("#map").hide();
 }
 
 function showGameScreen() {
@@ -133,6 +158,7 @@ function showGameScreen() {
   $("#map").hide();
   $("#profile").hide();
   $("#navbar").show();
+  $("#header").show();
 }
 
 function showAboutScreen() {
@@ -143,6 +169,7 @@ function showAboutScreen() {
   $("#about").show();
   $("#profile").hide();
   $("#navbar").hide();
+  $("#header").hide();
 }
 function showMapScreen() {
   $("#map").show();
@@ -150,6 +177,7 @@ function showMapScreen() {
   $("#startpage").hide();
   $("#profile").hide();
   $("#navbar").show();
+  $("#header").show();
 };
 
 function showProfileScreen() {
@@ -158,6 +186,7 @@ function showProfileScreen() {
   $("#startpage").hide();
   $("#profile").show();
   $("#navbar").show();
+  $("#header").show();
 }
 
 function initMap() {
@@ -421,3 +450,6 @@ document.getElementById('navProfile').addEventListener("click", function () {
   showProfileScreen();
 });
 
+document.getElementById('exitGame').addEventListener("click", function () {
+  exitGame();
+});

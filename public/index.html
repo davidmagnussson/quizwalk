@@ -81,6 +81,15 @@
       margin: auto;
       text-align: center;
     }
+
+    #headerText {
+      text-align: center;
+      color: #eee;
+    }
+
+    #navbarHeader {
+      background-color: #17a2b8;
+    }
   </style>
 
   <script>
@@ -135,13 +144,19 @@
 
   <div id="startpage" style="display: none">
     <h1>Pick a subject for your Quiz!</h1>
-    <!-- <button id="historyQuiz">History</button>
-    <button id="scienceQuiz">Science</button>
-    <button id="sportsQuiz">Sports</button> -->
     <button type="button" class="btn btn-outline-info" id="historyQuiz">History</button><br />
     <button type="button" class="btn btn-outline-info" id="scienceQuiz">Science</button><br />
     <button type="button" class="btn btn-outline-info" id="sportsQuiz">Sports</button><br />
 
+  </div>
+
+  <!-- Header -->
+  <div id="header" style="display: none">
+    <nav id="navbarHeader" class="navbar">
+      <button class="btn btn-danger" id="exitGame"><span>Exit game</span></button>
+      <h3 id="headerText">Tipsrundan</h3>
+    </nav>
+    <!-- <button>Exit game</button> -->
   </div>
 
   <div id="game" style="display: none">
@@ -278,8 +293,19 @@
       <li class="list-group-item">Sports quiz:<i>{score}</i></li>
     </ul>
 
-    <button class="btn btn-danger nav mt-5" id="logout"><span class="ml-2">Logout</span></button>
+    <button class="btn btn-danger nav mt-3" id="logout"><span class="ml-2">Logout</span></button>
   </div>
+
+  <ons-alert-dialog id="my-alert-dialog" modifier="rowfooter">
+    <div class="alert-dialog-title">Exit game!</div>
+    <div class="alert-dialog-content">
+      Are you sure you want to exit current game?
+    </div>
+    <div class="alert-dialog-footer">
+      <ons-alert-dialog-button onclick="alertChoice(false)">Cancel</ons-alert-dialog-button>
+      <ons-alert-dialog-button onclick="alertChoice(true)">OK</ons-alert-dialog-button>
+    </div>
+  </ons-alert-dialog>
 
   <script src="lib/jquery.js"></script>
   <script src="cordova.js"></script>
