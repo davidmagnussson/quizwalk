@@ -9,7 +9,11 @@ const scienceQuestions = allQuestions[0].science;
 const sportsQuestions = allQuestions[0].sports;
 const dialog = document.getElementById("my-alert-dialog");
 
+let anwerQuestion1 = false;
+let anwerQuestion2 = false;
+let anwerQuestion3 = false;
 
+let answeredQuestions = [];
 
 function startQuiz(subject) {
   if (subject == 'history') {
@@ -32,9 +36,21 @@ function exitGame() {
   dialog.show();
 };
 
+function quizCompleted() {
+  let results = confirm("You have answered all questions! You can now play another quiz!");
+  if (results) {
+    answeredQuestions = [];
+    showStartScreen();
+  } else {
+    alert("denied");
+  }
+}
+
+
 function alertChoice(choice) {
   if (choice) {
     dialog.hide();
+    answeredQuestions = [];
     showStartScreen();
   } else {
     dialog.hide();
@@ -47,7 +63,7 @@ function loadInQuiz(questions) {
   const thirdQuestion = questions[2];
   let newElement = document.createElement("h2");
 
-  // LOAD IN FIRST QUESTION
+  // LOAD IN FIRST QUESTION -------------------------------
   let alternatives = firstQuestion.alternatives;
 
   let question1 = document.getElementById('question1');
@@ -67,13 +83,19 @@ function loadInQuiz(questions) {
   alt3.innerHTML = alternatives.three.alt;
   alt4.innerHTML = alternatives.four.alt;
 
+  // Remove previous classes
+  alt1div.classList.remove("wrong", "right");
+  alt2div.classList.remove("wrong", "right");
+  alt3div.classList.remove("wrong", "right");
+  alt4div.classList.remove("wrong", "right");
+
   // Add right or wrong answer
   alt1div.classList.add(alternatives.one.answer);
   alt2div.classList.add(alternatives.two.answer);
   alt3div.classList.add(alternatives.three.answer);
   alt4div.classList.add(alternatives.four.answer);
 
-  // LOAD IN SECOND QUESTION
+  // LOAD IN SECOND QUESTION -----------------------------
   alternatives = secondQuestion.alternatives;
 
   let question2 = document.getElementById('question2');
@@ -94,10 +116,10 @@ function loadInQuiz(questions) {
   alt4.innerHTML = alternatives.four.alt;
 
   // Remove previous classes
-  alt1div.className = '';
-  alt1div.className = '';
-  alt1div.className = '';
-  alt1div.className = '';
+  alt1div.classList.remove("wrong", "right");
+  alt2div.classList.remove("wrong", "right");
+  alt3div.classList.remove("wrong", "right");
+  alt4div.classList.remove("wrong", "right");
 
   // Add right or wrong answer
   alt1div.classList.add(alternatives.one.answer);
@@ -105,7 +127,7 @@ function loadInQuiz(questions) {
   alt3div.classList.add(alternatives.three.answer);
   alt4div.classList.add(alternatives.four.answer);
 
-  // LOAD IN THIRD QUESTION
+  // LOAD IN THIRD QUESTION --------------------------
   alternatives = thirdQuestion.alternatives;
 
   let question3 = document.getElementById('question3');
@@ -124,6 +146,12 @@ function loadInQuiz(questions) {
   alt2.innerHTML = alternatives.two.alt;
   alt3.innerHTML = alternatives.three.alt;
   alt4.innerHTML = alternatives.four.alt;
+
+  // Remove previous classes
+  alt1div.classList.remove("wrong", "right");
+  alt2div.classList.remove("wrong", "right");
+  alt3div.classList.remove("wrong", "right");
+  alt4div.classList.remove("wrong", "right");
 
   // Add right or wrong answer
   alt1div.classList.add(alternatives.one.answer);
@@ -192,7 +220,7 @@ function showProfileScreen() {
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     // center: {lat: 59.3498092, lng: 18.0684758},
-    center: { lat: 59.34937951555808, lng: 18.07118417238007 },
+    center: { lat: 59.3484377325508, lng: 18.07180214068103 },
     zoom: 16,
     mapTypeId: "hybrid", // terrain, satellite, roadmap, hybrid
     disableDefaultUI: true, // Tar bort kontroller för att zoom osv!
@@ -259,9 +287,7 @@ function initMap() {
   // 	infowindow.open(map, location1);
   // });
 }
-// FOR TESTING -------------
-// startQuiz('science');
-// -------------------------
+
 // Regions that define which pa to show for each beacon.
 app.beaconRegions = [
   {
@@ -366,7 +392,7 @@ app.didRangeBeaconsInRegion = function (pluginResult) {
   // The region identifier is the page id.
   var pageId = pluginResult.region.identifier;
 
-  // console.log("ranged beacon: " + pageId + " " + beacon.major);
+  // console.log("ranged beacon: " + pageId + "" + beacon.major);
 
   // If the beacon is close and represents a new page, then show the page.
   if (
@@ -377,12 +403,11 @@ app.didRangeBeaconsInRegion = function (pluginResult) {
     return;
   }
 
-  // If the beacon represents the current page but is far away,
-  // then show the default pe.
+  // If the beacon represents the current page but is far away,  
   if (
     (beacon.proximity == "ProximityFar" ||
       beacon.proximity == "ProximityNear") &&
-    app.currentPage == pageId
+    (app.currentPage == pageId || app.currentPage == 'alreadyAnswered')
   ) {
     app.gotoPage("page-default");
     return;
@@ -390,9 +415,19 @@ app.didRangeBeaconsInRegion = function (pluginResult) {
 };
 
 app.gotoPage = function (pageId) {
-  app.hidePage(app.currentPage);
-  app.showPage(pageId);
-  app.currentPage = pageId;
+  let check_if_answered = answeredQuestions.includes(pageId);
+  console.log(pageId);
+
+  if (check_if_answered) {
+    show = 'alreadyAnswered';
+    app.hidePage(app.currentPage);
+    app.showPage(show);
+    app.currentPage = show;
+  } else {
+    app.hidePage(app.currentPage);
+    app.showPage(pageId);
+    app.currentPage = pageId;
+  }
 };
 
 app.showPage = function (pageId) {
@@ -400,6 +435,13 @@ app.showPage = function (pageId) {
   $('.questions').css('color', 'black');
   $('.questions').css('background-color', 'white');
   $('.questions').css('font-weight', 'normal');
+
+  if (pageId == 'page-default') {
+    // Listener to check if answered all questions
+    if (answeredQuestions.includes('firstQuestion') && answeredQuestions.includes('secondQuestion') && answeredQuestions.includes('thirdQuestion')) {
+      quizCompleted();
+    }
+  }
 };
 
 app.hidePage = function (pageId) {

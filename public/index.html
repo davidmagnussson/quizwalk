@@ -26,7 +26,7 @@
     }
 
     #my-header {
-      background-image: url("neo.png");
+      background-image: url("./photos/questionmark.png");
     }
 
     ons-page {
@@ -84,25 +84,33 @@
 
     #headerText {
       text-align: center;
-      color: #eee;
+      color: white;
     }
 
     #navbarHeader {
       background-color: #17a2b8;
     }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0px;
+    }
+
+    li {
+      padding: 20px;
+    }
   </style>
 
   <script>
-
     // Redirect console if runng fromvothings Workbench.
     if (window.hyper) {
       console.log = hyper.log;
     }
 
-
-
-    function checkAnswer(answer) {
+    function checkAnswer(answer, question) {
       let check = answer.classList.contains("right");
+      console.log(check);
+
       if (check) {
         answer.style.backgroundColor = "#50C878";
         answer.style.color = "#eee";
@@ -112,6 +120,15 @@
         answer.style.color = "#eee";
         answer.style.fontWeight = "bold";
       }
+
+      if (question == 'first') {
+        answeredQuestions.push('firstQuestion');
+      } else if (question == 'second') {
+        answeredQuestions.push('secondQuestion');
+      } else {
+        answeredQuestions.push('thirdQuestion');
+      }
+
     }
   </script>
 </head>
@@ -144,10 +161,11 @@
 
   <div id="startpage" style="display: none">
     <h1>Pick a subject for your Quiz!</h1>
-    <button type="button" class="btn btn-outline-info" id="historyQuiz">History</button><br />
-    <button type="button" class="btn btn-outline-info" id="scienceQuiz">Science</button><br />
-    <button type="button" class="btn btn-outline-info" id="sportsQuiz">Sports</button><br />
-
+    <ul>
+      <li><button type="button" class="btn btn-outline-info btn-lg" id="historyQuiz">History</button></li>
+      <li><button type="button" class="btn btn-outline-info btn-lg" id="scienceQuiz">Science</button></li>
+      <li><button type="button" class="btn btn-outline-info btn-lg" id="sportsQuiz">Sports</button></li>
+    </ul>
   </div>
 
   <!-- Header -->
@@ -171,31 +189,30 @@
       </div>
     </div>
 
-    <!-- page-surs -->
+    <!-- First question -->
     <div class="my-page" id="firstQuestion">
       <ons-page>
         <div class="my-header">
-          <h1><i class="fas fa-street-view"></i> Plats:</h1>
-          <h3>Matsalen</h3>
-          <h1><i class="fas fa-question"></i>Fråga:</h1>
+          <h1><i class="fas fa-street-view"></i> First Question</h1>
+          <h1><i class="fas fa-question"></i>Question:</h1>
           <h3 id="question1"></h3>
         </div>
-        <div><img src="poet.png" /></div>
+        <div><img src="./photos/questionmark.png" /></div>
         <div class="my-content">
           <ons-list id="poets-list">
-            <ons-list-item tappable id="q1a1" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q1a1" class="questions" onClick="checkAnswer(this, 'first')">
               <h3 id="question1alt1"></h3>
             </ons-list-item>
 
-            <ons-list-item tappable id="q1a2" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q1a2" class="questions" onClick="checkAnswer(this, 'first')">
               <h3 id="question1alt2"></h3>
             </ons-list-item>
 
-            <ons-list-item tappable id="q1a3" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q1a3" class="questions" onClick="checkAnswer(this, 'first')">
               <h3 id="question1alt3"></h3>
             </ons-list-item>
 
-            <ons-list-item tappable id="q1a4" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q1a4" class="questions" onClick="checkAnswer(this, 'first')">
               <h3 id="question1alt4"></h3>
             </ons-list-item>
           </ons-list>
@@ -203,31 +220,30 @@
       </ons-page>
     </div>
 
-    <!-- page-fee -->
+    <!-- Second question -->
     <div class="my-page" id="secondQuestion">
       <ons-page>
         <div class="my-header">
-          <h1><i class="fas fa-street-view"></i> Plats:</h1>
-          <h3>Konsthallen</h3>
-          <h1><i class="fas fa-question"></i>Fråga:</h1>
+          <h1><i class="fas fa-street-view"></i>Second Question</h1>
+          <h1><i class="fas fa-question"></i>Question:</h1>
           <h3 id="question2"></h3>
         </div>
-        <div><img src="island.png" /></div>
+        <div><img src="./photos/questionmark.png" /></div>
         <div class="my-content">
           <ons-list id="islands-list">
-            <ons-list-item tappable id="q2a1" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q2a1" class="questions" onClick="checkAnswer(this, 'second')">
               <h3 id="question2alt1"></h3>
             </ons-list-item>
 
-            <ons-list-item tappable id="q2a2" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q2a2" class="questions" onClick="checkAnswer(this, 'second')">
               <h3 id="question2alt2"></h3>
             </ons-list-item>
 
-            <ons-list-item tappable id="q2a3" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q2a3" class="questions" onClick="checkAnswer(this, 'second')">
               <h3 id="question2alt3"></h3>
             </ons-list-item>
 
-            <ons-list-item tappable id="q2a4" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q2a4" class="questions" onClick="checkAnswer(this, 'second')">
               <h3 id="question2alt4"></h3>
             </ons-list-item>
           </ons-list>
@@ -235,34 +251,44 @@
       </ons-page>
     </div>
 
-    <!-- page-face -->
+    <!-- Third question -->
     <div class="my-page" id="thirdQuestion">
       <ons-page>
         <div class="my-header">
-          <h1><i class="fas fa-street-view"></i> Plats:</h1>
-          <h3>Spelhallen</h3>
-          <h1><i class="fas fa-question"></i>Fråga:</h1>
+          <h1><i class="fas fa-street-view"></i>Third Question</h1>
+          <h1><i class="fas fa-question"></i>Question:</h1>
           <h3 id="question3"></h3>
         </div>
-        <div><img src="neo.png" /></div>
+        <div><img src="./photos/questionmark.png" /></div>
         <div id="my-content">
           <ons-list id="actors-list">
-            <ons-list-item tappable id="q3a1" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q3a1" class="questions" onClick="checkAnswer(this, 'third')">
               <h3 id="question3alt1"></h3>
             </ons-list-item>
 
-            <ons-list-item tappable id="q3a2" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q3a2" class="questions" onClick="checkAnswer(this, 'third')">
               <h3 id="question3alt2"></h3>
             </ons-list-item>
 
-            <ons-list-item tappable id="q3a3" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q3a3" class="questions" onClick="checkAnswer(this, 'third')">
               <h3 id="question3alt3"></h3>
             </ons-list-item>
 
-            <ons-list-item tappable id="q3a4" class="questions" onClick="checkAnswer(this)">
+            <ons-list-item tappable id="q3a4" class="questions" onClick="checkAnswer(this, 'third')">
               <h3 id="question3alt4"></h3>
             </ons-list-item>
           </ons-list>
+        </div>
+      </ons-page>
+    </div>
+
+    <!-- ALREADY ANSWERED -->
+    <div class="my-page" id="alreadyAnswered" style="display: none">
+      <ons-page>
+        <div>
+          <h1>Oops!</h1>
+          <h2>It seems like you've already answered this question, please go find another beacon</h2>
+          <h3>You can find the locations of the beacon on the <i>Map</i> tab! Good luck</h3>
         </div>
       </ons-page>
     </div>
@@ -296,10 +322,10 @@
     <button class="btn btn-danger nav mt-3" id="logout"><span class="ml-2">Logout</span></button>
   </div>
 
-  <ons-alert-dialog id="my-alert-dialog" modifier="rowfooter">
+  <ons-alert-dialog id="my-alert-dialog" modifier="success thick">
     <div class="alert-dialog-title">Exit game!</div>
     <div class="alert-dialog-content">
-      Are you sure you want to exit current game?
+      Are you sure you want to exit current game? Your progress might be lost!
     </div>
     <div class="alert-dialog-footer">
       <ons-alert-dialog-button onclick="alertChoice(false)">Cancel</ons-alert-dialog-button>
