@@ -88,7 +88,11 @@
     }
 
     #navbarHeader {
-      background-color: #17a2b8;
+      background-color: #179FB5;
+    }
+
+    #logo{
+      text-align: center;
     }
 
     ul {
@@ -99,6 +103,11 @@
     li {
       padding: 20px;
     }
+
+    h2{
+      color: #179FB5;
+    }
+
   </style>
 
   <script>
@@ -135,10 +144,16 @@
 
 <body>
 
+  <div id="header2" style="display: none">
+    <nav id="navbarHeader">
+        <img id="logo" style='max-height: 70px; max-width: 175px;' src="./photos/logo.png" />
+    </nav>
+  </div>
+
   <!-- Login -->
   <div id="login">
     <div style="text-align: center; margin-top: 100px">
-      <h2>Login to play Quizwalk</h2>
+      <h2>Login to play</h2>
       <p style="margin-top: 50px">
         <ons-input id="username" placeholder="Username" modifier="underbar"></ons-input>
       </p>
@@ -185,7 +200,7 @@
   </div>
 
   <div id="startpage" style="display: none">
-    <h1>Pick a subject for your Quiz!</h1>
+    <h2 class="my-5">Pick a subject!</h2>
     <ul>
       <li><button type="button" class="btn btn-outline-info btn-lg" id="historyQuiz">History</button></li>
       <li><button type="button" class="btn btn-outline-info btn-lg" id="scienceQuiz">Science</button></li>
@@ -197,7 +212,7 @@
   <div id="header" style="display: none">
     <nav id="navbarHeader" class="navbar">
       <button class="btn btn-danger" id="exitGame"><span>Exit game</span></button>
-      <h3 id="headerText">Tipsrundan</h3>
+      <img id="logo" style='max-height: 70px; max-width: 175px;' src="./photos/logo.png" />
     </nav>
     <!-- <button>Exit game</button> -->
   </div>
@@ -205,12 +220,11 @@
   <div id="game" style="display: none">
     <div class="my-page" id="page-default">
       <div class="my-header">
-        <h1>Welcome to Tipsrundan!</h1>
+        <h2 class="my-5">Welcome to QuizWalk!</h2>
       </div>
-      <div><img src="tipspromenad.jpeg" /></div>
+      <div><img src="./photos/walk.gif" /></div>
       <div class="my-content">
-        <h3>Each room contains a question with multi-choice answers</h3>
-        <h4>Can you get them all right??</h4>
+        <p style="color:grey;">Each place contains a question with multi-choice answers, check the map to find them!</p>
       </div>
     </div>
 
@@ -322,12 +336,12 @@
   <!-- Navbar and navbar divs -->
   <div id="navbar" style="display: none">
     <div class="btn-group special btn-group-lg" id="buttonGroup" role="group" aria-label="Basic example">
-      <button class="btn btn-info nav" id="navMap"><span class="ml-1"><i
-            class="material-icons">place</i>Map</span></button>
-      <button class="btn btn-info nav" id="navQuiz"><span class="ml-1"><i
-            class="material-icons">help</i>Quiz</span></button>
-      <button class="btn btn-info nav" id="navProfile"><span><i
-            class="material-icons">person_pin</i>Profile</span></button>
+      <button class="btn btn-info nav" id="navMap"><span class="ml-1" style="color:#FFFFA2;"><i
+            class="material-icons" style="color:#FFFFA2;">place</i>Map</span></button>
+      <button class="btn btn-info nav" id="navQuiz"><span class="ml-1" style="color:#FFFFA2;"><i
+            class="material-icons" style="color:#FFFFA2;">help</i>Quiz</span></button>
+      <button class="btn btn-info nav" id="navProfile"><span style="color:#FFFFA2;"><i
+            class="material-icons" style="color:#FFFFA2;">person_pin</i>Profile</span></button>
     </div>
   </div>
 

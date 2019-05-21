@@ -32,7 +32,7 @@ function enterGame() {
 };
 
 function exitGame() {
-  // TODO: Fyll i, ska ankallas när man trycker exit game. Poängen resettas och man kommer tillbaka till startgamescreen  
+  // TODO: Fyll i, ska ankallas när man trycker exit game. Poängen resettas och man kommer tillbaka till startgamescreen
   dialog.show();
 };
 
@@ -183,6 +183,7 @@ function showLoginScreen() {
   $("#profile").hide();
   $("#header").hide();
   $("#signUp").hide();
+  $("#header2").show();
 }
 
 function showSignUpScreen() {
@@ -195,6 +196,7 @@ function showSignUpScreen() {
   $("#profile").hide();
   $("#header").hide();
   $("#signUp").show();
+  $("#header2").show();
 }
 
 function showStartScreen() {
@@ -205,6 +207,7 @@ function showStartScreen() {
   $("#header").hide();
   $("#navbar").hide();
   $("#map").hide();
+  $("#header2").show();
 }
 
 function showGameScreen() {
@@ -214,6 +217,7 @@ function showGameScreen() {
   $("#profile").hide();
   $("#navbar").show();
   $("#header").show();
+  $("#header2").hide();
 }
 
 function showAboutScreen() {
@@ -225,6 +229,7 @@ function showAboutScreen() {
   $("#profile").hide();
   $("#navbar").hide();
   $("#header").hide();
+  $("#header2").show();
 }
 function showMapScreen() {
   $("#map").show();
@@ -233,6 +238,7 @@ function showMapScreen() {
   $("#profile").hide();
   $("#navbar").show();
   $("#header").show();
+  $("#header2").hide();
 };
 
 function showProfileScreen() {
@@ -242,6 +248,7 @@ function showProfileScreen() {
   $("#profile").show();
   $("#navbar").show();
   $("#header").show();
+  $("#header2").hide();
 }
 
 function initMap() {
@@ -430,7 +437,7 @@ app.didRangeBeaconsInRegion = function (pluginResult) {
     return;
   }
 
-  // If the beacon represents the current page but is far away,  
+  // If the beacon represents the current page but is far away,
   if (
     (beacon.proximity == "ProximityFar" ||
       beacon.proximity == "ProximityNear") &&
