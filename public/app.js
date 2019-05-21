@@ -159,6 +159,20 @@ function loadInQuiz(questions) {
   alt3div.classList.add(alternatives.three.answer);
   alt4div.classList.add(alternatives.four.answer);
 }
+
+function signUp() {
+  let username = document.getElementById("signUpUsername").value
+  let password = document.getElementById("signUpPassword").value
+  let email = document.getElementById("email").value
+  console.log(username + " " + password + " " + email);
+}
+
+function login() {
+  let username = document.getElementById("username").value
+  let password = document.getElementById("password").value
+  console.log(username + " " + password);
+}
+
 function showLoginScreen() {
   $("#login").show();
   $("#startpage").hide();
@@ -168,6 +182,19 @@ function showLoginScreen() {
   $("#map").hide();
   $("#profile").hide();
   $("#header").hide();
+  $("#signUp").hide();
+}
+
+function showSignUpScreen() {
+  $("#login").hide();
+  $("#startpage").hide();
+  $("#game").hide();
+  $("#navbar").hide();
+  $("#about").hide();
+  $("#map").hide();
+  $("#profile").hide();
+  $("#header").hide();
+  $("#signUp").show();
 }
 
 function showStartScreen() {
@@ -469,12 +496,13 @@ document.getElementById('sportsQuiz').addEventListener("click", function () {
 });
 
 document.getElementById('loginButton').addEventListener("click", function () {
+  login();
   showStartScreen();
 });
 
-document.getElementById('aboutButton').addEventListener("click", function () {
-  showAboutScreen();
-});
+// document.getElementById('aboutButton').addEventListener("click", function () {
+//   showAboutScreen();
+// });
 
 document.getElementById('aboutBack').addEventListener("click", function () {
   showLoginScreen();
@@ -494,4 +522,16 @@ document.getElementById('navProfile').addEventListener("click", function () {
 
 document.getElementById('exitGame').addEventListener("click", function () {
   exitGame();
+});
+
+document.getElementById('signUpButton').addEventListener("click", function () {
+  showSignUpScreen();
+});
+
+document.getElementById('backToLogin').addEventListener("click", function () {
+  showLoginScreen();
+});
+
+document.getElementById('Register').addEventListener("click", function () {
+  signUp();
 });

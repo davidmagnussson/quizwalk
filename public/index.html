@@ -134,6 +134,8 @@
 </head>
 
 <body>
+
+  <!-- Login -->
   <div id="login">
     <div style="text-align: center; margin-top: 100px">
       <h2>Login to play Quizwalk</h2>
@@ -146,7 +148,30 @@
       </p>
       <p>
         <ons-button id="loginButton">Login</ons-button>
-        <ons-button id="aboutButton">About</ons-button>
+        <!-- <ons-button id="aboutButton">About</ons-button> -->
+        <ons-button id="signUpButton">Sign up</ons-button>
+      </p>
+    </div>
+  </div>
+
+  <!-- Sign up -->
+  <div id="signUp">
+    <div style="text-align: center; margin-top: 100px">
+      <h2>Sign up to get started!</h2>
+      <p style="margin-top: 50px">
+        <ons-input id="signUpUsername" placeholder="Username" modifier="underbar"></ons-input>
+      </p>
+      <p>
+        <ons-input id="signUpPassword" placeholder="Password" type="password" modifier="underbar">
+        </ons-input>
+      </p>
+      <p>
+        <ons-input id="email" placeholder="myemail@gmail.com" type="email" modifier="underbar">
+        </ons-input>
+      </p>
+      <p>
+        <ons-button id="Register">Register</ons-button>
+        <ons-button id="backToLogin">Back</ons-button>
       </p>
     </div>
   </div>
