@@ -12,9 +12,10 @@ const dialog = document.getElementById("my-alert-dialog");
 let anwerQuestion1 = false;
 let anwerQuestion2 = false;
 let anwerQuestion3 = false;
-let currentQuiz = "sports";
+let currentQuiz = "history";
 
 let answeredQuestions = [];
+let results = 0;
 
 function startQuiz(subject) {
   if (subject == "history") {
@@ -38,17 +39,13 @@ function exitGame() {
 }
 
 function quizCompleted() {
-  /*let results = confirm(
-    "You have answered all questions! You can now play another quiz!"
-  );*/
-  registerAnswer();
-  /*
-  if (results) {
-    answeredQuestions = [];
-    showStartScreen();
-  } else {
-    alert("denied");
-  }*/
+  registerAnswer(results);
+  results = 0;
+}
+
+function correctAnswer() {
+  results = results + 1;
+  console.log(results);
 }
 
 function alertChoice(choice) {
@@ -164,19 +161,6 @@ function loadInQuiz(questions) {
   alt4div.classList.add(alternatives.four.answer);
 }
 
-function signUp() {
-  let username = document.getElementById("signUpUsername").value;
-  let password = document.getElementById("signUpPassword").value;
-  let email = document.getElementById("email").value;
-  console.log(username + " " + password + " " + email);
-}
-
-function login() {
-  let username = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
-  console.log(username + " " + password);
-}
-
 function showLoginScreen() {
   $("#login").show();
   $("#startpage").hide();
@@ -186,6 +170,7 @@ function showLoginScreen() {
   $("#map").hide();
   $("#profile").hide();
   $("#header").hide();
+  $("#header2").show();
   $("#signUp").hide();
 }
 
@@ -198,6 +183,7 @@ function showSignUpScreen() {
   $("#map").hide();
   $("#profile").hide();
   $("#header").hide();
+  $("#header2").show();
   $("#signUp").show();
 }
 
@@ -209,6 +195,7 @@ function showStartScreen() {
   $("#profile").hide();
   $("#header").hide();
   $("#navbar").hide();
+  $("#header2").show();
   $("#map").hide();
 }
 
@@ -219,6 +206,7 @@ function showGameScreen() {
   $("#profile").hide();
   $("#navbar").show();
   $("#header").show();
+  $("#header2").hide();
 }
 
 function showAboutScreen() {
@@ -238,6 +226,7 @@ function showMapScreen() {
   $("#profile").hide();
   $("#navbar").show();
   $("#header").show();
+  $("#header2").hide();
 }
 
 function showProfileScreen() {
@@ -247,6 +236,7 @@ function showProfileScreen() {
   $("#profile").show();
   $("#navbar").show();
   $("#header").show();
+  $("#header2").hide();
 }
 
 function initMap() {
@@ -260,64 +250,70 @@ function initMap() {
     heading: 180 // Infallsvinkeln sätts till 9
   });
 
-  var infoLocation1 = new google.maps.InfoWindow({
-    content: "This beacon is located at R1"
+  var infomarker1 = new google.maps.InfoWindow({
+    content: "This beacon is located at Borggården"
   });
 
-  var infoLocation2 = new google.maps.InfoWindow({
-    content: "This beacon is located at R2"
-  });
-
-  var infoLocation3 = new google.maps.InfoWindow({
-    content: "This beacon is located at R3"
-  });
-
-  var location1 = new google.maps.Marker({
-    draggable: false,
-    animation: google.maps.Animation.DROP,
+  var marker1 = new google.maps.Marker({
     position: { lat: 59.34738170626336, lng: 18.073741370144717 },
     map: map
   });
-  var location2 = new google.maps.Marker({
-    draggable: false,
-    animation: google.maps.Animation.DROP,
+  marker1.addListener("click", function() {
+    infomarker1.open(map, marker1);
+  });
+
+  var infomarker2 = new google.maps.InfoWindow({
+    content: "This beacon is located at Nymble"
+  });
+
+  var marker2 = new google.maps.Marker({
     position: { lat: 59.34739947036459, lng: 18.07094813798676 },
     map: map
   });
-  var location3 = new google.maps.Marker({
-    draggable: false,
-    animation: google.maps.Animation.DROP,
+  marker2.addListener("click", function() {
+    infomarker2.open(map, marker2);
+  });
+
+  var infomarker3 = new google.maps.InfoWindow({
+    content: "This beacon is located at Teknikringen"
+  });
+
+  var marker3 = new google.maps.Marker({
     position: { lat: 59.349341228486146, lng: 18.071291460740667 },
     map: map
   });
 
-  location1.addEventListener("click", function() {
-    alert("test");
-    // infoLocation1.open(map, location1);
+  marker3.addListener("click", function() {
+    infomarker3.open(map, marker3);
   });
 
-  location2.addEventListener("click", function() {
-    alert("test");
-    // infoLocation2.open(map, location2);
-  });
+  //infoWindow = new google.maps.InfoWindow;
 
-  location3.addEventListener("click", function() {
-    alert("test");
-    // infoLocation3.open(map, location3);
-  });
+  // Finding my locations  DOESN'T WORK BECAUSE OF SECURE ORIGIN FAILURE
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(success => {
+  //       console.log("success");
 
-  // var infoLocation1 = new google.maps.InfoWindow({
-  // 	content: "hej"
-  // });
+  //     }, failure => {
+  //       if (failure.message.startsWith("Only secure origins are allowed")) {
+  //         console.log("failure");
+  //       } else {
+  //         console.log(failure.message);
+  //       }
+  //     });
+  //   } else {
+  //     // Browser doesn't support Geolocation
+  //     handleLocationError(false, infoWindow, map.getCenter());
+  //   }
+  // }
 
-  // var location1 = new google.maps.Marker({
-  // 	position: { lat: 59.34937951555808, lng: 18.07118417238007 },
-  // 	map: map,
-  // 	title: 'Uluru (Ayers Rock)'
-  // });
-  // marker.addListener('click', function () {
-  // 	infowindow.open(map, location1);
-  // });
+  // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  //   infoWindow.setPosition(pos);
+  //   infoWindow.setContent(browserHasGeolocation ?
+  //     'Error: The Geolocation service failed.' :
+  //     'Error: Your browser doesn\'t support geolocation.');
+  //   infoWindow.open(map);
+  // }
 }
 
 // Regions that define which pa to show for each beacon.
@@ -504,10 +500,6 @@ document.getElementById("sportsQuiz").addEventListener("click", function() {
   showGameScreen();
 });
 
-document.getElementById("loginButton").addEventListener("click", function() {
-  login();
-});
-
 // document.getElementById('aboutButton').addEventListener("click", function () {
 //   showAboutScreen();
 // });
@@ -538,10 +530,6 @@ document.getElementById("signUpButton").addEventListener("click", function() {
 
 document.getElementById("backToLogin").addEventListener("click", function() {
   showLoginScreen();
-});
-
-document.getElementById("register").addEventListener("click", function() {
-  signUp();
 });
 
 const userName = document.getElementById("displayUser");
@@ -577,35 +565,52 @@ function setupUI(user) {
 
 document.getElementById("testAdd").addEventListener("click", registerAnswer);
 
-function registerAnswer() {
-  let testResults = 2;
+function registerAnswer(result) {
   let uid = auth.currentUser.uid;
   let scores = 0;
-  //get the users score
-  db.collection("users")
-    .doc(uid)
-    .get()
-    .then(doc => {
-      scores = doc.data().scores;
-    });
+  let oldCurrency = 0;
 
   if (currentQuiz == "history") {
     db.collection("users")
       .doc(uid)
-      .update({
-        "scores.history": testResults
+      .get()
+      .then(doc => {
+        oldCurrency = doc.data().scores.history;
+      })
+      .then(() => {
+        db.collection("users")
+          .doc(uid)
+          .update({
+            "scores.history": result + oldCurrency
+          });
       });
   } else if (currentQuiz == "science") {
     db.collection("users")
       .doc(uid)
-      .update({
-        "scores.science": testResults
+      .get()
+      .then(doc => {
+        oldCurrency = doc.data().scores.science;
+      })
+      .then(() => {
+        db.collection("users")
+          .doc(uid)
+          .update({
+            "scores.science": result + oldCurrency
+          });
       });
   } else {
     db.collection("users")
       .doc(uid)
-      .update({
-        "scores.sports": testResults
+      .get()
+      .then(doc => {
+        oldCurrency = doc.data().scores.sports;
+      })
+      .then(() => {
+        db.collection("users")
+          .doc(uid)
+          .update({
+            "scores.sports": result + oldCurrency
+          });
       });
   }
 }

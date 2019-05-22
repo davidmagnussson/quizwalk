@@ -111,6 +111,14 @@
       li {
         padding: 20px;
       }
+
+      #logo {
+        text-align: center;
+      }
+
+      h2 {
+        color: #179fb5;
+      }
     </style>
 
     <script>
@@ -127,7 +135,7 @@
           answer.style.backgroundColor = "#50C878";
           answer.style.color = "#eee";
           answer.style.fontWeight = "bold";
-          registerAnswer(question);
+          correctAnswer();
         } else {
           answer.style.backgroundColor = "#e94057";
           answer.style.color = "#eee";
@@ -146,10 +154,20 @@
   </head>
 
   <body>
+    <div id="header2" style="display: none">
+      <nav id="navbarHeader">
+        <img
+          id="logo"
+          style="max-height: 60px; max-width: 165px;"
+          src="./photos/logo.png"
+        />
+      </nav>
+    </div>
+
     <!-- Login -->
     <div id="login">
       <div style="text-align: center; margin-top: 100px">
-        <h2>Login to play Quizwalk</h2>
+        <h2>Login to play</h2>
         <p style="margin-top: 50px">
           <ons-input
             id="email"
@@ -223,7 +241,7 @@
     </div>
 
     <div id="startpage" style="display: none">
-      <h1>Pick a subject for your Quiz!</h1>
+      <h2 class="my-5">Pick a subject!</h2>
       <ul>
         <li>
           <button
@@ -261,9 +279,13 @@
     <div id="header" style="display: none">
       <nav id="navbarHeader" class="navbar">
         <button class="btn btn-danger" id="exitGame">
-          <span>Exit game</span>
+          <span>Cancel Quiz</span>
         </button>
-        <h3 id="headerText">Tipsrundan</h3>
+        <img
+          id="logo"
+          style="max-height: 60px; max-width: 165px;"
+          src="./photos/logo.png"
+        />
       </nav>
       <!-- <button>Exit game</button> -->
     </div>
@@ -271,12 +293,15 @@
     <div id="game" style="display: none">
       <div class="my-page" id="page-default">
         <div class="my-header">
-          <h1>Welcome to Tipsrundan!</h1>
+          <h2 class="my-5">Welcome to QuizWalk!</h2>
         </div>
-        <div><img src="tipspromenad.jpeg" /></div>
+        <div><img src="./photos/walk.gif" /></div>
+
         <div class="my-content">
-          <h3>Each room contains a question with multi-choice answers</h3>
-          <h4>Can you get them all right??</h4>
+          <p style="color:grey;">
+            Each place contains a question with multi-choice answers, check the
+            map to find them!
+          </p>
         </div>
       </div>
 
@@ -460,13 +485,20 @@
         aria-label="Basic example"
       >
         <button class="btn btn-info nav" id="navMap">
-          <span class="ml-1"><i class="material-icons">place</i>Map</span>
+          <span class="ml-1" style="color:#FFFFA2;"
+            ><i class="material-icons" style="color:#FFFFA2;">place</i>Map</span
+          >
         </button>
         <button class="btn btn-info nav" id="navQuiz">
-          <span class="ml-1"><i class="material-icons">help</i>Quiz</span>
+          <span class="ml-1" style="color:#FFFFA2;"
+            ><i class="material-icons" style="color:#FFFFA2;">help</i>Quiz</span
+          >
         </button>
         <button class="btn btn-info nav" id="navProfile">
-          <span><i class="material-icons">person_pin</i>Profile</span>
+          <span style="color:#FFFFA2;"
+            ><i class="material-icons" style="color:#FFFFA2;">person_pin</i
+            >Profile</span
+          >
         </button>
       </div>
     </div>
