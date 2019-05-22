@@ -262,67 +262,75 @@ function initMap() {
     heading: 180 // Infallsvinkeln sätts till 9
   });
 
-  var infoLocation1 = new google.maps.InfoWindow({
-    content: "This beacon is located at R1"
+  var infomarker1 = new google.maps.InfoWindow({
+    content: "This beacon is located at Borggården"
   });
 
-  var infoLocation2 = new google.maps.InfoWindow({
-    content: "This beacon is located at R2"
-  });
-
-  var infoLocation3 = new google.maps.InfoWindow({
-    content: "This beacon is located at R3"
-  });
-
-  var location1 = new google.maps.Marker({
-    draggable: false,
-    animation: google.maps.Animation.DROP,
+  var marker1 = new google.maps.Marker({
     position: { lat: 59.34738170626336, lng: 18.073741370144717 },
-    map: map
+    map: map,
   });
-  var location2 = new google.maps.Marker({
-    draggable: false,
-    animation: google.maps.Animation.DROP,
+  marker1.addListener('click', function () {
+    infomarker1.open(map, marker1);
+  });
+
+
+  var infomarker2 = new google.maps.InfoWindow({
+    content: "This beacon is located at Nymble"
+  });
+
+  var marker2 = new google.maps.Marker({
     position: { lat: 59.34739947036459, lng: 18.07094813798676 },
-    map: map
+    map: map,
   });
-  var location3 = new google.maps.Marker({
-    draggable: false,
-    animation: google.maps.Animation.DROP,
+  marker2.addListener('click', function () {
+    infomarker2.open(map, marker2);
+  });
+
+  var infomarker3 = new google.maps.InfoWindow({
+    content: "This beacon is located at Teknikringen"
+  });
+
+  var marker3 = new google.maps.Marker({
     position: { lat: 59.349341228486146, lng: 18.071291460740667 },
-    map: map
+    map: map,
   });
 
-  location1.addEventListener('click', function () {
-    alert("test");
-    // infoLocation1.open(map, location1);
+  marker3.addListener('click', function () {
+    infomarker3.open(map, marker3);
   });
 
-  location2.addEventListener('click', function () {
-    alert("test");
-    // infoLocation2.open(map, location2);
-  });
+  infoWindow = new google.maps.InfoWindow;
 
-  location3.addEventListener('click', function () {
-    alert("test");
-    // infoLocation3.open(map, location3);
-  });
+  // Finding my locations  DOESN'T WORK BECAUSE OF SECURE ORIGIN FAILURE
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(success => {
+  //       console.log("success");
 
-  // var infoLocation1 = new google.maps.InfoWindow({
-  // 	content: "hej"
-  // });
+  //     }, failure => {
+  //       if (failure.message.startsWith("Only secure origins are allowed")) {
+  //         console.log("failure");
+  //       } else {
+  //         console.log(failure.message);
+  //       }
+  //     });
+  //   } else {
+  //     // Browser doesn't support Geolocation
+  //     handleLocationError(false, infoWindow, map.getCenter());
+  //   }
+  // }
 
-  // var location1 = new google.maps.Marker({
-  // 	position: { lat: 59.34937951555808, lng: 18.07118417238007 },
-  // 	map: map,
-  // 	title: 'Uluru (Ayers Rock)'
-  // });
-  // marker.addListener('click', function () {
-  // 	infowindow.open(map, location1);
-  // });
+  // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  //   infoWindow.setPosition(pos);
+  //   infoWindow.setContent(browserHasGeolocation ?
+  //     'Error: The Geolocation service failed.' :
+  //     'Error: Your browser doesn\'t support geolocation.');
+  //   infoWindow.open(map);
+  // }
+
+
+  // Regions that define which page to show for each beacon.
 }
-
-// Regions that define which pa to show for each beacon.
 app.beaconRegions = [
   {
     id: "firstQuestion",
