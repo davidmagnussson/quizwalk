@@ -1,368 +1,547 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=yes,
+		initial-scale=1.0"
+    />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, user-scalable=yes,
-		initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/onsenui/css/onsen-css-components.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
 
-  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+    <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-  <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Tipsrundan</title>
 
-  <title>Tipsrundan</title>
+    <style>
+      @import "page.css";
 
-  <style>
-    @import "page.css";
-
-    body {
-      text-align: center;
-    }
-
-    #my-header {
-      background-image: url("./photos/questionmark.png");
-    }
-
-    ons-page {
-      align-content: center;
-      text-align: center;
-    }
-
-    i.fas {
-      color: #e94057;
-      margin: 5px;
-    }
-
-    h1 {
-      color: #e94057;
-    }
-
-    img {
-      height: 200px;
-      width: 200px;
-    }
-
-    #navbar {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      z-index: 5;
-    }
-
-    button {
-      text-align: center;
-    }
-
-    .btn-group.special {
-      display: flex;
-    }
-
-    .special .btn {
-      flex: 1
-    }
-
-    #map {
-      height: 100vh;
-      width: 100%;
-    }
-
-    #profilePic {
-      border-radius: 50%;
-      padding: 20px;
-    }
-
-    #logout {
-      margin: auto;
-      text-align: center;
-    }
-
-    #headerText {
-      text-align: center;
-      color: white;
-    }
-
-    #navbarHeader {
-      background-color: #17a2b8;
-    }
-
-    ul {
-      list-style-type: none;
-      padding-left: 0px;
-    }
-
-    li {
-      padding: 20px;
-    }
-  </style>
-
-  <script>
-    // Redirect console if runng fromvothings Workbench.
-    if (window.hyper) {
-      console.log = hyper.log;
-    }
-
-    function checkAnswer(answer, question) {
-      let check = answer.classList.contains("right");
-      console.log(check);
-
-      if (check) {
-        answer.style.backgroundColor = "#50C878";
-        answer.style.color = "#eee";
-        answer.style.fontWeight = "bold";
-      } else {
-        answer.style.backgroundColor = "#e94057";
-        answer.style.color = "#eee";
-        answer.style.fontWeight = "bold";
+      body {
+        text-align: center;
       }
 
-      if (question == 'first') {
-        answeredQuestions.push('firstQuestion');
-      } else if (question == 'second') {
-        answeredQuestions.push('secondQuestion');
-      } else {
-        answeredQuestions.push('thirdQuestion');
+      #my-header {
+        background-image: url("./photos/questionmark.png");
       }
 
-    }
-  </script>
-</head>
+      ons-page {
+        align-content: center;
+        text-align: center;
+      }
 
-<body>
+      i.fas {
+        color: #e94057;
+        margin: 5px;
+      }
 
-  <!-- Login -->
-  <div id="login">
-    <div style="text-align: center; margin-top: 100px">
-      <h2>Login to play Quizwalk</h2>
-      <p style="margin-top: 50px">
-        <ons-input id="username" placeholder="Username" modifier="underbar"></ons-input>
-      </p>
-      <p>
-        <ons-input id="password" placeholder="Password" type="password" modifier="underbar">
-        </ons-input>
-      </p>
-      <p>
-        <ons-button id="loginButton">Login</ons-button>
-        <!-- <ons-button id="aboutButton">About</ons-button> -->
-        <ons-button id="signUpButton">Sign up</ons-button>
-      </p>
-    </div>
-  </div>
+      h1 {
+        color: #e94057;
+      }
 
-  <!-- Sign up -->
-  <div id="signUp">
-    <div style="text-align: center; margin-top: 100px">
-      <h2>Sign up to get started!</h2>
-      <p style="margin-top: 50px">
-        <ons-input id="signUpUsername" placeholder="Username" modifier="underbar"></ons-input>
-      </p>
-      <p>
-        <ons-input id="signUpPassword" placeholder="Password" type="password" modifier="underbar">
-        </ons-input>
-      </p>
-      <p>
-        <ons-input id="email" placeholder="myemail@gmail.com" type="email" modifier="underbar">
-        </ons-input>
-      </p>
-      <p>
-        <ons-button id="Register">Register</ons-button>
-        <ons-button id="backToLogin">Back</ons-button>
-      </p>
-    </div>
-  </div>
+      img {
+        height: 200px;
+        width: 200px;
+      }
 
-  <div id="about" style="display: none">
-    <div style="margin-top: 30px;">
-      <h2>What is <i>QuizWalk</i></h2>
-      <span>Lorem sdiaosfäahdvöqehrvkqehrvlkhqelrvhqlkehvlkqhjv</span>
-      <button id="aboutBack" class="btn btn-info" style="margin-top: 30px;">Back</button>
-    </div>
-  </div>
+      #navbar {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 5;
+      }
 
-  <div id="startpage" style="display: none">
-    <h1>Pick a subject for your Quiz!</h1>
-    <ul>
-      <li><button type="button" class="btn btn-outline-info btn-lg" id="historyQuiz">History</button></li>
-      <li><button type="button" class="btn btn-outline-info btn-lg" id="scienceQuiz">Science</button></li>
-      <li><button type="button" class="btn btn-outline-info btn-lg" id="sportsQuiz">Sports</button></li>
-    </ul>
-  </div>
+      button {
+        text-align: center;
+      }
 
-  <!-- Header -->
-  <div id="header" style="display: none">
-    <nav id="navbarHeader" class="navbar">
-      <button class="btn btn-danger" id="exitGame"><span>Exit game</span></button>
-      <h3 id="headerText">Tipsrundan</h3>
-    </nav>
-    <!-- <button>Exit game</button> -->
-  </div>
+      .btn-group.special {
+        display: flex;
+      }
 
-  <div id="game" style="display: none">
-    <div class="my-page" id="page-default">
-      <div class="my-header">
-        <h1>Welcome to Tipsrundan!</h1>
-      </div>
-      <div><img src="tipspromenad.jpeg" /></div>
-      <div class="my-content">
-        <h3>Each room contains a question with multi-choice answers</h3>
-        <h4>Can you get them all right??</h4>
+      .special .btn {
+        flex: 1;
+      }
+
+      #map {
+        height: 100vh;
+        width: 100%;
+      }
+
+      #profilePic {
+        border-radius: 50%;
+        padding: 20px;
+      }
+
+      #logout {
+        margin: auto;
+        text-align: center;
+      }
+
+      #headerText {
+        text-align: center;
+        color: white;
+      }
+
+      #navbarHeader {
+        background-color: #17a2b8;
+      }
+
+      ul {
+        list-style-type: none;
+        padding-left: 0px;
+      }
+
+      li {
+        padding: 20px;
+      }
+    </style>
+
+    <script>
+      // Redirect console if runng fromvothings Workbench.
+      if (window.hyper) {
+        console.log = hyper.log;
+      }
+
+      function checkAnswer(answer, question) {
+        let check = answer.classList.contains("right");
+        console.log(check);
+
+        if (check) {
+          answer.style.backgroundColor = "#50C878";
+          answer.style.color = "#eee";
+          answer.style.fontWeight = "bold";
+          registerAnswer(question);
+        } else {
+          answer.style.backgroundColor = "#e94057";
+          answer.style.color = "#eee";
+          answer.style.fontWeight = "bold";
+        }
+
+        if (question == "first") {
+          answeredQuestions.push("firstQuestion");
+        } else if (question == "second") {
+          answeredQuestions.push("secondQuestion");
+        } else {
+          answeredQuestions.push("thirdQuestion");
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- Login -->
+    <div id="login">
+      <div style="text-align: center; margin-top: 100px">
+        <h2>Login to play Quizwalk</h2>
+        <p style="margin-top: 50px">
+          <ons-input
+            id="email"
+            placeholder="Email"
+            modifier="underbar"
+          ></ons-input>
+        </p>
+        <p>
+          <ons-input
+            id="password"
+            placeholder="Password"
+            type="password"
+            modifier="underbar"
+          >
+          </ons-input>
+        </p>
+        <p>
+          <ons-button id="loginButton">Login</ons-button>
+          <!-- <ons-button id="aboutButton">About</ons-button> -->
+          <ons-button id="signUpButton">Sign up</ons-button>
+        </p>
+        <p id="loginError" style="color: #D8000C"></p>
       </div>
     </div>
 
-    <!-- First question -->
-    <div class="my-page" id="firstQuestion">
-      <ons-page>
+    <!-- Sign up -->
+    <div id="signUp" style="display: none;">
+      <div style="text-align: center; margin-top: 100px">
+        <h2>Sign up to get started!</h2>
+        <p style="margin-top: 50px">
+          <ons-input
+            id="signUpUsername"
+            placeholder="Username"
+            modifier="underbar"
+          ></ons-input>
+        </p>
+        <p>
+          <ons-input
+            id="signUpPassword"
+            placeholder="Password"
+            type="password"
+            modifier="underbar"
+          >
+          </ons-input>
+        </p>
+        <p>
+          <ons-input
+            id="signUpEmail"
+            placeholder="myemail@gmail.com"
+            type="email"
+            modifier="underbar"
+          >
+          </ons-input>
+        </p>
+        <p>
+          <ons-button id="register">Register</ons-button>
+          <ons-button id="backToLogin">Back</ons-button>
+        </p>
+        <p id="signupError" style="color: #D8000C"></p>
+      </div>
+    </div>
+
+    <div id="about" style="display: none">
+      <div style="margin-top: 30px;">
+        <h2>What is <i>QuizWalk</i></h2>
+        <span>Lorem sdiaosfäahdvöqehrvkqehrvlkhqelrvhqlkehvlkqhjv</span>
+        <button id="aboutBack" class="btn btn-info" style="margin-top: 30px;">
+          Back
+        </button>
+      </div>
+    </div>
+
+    <div id="startpage" style="display: none">
+      <h1>Pick a subject for your Quiz!</h1>
+      <ul>
+        <li>
+          <button
+            type="button"
+            class="btn btn-outline-info btn-lg"
+            id="historyQuiz"
+          >
+            History
+          </button>
+          <ons-button id="testAdd">add data</ons-button>
+        </li>
+
+        <li>
+          <button
+            type="button"
+            class="btn btn-outline-info btn-lg"
+            id="scienceQuiz"
+          >
+            Science
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="btn btn-outline-info btn-lg"
+            id="sportsQuiz"
+          >
+            Sports
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Header -->
+    <div id="header" style="display: none">
+      <nav id="navbarHeader" class="navbar">
+        <button class="btn btn-danger" id="exitGame">
+          <span>Exit game</span>
+        </button>
+        <h3 id="headerText">Tipsrundan</h3>
+      </nav>
+      <!-- <button>Exit game</button> -->
+    </div>
+
+    <div id="game" style="display: none">
+      <div class="my-page" id="page-default">
         <div class="my-header">
-          <h1><i class="fas fa-street-view"></i> First Question</h1>
-          <h1><i class="fas fa-question"></i>Question:</h1>
-          <h3 id="question1"></h3>
+          <h1>Welcome to Tipsrundan!</h1>
         </div>
-        <div><img src="./photos/questionmark.png" /></div>
+        <div><img src="tipspromenad.jpeg" /></div>
         <div class="my-content">
-          <ons-list id="poets-list">
-            <ons-list-item tappable id="q1a1" class="questions" onClick="checkAnswer(this, 'first')">
-              <h3 id="question1alt1"></h3>
-            </ons-list-item>
-
-            <ons-list-item tappable id="q1a2" class="questions" onClick="checkAnswer(this, 'first')">
-              <h3 id="question1alt2"></h3>
-            </ons-list-item>
-
-            <ons-list-item tappable id="q1a3" class="questions" onClick="checkAnswer(this, 'first')">
-              <h3 id="question1alt3"></h3>
-            </ons-list-item>
-
-            <ons-list-item tappable id="q1a4" class="questions" onClick="checkAnswer(this, 'first')">
-              <h3 id="question1alt4"></h3>
-            </ons-list-item>
-          </ons-list>
+          <h3>Each room contains a question with multi-choice answers</h3>
+          <h4>Can you get them all right??</h4>
         </div>
-      </ons-page>
+      </div>
+
+      <!-- First question -->
+      <div class="my-page" id="firstQuestion">
+        <ons-page>
+          <div class="my-header">
+            <h1><i class="fas fa-street-view"></i> First Question</h1>
+            <h1><i class="fas fa-question"></i>Question:</h1>
+            <h3 id="question1"></h3>
+          </div>
+          <div><img src="./photos/questionmark.png" /></div>
+          <div class="my-content">
+            <ons-list id="poets-list">
+              <ons-list-item
+                tappable
+                id="q1a1"
+                class="questions"
+                onClick="checkAnswer(this, 'first')"
+              >
+                <h3 id="question1alt1"></h3>
+              </ons-list-item>
+
+              <ons-list-item
+                tappable
+                id="q1a2"
+                class="questions"
+                onClick="checkAnswer(this, 'first')"
+              >
+                <h3 id="question1alt2"></h3>
+              </ons-list-item>
+
+              <ons-list-item
+                tappable
+                id="q1a3"
+                class="questions"
+                onClick="checkAnswer(this, 'first')"
+              >
+                <h3 id="question1alt3"></h3>
+              </ons-list-item>
+
+              <ons-list-item
+                tappable
+                id="q1a4"
+                class="questions"
+                onClick="checkAnswer(this, 'first')"
+              >
+                <h3 id="question1alt4"></h3>
+              </ons-list-item>
+            </ons-list>
+          </div>
+        </ons-page>
+      </div>
+
+      <!-- Second question -->
+      <div class="my-page" id="secondQuestion">
+        <ons-page>
+          <div class="my-header">
+            <h1><i class="fas fa-street-view"></i>Second Question</h1>
+            <h1><i class="fas fa-question"></i>Question:</h1>
+            <h3 id="question2"></h3>
+          </div>
+          <div><img src="./photos/questionmark.png" /></div>
+          <div class="my-content">
+            <ons-list id="islands-list">
+              <ons-list-item
+                tappable
+                id="q2a1"
+                class="questions"
+                onClick="checkAnswer(this, 'second')"
+              >
+                <h3 id="question2alt1"></h3>
+              </ons-list-item>
+
+              <ons-list-item
+                tappable
+                id="q2a2"
+                class="questions"
+                onClick="checkAnswer(this, 'second')"
+              >
+                <h3 id="question2alt2"></h3>
+              </ons-list-item>
+
+              <ons-list-item
+                tappable
+                id="q2a3"
+                class="questions"
+                onClick="checkAnswer(this, 'second')"
+              >
+                <h3 id="question2alt3"></h3>
+              </ons-list-item>
+
+              <ons-list-item
+                tappable
+                id="q2a4"
+                class="questions"
+                onClick="checkAnswer(this, 'second')"
+              >
+                <h3 id="question2alt4"></h3>
+              </ons-list-item>
+            </ons-list>
+          </div>
+        </ons-page>
+      </div>
+
+      <!-- Third question -->
+      <div class="my-page" id="thirdQuestion">
+        <ons-page>
+          <div class="my-header">
+            <h1><i class="fas fa-street-view"></i>Third Question</h1>
+            <h1><i class="fas fa-question"></i>Question:</h1>
+            <h3 id="question3"></h3>
+          </div>
+          <div><img src="./photos/questionmark.png" /></div>
+          <div id="my-content">
+            <ons-list id="actors-list">
+              <ons-list-item
+                tappable
+                id="q3a1"
+                class="questions"
+                onClick="checkAnswer(this, 'third')"
+              >
+                <h3 id="question3alt1"></h3>
+              </ons-list-item>
+
+              <ons-list-item
+                tappable
+                id="q3a2"
+                class="questions"
+                onClick="checkAnswer(this, 'third')"
+              >
+                <h3 id="question3alt2"></h3>
+              </ons-list-item>
+
+              <ons-list-item
+                tappable
+                id="q3a3"
+                class="questions"
+                onClick="checkAnswer(this, 'third')"
+              >
+                <h3 id="question3alt3"></h3>
+              </ons-list-item>
+
+              <ons-list-item
+                tappable
+                id="q3a4"
+                class="questions"
+                onClick="checkAnswer(this, 'third')"
+              >
+                <h3 id="question3alt4"></h3>
+              </ons-list-item>
+            </ons-list>
+          </div>
+        </ons-page>
+      </div>
+
+      <!-- ALREADY ANSWERED -->
+      <div class="my-page" id="alreadyAnswered" style="display: none">
+        <ons-page>
+          <div>
+            <h1>Oops!</h1>
+            <h2>
+              It seems like you've already answered this question, please go
+              find another beacon
+            </h2>
+            <h3>
+              You can find the locations of the beacon on the <i>Map</i> tab!
+              Good luck
+            </h3>
+          </div>
+        </ons-page>
+      </div>
     </div>
 
-    <!-- Second question -->
-    <div class="my-page" id="secondQuestion">
-      <ons-page>
-        <div class="my-header">
-          <h1><i class="fas fa-street-view"></i>Second Question</h1>
-          <h1><i class="fas fa-question"></i>Question:</h1>
-          <h3 id="question2"></h3>
-        </div>
-        <div><img src="./photos/questionmark.png" /></div>
-        <div class="my-content">
-          <ons-list id="islands-list">
-            <ons-list-item tappable id="q2a1" class="questions" onClick="checkAnswer(this, 'second')">
-              <h3 id="question2alt1"></h3>
-            </ons-list-item>
-
-            <ons-list-item tappable id="q2a2" class="questions" onClick="checkAnswer(this, 'second')">
-              <h3 id="question2alt2"></h3>
-            </ons-list-item>
-
-            <ons-list-item tappable id="q2a3" class="questions" onClick="checkAnswer(this, 'second')">
-              <h3 id="question2alt3"></h3>
-            </ons-list-item>
-
-            <ons-list-item tappable id="q2a4" class="questions" onClick="checkAnswer(this, 'second')">
-              <h3 id="question2alt4"></h3>
-            </ons-list-item>
-          </ons-list>
-        </div>
-      </ons-page>
+    <!-- Navbar and navbar divs -->
+    <div id="navbar" style="display: none">
+      <div
+        class="btn-group special btn-group-lg"
+        id="buttonGroup"
+        role="group"
+        aria-label="Basic example"
+      >
+        <button class="btn btn-info nav" id="navMap">
+          <span class="ml-1"><i class="material-icons">place</i>Map</span>
+        </button>
+        <button class="btn btn-info nav" id="navQuiz">
+          <span class="ml-1"><i class="material-icons">help</i>Quiz</span>
+        </button>
+        <button class="btn btn-info nav" id="navProfile">
+          <span><i class="material-icons">person_pin</i>Profile</span>
+        </button>
+      </div>
     </div>
 
-    <!-- Third question -->
-    <div class="my-page" id="thirdQuestion">
-      <ons-page>
-        <div class="my-header">
-          <h1><i class="fas fa-street-view"></i>Third Question</h1>
-          <h1><i class="fas fa-question"></i>Question:</h1>
-          <h3 id="question3"></h3>
-        </div>
-        <div><img src="./photos/questionmark.png" /></div>
-        <div id="my-content">
-          <ons-list id="actors-list">
-            <ons-list-item tappable id="q3a1" class="questions" onClick="checkAnswer(this, 'third')">
-              <h3 id="question3alt1"></h3>
-            </ons-list-item>
+    <div id="map" style="display: none"></div>
+    <div id="profile" style="display: none">
+      <h2 id="displayUser">Hi {NAMN}</h2>
+      <h4>Look up your highscore!</h4>
+      <img
+        src="poet.png"
+        alt="Profile Picture"
+        id="profilePic"
+        height="20px"
+        width="20px"
+      />
+      <ul id="displayScore" class="list-group">
+        <li class="list-group-item">History quiz:<i>{score}</i></li>
+        <li class="list-group-item">Science quiz:<i>{score}</i></li>
+        <li class="list-group-item">Sports quiz:<i>{score}</i></li>
+      </ul>
 
-            <ons-list-item tappable id="q3a2" class="questions" onClick="checkAnswer(this, 'third')">
-              <h3 id="question3alt2"></h3>
-            </ons-list-item>
-
-            <ons-list-item tappable id="q3a3" class="questions" onClick="checkAnswer(this, 'third')">
-              <h3 id="question3alt3"></h3>
-            </ons-list-item>
-
-            <ons-list-item tappable id="q3a4" class="questions" onClick="checkAnswer(this, 'third')">
-              <h3 id="question3alt4"></h3>
-            </ons-list-item>
-          </ons-list>
-        </div>
-      </ons-page>
+      <button class="btn btn-danger nav mt-3" id="logout">
+        <span class="ml-2">Logout</span>
+      </button>
     </div>
 
-    <!-- ALREADY ANSWERED -->
-    <div class="my-page" id="alreadyAnswered" style="display: none">
-      <ons-page>
-        <div>
-          <h1>Oops!</h1>
-          <h2>It seems like you've already answered this question, please go find another beacon</h2>
-          <h3>You can find the locations of the beacon on the <i>Map</i> tab! Good luck</h3>
-        </div>
-      </ons-page>
-    </div>
-  </div>
+    <ons-alert-dialog id="my-alert-dialog" modifier="success thick">
+      <div class="alert-dialog-title">Exit game!</div>
+      <div class="alert-dialog-content">
+        Are you sure you want to exit current game? Your progress might be lost!
+      </div>
+      <div class="alert-dialog-footer">
+        <ons-alert-dialog-button onclick="alertChoice(false)"
+          >Cancel</ons-alert-dialog-button
+        >
+        <ons-alert-dialog-button onclick="alertChoice(true)"
+          >OK</ons-alert-dialog-button
+        >
+      </div>
+    </ons-alert-dialog>
 
-  <!-- Navbar and navbar divs -->
-  <div id="navbar" style="display: none">
-    <div class="btn-group special btn-group-lg" id="buttonGroup" role="group" aria-label="Basic example">
-      <button class="btn btn-info nav" id="navMap"><span class="ml-1"><i
-            class="material-icons">place</i>Map</span></button>
-      <button class="btn btn-info nav" id="navQuiz"><span class="ml-1"><i
-            class="material-icons">help</i>Quiz</span></button>
-      <button class="btn btn-info nav" id="navProfile"><span><i
-            class="material-icons">person_pin</i>Profile</span></button>
-    </div>
-  </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-storage.js"></script>
 
-  <div id="map" style="display: none">
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAXnTR9W3Pl82l6z4ZR4HeOqG-DGkgMtNs",
+        authDomain: "tipsrundan-76362.firebaseapp.com",
+        databaseURL: "https://tipsrundan-76362.firebaseio.com",
+        projectId: "tipsrundan-76362",
+        storageBucket: "tipsrundan-76362.appspot.com",
+        messagingSenderId: "1090643763325",
+        appId: "1:1090643763325:web:92344f007940b0d1"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
 
-  </div>
-  <div id="profile" style="display: none">
-    <h2>Hi {NAMN}</h2>
-    <h4>Look up your highscore!</h4>
-    <img src="poet.png" alt="Profile Picture" id="profilePic" height="20px" width="20px">
-    <ul class="list-group">
-      <li class="list-group-item">History quiz:<i>{score}</i></li>
-      <li class="list-group-item">Science quiz:<i>{score}</i></li>
-      <li class="list-group-item">Sports quiz:<i>{score}</i></li>
-    </ul>
-
-    <button class="btn btn-danger nav mt-3" id="logout"><span class="ml-2">Logout</span></button>
-  </div>
-
-  <ons-alert-dialog id="my-alert-dialog" modifier="success thick">
-    <div class="alert-dialog-title">Exit game!</div>
-    <div class="alert-dialog-content">
-      Are you sure you want to exit current game? Your progress might be lost!
-    </div>
-    <div class="alert-dialog-footer">
-      <ons-alert-dialog-button onclick="alertChoice(false)">Cancel</ons-alert-dialog-button>
-      <ons-alert-dialog-button onclick="alertChoice(true)">OK</ons-alert-dialog-button>
-    </div>
-  </ons-alert-dialog>
-
-  <script src="lib/jquery.js"></script>
-  <script src="cordova.js"></script>
-  <script src="model.js"></script>
-  <script src="app.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-</body>
-
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+    </script>
+    <script src="lib/jquery.js"></script>
+    <script src="cordova.js"></script>
+    <script src="model.js"></script>
+    <script src="app.js"></script>
+    <script src="auth.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+      async
+      defer
+    ></script>
+  </body>
 </html>

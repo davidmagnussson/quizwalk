@@ -12,40 +12,44 @@ const dialog = document.getElementById("my-alert-dialog");
 let anwerQuestion1 = false;
 let anwerQuestion2 = false;
 let anwerQuestion3 = false;
+let currentQuiz = "sports";
 
 let answeredQuestions = [];
 
 function startQuiz(subject) {
-  if (subject == 'history') {
+  if (subject == "history") {
     loadInQuiz(historyQuestions);
-  } else if (subject == 'science') {
+  } else if (subject == "science") {
     loadInQuiz(scienceQuestions);
   } else {
     loadInQuiz(sportsQuestions);
   }
 
-  enterGame();
-};
+  currentQuiz = subject;
+}
 
 function enterGame() {
   // TODO: Fyll i, ska ankallas när man startar/trycker på en kategori och börjar spela!
-};
+}
 
 function exitGame() {
-  // TODO: Fyll i, ska ankallas när man trycker exit game. Poängen resettas och man kommer tillbaka till startgamescreen  
+  // TODO: Fyll i, ska ankallas när man trycker exit game. Poängen resettas och man kommer tillbaka till startgamescreen
   dialog.show();
-};
+}
 
 function quizCompleted() {
-  let results = confirm("You have answered all questions! You can now play another quiz!");
+  /*let results = confirm(
+    "You have answered all questions! You can now play another quiz!"
+  );*/
+  registerAnswer();
+  /*
   if (results) {
     answeredQuestions = [];
     showStartScreen();
   } else {
     alert("denied");
-  }
+  }*/
 }
-
 
 function alertChoice(choice) {
   if (choice) {
@@ -66,16 +70,16 @@ function loadInQuiz(questions) {
   // LOAD IN FIRST QUESTION -------------------------------
   let alternatives = firstQuestion.alternatives;
 
-  let question1 = document.getElementById('question1');
-  let alt1 = document.getElementById('question1alt1');
-  let alt2 = document.getElementById('question1alt2');
-  let alt3 = document.getElementById('question1alt3');
-  let alt4 = document.getElementById('question1alt4');
+  let question1 = document.getElementById("question1");
+  let alt1 = document.getElementById("question1alt1");
+  let alt2 = document.getElementById("question1alt2");
+  let alt3 = document.getElementById("question1alt3");
+  let alt4 = document.getElementById("question1alt4");
 
-  let alt1div = document.getElementById('q1a1');
-  let alt2div = document.getElementById('q1a2');
-  let alt3div = document.getElementById('q1a3');
-  let alt4div = document.getElementById('q1a4');
+  let alt1div = document.getElementById("q1a1");
+  let alt2div = document.getElementById("q1a2");
+  let alt3div = document.getElementById("q1a3");
+  let alt4div = document.getElementById("q1a4");
 
   question1.innerHTML = firstQuestion.question;
   alt1.innerHTML = alternatives.one.alt;
@@ -98,16 +102,16 @@ function loadInQuiz(questions) {
   // LOAD IN SECOND QUESTION -----------------------------
   alternatives = secondQuestion.alternatives;
 
-  let question2 = document.getElementById('question2');
-  alt1 = document.getElementById('question2alt1');
-  alt2 = document.getElementById('question2alt2');
-  alt3 = document.getElementById('question2alt3');
-  alt4 = document.getElementById('question2alt4');
+  let question2 = document.getElementById("question2");
+  alt1 = document.getElementById("question2alt1");
+  alt2 = document.getElementById("question2alt2");
+  alt3 = document.getElementById("question2alt3");
+  alt4 = document.getElementById("question2alt4");
 
-  alt1div = document.getElementById('q2a1');
-  alt2div = document.getElementById('q2a2');
-  alt3div = document.getElementById('q2a3');
-  alt4div = document.getElementById('q2a4');
+  alt1div = document.getElementById("q2a1");
+  alt2div = document.getElementById("q2a2");
+  alt3div = document.getElementById("q2a3");
+  alt4div = document.getElementById("q2a4");
 
   question2.innerHTML = secondQuestion.question;
   alt1.innerHTML = alternatives.one.alt;
@@ -130,16 +134,16 @@ function loadInQuiz(questions) {
   // LOAD IN THIRD QUESTION --------------------------
   alternatives = thirdQuestion.alternatives;
 
-  let question3 = document.getElementById('question3');
-  alt1 = document.getElementById('question3alt1');
-  alt2 = document.getElementById('question3alt2');
-  alt3 = document.getElementById('question3alt3');
-  alt4 = document.getElementById('question3alt4');
+  let question3 = document.getElementById("question3");
+  alt1 = document.getElementById("question3alt1");
+  alt2 = document.getElementById("question3alt2");
+  alt3 = document.getElementById("question3alt3");
+  alt4 = document.getElementById("question3alt4");
 
-  alt1div = document.getElementById('q3a1');
-  alt2div = document.getElementById('q3a2');
-  alt3div = document.getElementById('q3a3');
-  alt4div = document.getElementById('q3a4');
+  alt1div = document.getElementById("q3a1");
+  alt2div = document.getElementById("q3a2");
+  alt3div = document.getElementById("q3a3");
+  alt4div = document.getElementById("q3a4");
 
   question3.innerHTML = thirdQuestion.question;
   alt1.innerHTML = alternatives.one.alt;
@@ -161,15 +165,15 @@ function loadInQuiz(questions) {
 }
 
 function signUp() {
-  let username = document.getElementById("signUpUsername").value
-  let password = document.getElementById("signUpPassword").value
-  let email = document.getElementById("email").value
+  let username = document.getElementById("signUpUsername").value;
+  let password = document.getElementById("signUpPassword").value;
+  let email = document.getElementById("email").value;
   console.log(username + " " + password + " " + email);
 }
 
 function login() {
-  let username = document.getElementById("username").value
-  let password = document.getElementById("password").value
+  let username = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
   console.log(username + " " + password);
 }
 
@@ -199,6 +203,7 @@ function showSignUpScreen() {
 
 function showStartScreen() {
   $("#startpage").show();
+  $("#signUp").hide();
   $("#login").hide();
   $("#game").hide();
   $("#profile").hide();
@@ -233,7 +238,7 @@ function showMapScreen() {
   $("#profile").hide();
   $("#navbar").show();
   $("#header").show();
-};
+}
 
 function showProfileScreen() {
   $("#map").hide();
@@ -286,17 +291,17 @@ function initMap() {
     map: map
   });
 
-  location1.addEventListener('click', function () {
+  location1.addEventListener("click", function() {
     alert("test");
     // infoLocation1.open(map, location1);
   });
 
-  location2.addEventListener('click', function () {
+  location2.addEventListener("click", function() {
     alert("test");
     // infoLocation2.open(map, location2);
   });
 
-  location3.addEventListener('click', function () {
+  location3.addEventListener("click", function() {
     alert("test");
     // infoLocation3.open(map, location3);
   });
@@ -340,14 +345,14 @@ app.beaconRegions = [
 // Currently displayed page.
 app.currentPage = "page-default";
 
-app.initialize = function () {
+app.initialize = function() {
   document.addEventListener("deviceready", app.onDeviceReady, false);
   app.gotoPage(app.currentPage);
 };
 
 // Called when Cordova are plugins initialised,
 // the iBeacon API is now available.
-app.onDeviceReady = function () {
+app.onDeviceReady = function() {
   // Specify a shortcut for the location manager that
   // has the iBeacon functions.
   window.locationManager = cordova.plugins.locationManager;
@@ -356,21 +361,21 @@ app.onDeviceReady = function () {
   app.startScanForBeacons();
 };
 
-app.startScanForBeacons = function () {
+app.startScanForBeacons = function() {
   //console.log('startScanForBeacons')
 
   // The delegate object contains iBeacon callback functions.
   var delegate = new cordova.plugins.locationManager.Delegate();
 
-  delegate.didDetermineStateForRegion = function (pluginResult) {
+  delegate.didDetermineStateForRegion = function(pluginResult) {
     //console.log('didDetermineStateForRegion: ' + JSON.stringify(pluginResult))
   };
 
-  delegate.didStartMonitoringForRegion = function (pluginResult) {
+  delegate.didStartMonitoringForRegion = function(pluginResult) {
     //console.log('didStartMonitoringForRegion:' + JSON.stringify(pluginResult))
   };
 
-  delegate.didRangeBeaconsInRegion = function (pluginResult) {
+  delegate.didRangeBeaconsInRegion = function(pluginResult) {
     //console.log('didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult))
     app.didRangeBeaconsInRegion(pluginResult);
   };
@@ -404,7 +409,7 @@ app.startScanForBeacons = function () {
 };
 
 // Display pages depending of which beacon is close.
-app.didRangeBeaconsInRegion = function (pluginResult) {
+app.didRangeBeaconsInRegion = function(pluginResult) {
   //console.log('numbeacons in region: ' + pluginResult.beacons.length)
 
   // There must be a beacon within range.
@@ -430,23 +435,23 @@ app.didRangeBeaconsInRegion = function (pluginResult) {
     return;
   }
 
-  // If the beacon represents the current page but is far away,  
+  // If the beacon represents the current page but is far away,
   if (
     (beacon.proximity == "ProximityFar" ||
       beacon.proximity == "ProximityNear") &&
-    (app.currentPage == pageId || app.currentPage == 'alreadyAnswered')
+    (app.currentPage == pageId || app.currentPage == "alreadyAnswered")
   ) {
     app.gotoPage("page-default");
     return;
   }
 };
 
-app.gotoPage = function (pageId) {
+app.gotoPage = function(pageId) {
   let check_if_answered = answeredQuestions.includes(pageId);
   console.log(pageId);
 
   if (check_if_answered) {
-    show = 'alreadyAnswered';
+    show = "alreadyAnswered";
     app.hidePage(app.currentPage);
     app.showPage(show);
     app.currentPage = show;
@@ -457,21 +462,25 @@ app.gotoPage = function (pageId) {
   }
 };
 
-app.showPage = function (pageId) {
+app.showPage = function(pageId) {
   document.getElementById(pageId).style.display = "block";
-  $('.questions').css('color', 'black');
-  $('.questions').css('background-color', 'white');
-  $('.questions').css('font-weight', 'normal');
+  $(".questions").css("color", "black");
+  $(".questions").css("background-color", "white");
+  $(".questions").css("font-weight", "normal");
 
-  if (pageId == 'page-default') {
+  if (pageId == "page-default") {
     // Listener to check if answered all questions
-    if (answeredQuestions.includes('firstQuestion') && answeredQuestions.includes('secondQuestion') && answeredQuestions.includes('thirdQuestion')) {
+    if (
+      answeredQuestions.includes("firstQuestion") &&
+      answeredQuestions.includes("secondQuestion") &&
+      answeredQuestions.includes("thirdQuestion")
+    ) {
       quizCompleted();
     }
   }
 };
 
-app.hidePage = function (pageId) {
+app.hidePage = function(pageId) {
   document.getElementById(pageId).style.display = "none";
 };
 
@@ -482,56 +491,121 @@ showLoginScreen();
 // initMap();
 
 // Listeners for all buttons/events
-document.getElementById('historyQuiz').addEventListener("click", function () {
-  startQuiz('history');
+document.getElementById("historyQuiz").addEventListener("click", function() {
+  startQuiz("history");
   showGameScreen();
 });
-document.getElementById('scienceQuiz').addEventListener("click", function () {
-  startQuiz('science');
+document.getElementById("scienceQuiz").addEventListener("click", function() {
+  startQuiz("science");
   showGameScreen();
 });
-document.getElementById('sportsQuiz').addEventListener("click", function () {
-  startQuiz('sports');
+document.getElementById("sportsQuiz").addEventListener("click", function() {
+  startQuiz("sports");
   showGameScreen();
 });
 
-document.getElementById('loginButton').addEventListener("click", function () {
+document.getElementById("loginButton").addEventListener("click", function() {
   login();
-  showStartScreen();
 });
 
 // document.getElementById('aboutButton').addEventListener("click", function () {
 //   showAboutScreen();
 // });
 
-document.getElementById('aboutBack').addEventListener("click", function () {
+document.getElementById("aboutBack").addEventListener("click", function() {
   showLoginScreen();
 });
 
-document.getElementById('navMap').addEventListener("click", function () {
+document.getElementById("navMap").addEventListener("click", function() {
   showMapScreen();
 });
 
-document.getElementById('navQuiz').addEventListener("click", function () {
+document.getElementById("navQuiz").addEventListener("click", function() {
   showGameScreen();
 });
 
-document.getElementById('navProfile').addEventListener("click", function () {
+document.getElementById("navProfile").addEventListener("click", function() {
   showProfileScreen();
 });
 
-document.getElementById('exitGame').addEventListener("click", function () {
+document.getElementById("exitGame").addEventListener("click", function() {
   exitGame();
 });
 
-document.getElementById('signUpButton').addEventListener("click", function () {
+document.getElementById("signUpButton").addEventListener("click", function() {
   showSignUpScreen();
 });
 
-document.getElementById('backToLogin').addEventListener("click", function () {
+document.getElementById("backToLogin").addEventListener("click", function() {
   showLoginScreen();
 });
 
-document.getElementById('Register').addEventListener("click", function () {
+document.getElementById("register").addEventListener("click", function() {
   signUp();
 });
+
+const userName = document.getElementById("displayUser");
+const score = document.getElementById("displayScore");
+
+function setupUI(user) {
+  if (user) {
+    //display the users score
+    db.collection("users")
+      .doc(user.uid)
+      .get()
+      .then(doc => {
+        const scoreHtml = `<li class="list-group-item">history: ${
+          doc.data().scores.history
+        }</li>
+        <li class="list-group-item">science: ${doc.data().scores.science}</li>
+        <li class="list-group-item">sports: ${doc.data().scores.sports}</li>`;
+        score.innerHTML = scoreHtml;
+
+        //display account info
+        const nameHtml = `<span>Logged in as: ${doc.data().username}</span>
+        `;
+        userName.innerHTML = nameHtml;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  } else {
+    //hide account infos
+    userName.innerHTML = "";
+  }
+}
+
+document.getElementById("testAdd").addEventListener("click", registerAnswer);
+
+function registerAnswer() {
+  let testResults = 2;
+  let uid = auth.currentUser.uid;
+  let scores = 0;
+  //get the users score
+  db.collection("users")
+    .doc(uid)
+    .get()
+    .then(doc => {
+      scores = doc.data().scores;
+    });
+
+  if (currentQuiz == "history") {
+    db.collection("users")
+      .doc(uid)
+      .update({
+        "scores.history": testResults
+      });
+  } else if (currentQuiz == "science") {
+    db.collection("users")
+      .doc(uid)
+      .update({
+        "scores.science": testResults
+      });
+  } else {
+    db.collection("users")
+      .doc(uid)
+      .update({
+        "scores.sports": testResults
+      });
+  }
+}
