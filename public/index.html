@@ -23,6 +23,12 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
 
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
@@ -168,7 +174,12 @@
     <div id="login">
       <div style="text-align: center; margin-top: 100px">
         <h2>Login to play</h2>
+
         <p style="margin-top: 50px">
+          <i
+            class="fas fa-envelope"
+            style="font-size: 12px; margin: 5px; color: #17a2b8;"
+          ></i>
           <ons-input
             id="email"
             placeholder="Email"
@@ -176,6 +187,10 @@
           ></ons-input>
         </p>
         <p>
+          <i
+            class="fas fa-key"
+            style="font-size: 12px; margin: 5px; color: #17a2b8;"
+          ></i>
           <ons-input
             id="password"
             placeholder="Password"
@@ -185,9 +200,13 @@
           </ons-input>
         </p>
         <p>
-          <ons-button id="loginButton">Login</ons-button>
+          <ons-button id="loginButton" style="background-color: #48D1CC"
+            >Login</ons-button
+          >
           <!-- <ons-button id="aboutButton">About</ons-button> -->
-          <ons-button id="signUpButton">Sign up</ons-button>
+          <ons-button id="signUpButton" style="background-color: #20B2AA"
+            >Sign up</ons-button
+          >
         </p>
         <p id="loginError" style="color: #D8000C"></p>
       </div>
@@ -196,15 +215,25 @@
     <!-- Sign up -->
     <div id="signUp" style="display: none;">
       <div style="text-align: center; margin-top: 100px">
-        <h2>Sign up to get started!</h2>
+        <h2>Signup to get started</h2>
         <p style="margin-top: 50px">
+          <i
+            class="fas fa-envelope"
+            style="font-size: 12px; margin: 5px; color: #17a2b8;"
+          ></i>
           <ons-input
-            id="signUpUsername"
-            placeholder="Username"
+            id="signUpEmail"
+            placeholder="myemail@gmail.com"
+            type="text"
             modifier="underbar"
-          ></ons-input>
+          >
+          </ons-input>
         </p>
         <p>
+          <i
+            class="fas fa-key"
+            style="font-size: 12px; margin: 5px; color: #17a2b8;"
+          ></i>
           <ons-input
             id="signUpPassword"
             placeholder="Password"
@@ -214,17 +243,23 @@
           </ons-input>
         </p>
         <p>
+          <i
+            class="fas fa-signature"
+            style="font-size: 12px; margin: 5px; color: #17a2b8;"
+          ></i>
           <ons-input
-            id="signUpEmail"
-            placeholder="myemail@gmail.com"
-            type="email"
+            id="signUpUsername"
+            placeholder="Username"
             modifier="underbar"
-          >
-          </ons-input>
+          ></ons-input>
         </p>
         <p>
-          <ons-button id="register">Register</ons-button>
-          <ons-button id="backToLogin">Back</ons-button>
+          <ons-button id="register" style="background-color: #48D1CC"
+            >register</ons-button
+          >
+          <ons-button id="backToLogin" style="background-color: #20B2AA"
+            >Login</ons-button
+          >
         </p>
         <p id="signupError" style="color: #D8000C"></p>
       </div>
@@ -541,12 +576,12 @@
     </ons-alert-dialog>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
-    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
 
     <script>
       // Your web app's Firebase configuration
