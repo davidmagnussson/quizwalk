@@ -1,11 +1,17 @@
-console.log("authas");
+function clearInputFields() {
+  document.getElementById("signUpEmail").value = "";
+  document.getElementById("signUpUsername").value = "";
+  document.getElementById("signUpPassword").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("password").value = "";
+}
+
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if (user) {
     console.log("user logged in: ", user);
     showStartScreen();
     setupUI(user);
-    console.log("auth", auth.currentUser);
   } else {
     showLoginScreen();
     // setupUI();
@@ -39,6 +45,9 @@ signupButton.addEventListener("click", function () {
           }
         });
     })
+    .then(() => {
+      clearInputFields();
+    })
     .catch(err => {
       errorMessage.innerHTML = err.message;
     });
@@ -58,6 +67,9 @@ loginButton.addEventListener("click", function () {
     .then(cred => {
       console.log(cred);
       errorMessage.innerHTML = " ";
+    })
+    .then(() => {
+      clearInputFields();
     })
     .catch(err => {
       errorMessage.innerHTML = err.message;

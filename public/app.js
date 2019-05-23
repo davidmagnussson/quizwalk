@@ -172,7 +172,8 @@ function showEndScreen() {
   $("#map").hide();
   $("#profile").hide();
   $("#header").hide();
-  $("#header2").show();
+  $("#header2").hide();
+  $("#header3").show();
   $("#signUp").hide();
   $("#endQuiz").show();
 }
@@ -187,7 +188,9 @@ function showLoginScreen() {
   $("#profile").hide();
   $("#header").hide();
   $("#header2").show();
+  $("#header3").hide();
   $("#signUp").hide();
+  $("#endQuiz").hide();
 }
 
 function showSignUpScreen() {
@@ -199,8 +202,10 @@ function showSignUpScreen() {
   $("#map").hide();
   $("#profile").hide();
   $("#header").hide();
-  $("#header2").show();
+  $("#header2").hide();
+  $("#header3").show();
   $("#signUp").show();
+  $("#endQuiz").hide();
 }
 
 function showStartScreen() {
@@ -211,8 +216,10 @@ function showStartScreen() {
   $("#profile").hide();
   $("#header").hide();
   $("#navbar").hide();
-  $("#header2").show();
+  $("#header2").hide();
+  $("#header3").show();
   $("#map").hide();
+  $("#endQuiz").hide();
 }
 
 function showGameScreen() {
@@ -223,6 +230,9 @@ function showGameScreen() {
   $("#navbar").show();
   $("#header").show();
   $("#header2").hide();
+  $("#header3").hide();
+  $("#about").hide();
+  $("#endQuiz").hide();
 }
 
 function showAboutScreen() {
@@ -234,6 +244,9 @@ function showAboutScreen() {
   $("#profile").hide();
   $("#navbar").hide();
   $("#header").hide();
+  $("#header3").show();
+  $("#header2").hide();
+  $("#endQuiz").hide();
 }
 function showMapScreen() {
   $("#map").show();
@@ -243,6 +256,8 @@ function showMapScreen() {
   $("#navbar").show();
   $("#header").show();
   $("#header2").hide();
+  $("#header3").hide();
+  $("#endQuiz").hide();
 }
 
 function showProfileScreen() {
@@ -253,6 +268,8 @@ function showProfileScreen() {
   $("#navbar").show();
   $("#header").show();
   $("#header2").hide();
+  $("#header3").hide();
+  $("#endQuiz").hide();
 }
 
 function initMap() {
@@ -496,10 +513,11 @@ app.hidePage = function (pageId) {
   document.getElementById(pageId).style.display = "none";
 };
 
-// Set up the application.
+// Set up the application...
 
 app.initialize();
 showLoginScreen();
+// showEndScreen();
 // initMap();
 
 // Listeners for all buttons/events
@@ -516,9 +534,9 @@ document.getElementById("sportsQuiz").addEventListener("click", function () {
   showGameScreen();
 });
 
-// document.getElementById('aboutButton').addEventListener("click", function () {
-//   showAboutScreen();
-// });
+document.getElementById('aboutButton').addEventListener("click", function () {
+  showAboutScreen();
+});
 
 document.getElementById("aboutBack").addEventListener("click", function () {
   showLoginScreen();
@@ -562,11 +580,11 @@ function setupUI(user) {
       .doc(user.uid)
       .get()
       .then(doc => {
-        const scoreHtml = `<li class="list-group-item">history: ${
+        const scoreHtml = `<li class="list-group-item">History: <strong id='historyScore'>${
           doc.data().scores.history
-          }</li>
-        <li class="list-group-item">science: ${doc.data().scores.science}</li>
-        <li class="list-group-item">sports: ${doc.data().scores.sports}</li>`;
+          }</strong></li>
+        <li class="list-group-item">Science: <strong id='scienceScore'>${doc.data().scores.science}</strong></li>
+        <li class="list-group-item">Sports: <strong id='sportsScore'>${doc.data().scores.sports}</strong></li>`;
         score.innerHTML = scoreHtml;
 
         //display account info
@@ -578,9 +596,25 @@ function setupUI(user) {
         console.log(err);
       });
   } else {
-    //hide account infos
+    // Hide account infos
     userName.innerHTML = "";
   }
+}
+
+function updateDisplayScore(uid) {
+  db.collection("users")
+    .doc(uid)
+    .get()
+    .then(doc => {
+      document.getElementById("historyScore").innerHTML = doc.data().scores.history;
+      document.getElementById("scienceScore").innerHTML = doc.data().scores.science;
+      document.getElementById("sportsScore").innerHTML = doc.data().scores.sports;
+    }).then(() => {
+      console.log("updating displayed score");
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
 
 // document.getElementById("testAdd").addEventListener("click", registerAnswer);
@@ -633,4 +667,6 @@ function registerAnswer(result) {
           });
       });
   }
+
+  updateDisplayScore(uid);
 }

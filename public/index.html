@@ -45,16 +45,12 @@
       color: #e94057;
     }
 
-    img {
-      height: 200px;
-      width: 200px;
-    }
-
     #navbar {
       position: fixed;
       bottom: 0;
       width: 100%;
       z-index: 5;
+      background-color: rgb(0, 162, 184);
     }
 
     button {
@@ -74,9 +70,16 @@
       width: 100%;
     }
 
+
     #profilePic {
       border-radius: 50%;
       padding: 20px;
+      width: 200px;
+      height: 200px;
+    }
+
+    #profile {
+      margin-top: 10px;
     }
 
     #logout {
@@ -102,7 +105,7 @@
     }
 
     #navbarHeader {
-      background-color: #17a2b8;
+      background-color: rgb(0, 162, 184);
     }
 
     ul {
@@ -132,10 +135,42 @@
     #test {
       padding: 5px;
     }
+
+    .aboutlistitem {
+      padding: 10px;
+    }
+
+    #about {
+      overflow: auto;
+      height: 85vh;
+      width: 100%;
+    }
+
+    ol {
+      padding: 0px 0px 0px 30px;
+    }
+
+    #aboutButton {
+      background-color: #48D1CC;
+    }
+
+    .subject {
+      width: 104px;
+    }
+
+    .questionImage {
+      height: 100px;
+      width: 100px;
+    }
+
+    #endScreenImage {
+      height: 150px;
+      width: 150px;
+    }
   </style>
 
   <script>
-    // Redirect console if runng fromvothings Workbench.
+    // Redirect console if runng fromvothings workbench.
     if (window.hyper) {
       console.log = hyper.log;
     }
@@ -168,8 +203,22 @@
 
 <body>
   <!-- Header on login/about/signup/endscreen -->
-  <div id="header2" style="display: none">
-    <nav id="navbarHeader">
+  <div id="header2" style="display: none;">
+    <nav id="navbarHeader" class="navbar">
+      <ons-button id="aboutButton">
+        <span>
+          About
+        </span>
+      </ons-button>
+      <img id="logo" style="max-height: 60px; max-width: 165px;" src="./photos/logo.png" />
+    </nav>
+  </div>
+
+  <div id="header3" style="display: none">
+    <nav id="navbarHeader" class="navbar">
+      <button class="btn-info">
+
+      </button>
       <img id="logo" style="max-height: 60px; max-width: 165px;" src="./photos/logo.png" />
     </nav>
   </div>
@@ -178,7 +227,7 @@
   <div id="endQuiz" style="display: none">
     <h3 style="margin-top: 10px;">You have now answered all of the questions for this quiz</h3>
     <h4>You got <i id="displayResult"></i> out of 3 correct!</h4>
-    <img src="./photos/completed1.ico" alt="image couldn't load" height="30px" widht="30px" />
+    <img src="./photos/completed1.ico" alt="image couldn't load" id="endScreenImage" />
     <br />
     <br />
 
@@ -192,22 +241,23 @@
       </button>
     </div>
   </div>
-
   <!-- Login -->
   <div id="login">
     <div style="text-align: center; margin-top: 100px">
       <h2>Login to play</h2>
+
       <p style="margin-top: 50px">
+        <i class="fas fa-envelope" style="font-size: 12px; margin: 5px; color: #17a2b8;"></i>
         <ons-input id="email" placeholder="Email" modifier="underbar"></ons-input>
       </p>
       <p>
+        <i class="fas fa-key" style="font-size: 12px; margin: 5px; color: #17a2b8;"></i>
         <ons-input id="password" placeholder="Password" type="password" modifier="underbar">
         </ons-input>
       </p>
       <p>
-        <ons-button id="loginButton">Login</ons-button>
-        <!-- <ons-button id="aboutButton">About</ons-button> -->
-        <ons-button id="signUpButton">Sign up</ons-button>
+        <ons-button id="loginButton" style="background-color: #20B2AA">Login</ons-button>
+        <ons-button id="signUpButton" style="background-color: #20B2AA">Sign up</ons-button>
       </p>
       <p id="loginError" style="color: #D8000C"></p>
     </div>
@@ -216,33 +266,59 @@
   <!-- Sign up -->
   <div id="signUp" style="display: none;">
     <div style="text-align: center; margin-top: 100px">
-      <h2>Sign up to get started!</h2>
+      <h2>Signup to get started</h2>
       <p style="margin-top: 50px">
-        <ons-input id="signUpUsername" placeholder="Username" modifier="underbar"></ons-input>
+        <i class="fas fa-envelope" style="font-size: 12px; margin: 5px; color: #17a2b8;"></i>
+        <ons-input id="signUpEmail" placeholder="myemail@gmail.com" type="text" modifier="underbar">
+        </ons-input>
       </p>
       <p>
+        <i class="fas fa-key" style="font-size: 12px; margin: 5px; color: #17a2b8;"></i>
         <ons-input id="signUpPassword" placeholder="Password" type="password" modifier="underbar">
         </ons-input>
       </p>
       <p>
-        <ons-input id="signUpEmail" placeholder="myemail@gmail.com" type="email" modifier="underbar">
-        </ons-input>
+        <i class="fas fa-signature" style="font-size: 12px; margin: 5px; color: #17a2b8;"></i>
+        <ons-input id="signUpUsername" placeholder="Username" modifier="underbar"></ons-input>
       </p>
       <p>
-        <ons-button id="register">Register</ons-button>
-        <ons-button id="backToLogin">Back</ons-button>
+        <ons-button id="register" style="background-color: #20B2AA">Register</ons-button>
+        <ons-button id="backToLogin" style="background-color: #20B2AA">Login</ons-button>
       </p>
       <p id="signupError" style="color: #D8000C"></p>
     </div>
   </div>
+  </div>
 
   <div id="about" style="display: none">
-    <div style="margin-top: 30px;">
-      <h2>What is <i>QuizWalk</i></h2>
-      <span>Lorem sdiaosfäahdvöqehrvkqehrvlkhqelrvhqlkehvlkqhjv</span>
-      <button id="aboutBack" class="btn btn-info" style="margin-top: 30px;">
-        Back
-      </button>
+    <div style="margin-top: 20px;">
+      <h2>What is QuizWalk?</h2>
+      <p>QuizWalk is a digitalized quiz game!</p>
+      <ol style="text-align: left;">
+        <li class="aboutlistitem">
+          Login or create an account.
+        </li>
+        <li class="aboutlistitem">
+          Choose a category.
+        </li>
+        <li class="aboutlistitem">
+          Click on "Map" to see where the three questions are located.
+        </li>
+        <li class="aboutlistitem">
+          Click on "Quiz" and move close to a location to make the question appear.
+        </li>
+        <li class="aboutlistitem">
+          Choose an answer. Red=Incorrect and Green=Correct.
+        </li>
+        <li class="aboutlistitem">
+          Click on "Profile" to see your high score or to log out.
+        </li>
+      </ol>
+      <div class="row justify-content-center">
+        <button id="aboutBack" class="btn btn-info" style="margin-top: 20px;">
+          Back
+        </button>
+      </div>
     </div>
   </div>
 
@@ -250,19 +326,19 @@
     <h2 class="my-5">Pick a subject!</h2>
     <ul>
       <li>
-        <button type="button" class="btn btn-outline-info btn-lg" id="historyQuiz">
+        <button type="button" class="btn btn-outline-info btn-lg subject" id="historyQuiz">
           History
         </button>
         <!-- <ons-button id="testAdd">add data</ons-button> -->
       </li>
 
       <li>
-        <button type="button" class="btn btn-outline-info btn-lg" id="scienceQuiz">
+        <button type="button" class="btn btn-outline-info btn-lg subject" id="scienceQuiz">
           Science
         </button>
       </li>
       <li>
-        <button type="button" class="btn btn-outline-info btn-lg" id="sportsQuiz">
+        <button type="button" class="btn btn-outline-info btn-lg subject" id="sportsQuiz">
           Sports
         </button>
       </li>
@@ -273,11 +349,10 @@
   <div id="header" style="display: none">
     <nav id="navbarHeader" class="navbar">
       <button class="btn btn-danger" id="exitGame">
-        <span>Cancel Quiz</span>
+        <span>End Quiz</span>
       </button>
       <img id="logo" style="max-height: 60px; max-width: 165px;" src="./photos/logo.png" />
     </nav>
-    <!-- <button>Exit game</button> -->
   </div>
 
   <div id="game" style="display: none">
@@ -303,7 +378,8 @@
           <h3>Question:</h3>
           <h3 id="question1"></h3>
         </div>
-        <div><img src="./photos/questionmark.png" /></div>
+        <div><img class="questionImage" src="./photos/questionmark.png" /></div>
+        <br />
         <div class="my-content">
           <ons-list id="poets-list">
             <ons-list-item tappable id="q1a1" class="questions" onClick="checkAnswer(this, 'first')">
@@ -334,7 +410,8 @@
           <h3>Question:</h3>
           <h3 id="question2"></h3>
         </div>
-        <div><img src="./photos/questionmark.png" /></div>
+        <div><img class="questionImage" src="./photos/questionmark.png" /></div>
+        <br />
         <div class="my-content">
           <ons-list id="islands-list">
             <ons-list-item tappable id="q2a1" class="questions" onClick="checkAnswer(this, 'second')">
@@ -365,7 +442,8 @@
           <h3>Question:</h3>
           <h3 id="question3"></h3>
         </div>
-        <div><img src="./photos/questionmark.png" /></div>
+        <div><img class="questionImage" src="./photos/questionmark.png" /></div>
+        <br />
         <div id="my-content">
           <ons-list id="actors-list">
             <ons-list-item tappable id="q3a1" class="questions" onClick="checkAnswer(this, 'third')">
@@ -422,14 +500,15 @@
   </div>
 
   <div id="map" style="display: none"></div>
-  <div id="profile" style="display: none">
-    <h2 id="displayUser">Hi {NAMN}</h2>
+
+  <div id="profile" style="display: none;">
+    <h2 id="displayUser"></h2>
     <h4>Look up your highscore!</h4>
-    <img src="poet.png" alt="Profile Picture" id="profilePic" height="20px" width="20px" />
+    <img src="./photos/winner.png" alt="Profile Picture" id="profilePic" />
     <ul id="displayScore" class="list-group">
-      <li class="list-group-item">History quiz:<i>{score}</i></li>
-      <li class="list-group-item">Science quiz:<i>{score}</i></li>
-      <li class="list-group-item">Sports quiz:<i>{score}</i></li>
+      <li class="list-group-item">History quiz:<i id="historyScore"></i></li>
+      <li class="list-group-item">Science quiz:<i id="scienceScore"></i></li>
+      <li class="list-group-item">Sports quiz:<i id="sportsScore"></i></li>
     </ul>
 
     <button class="btn btn-danger nav mt-3" id="logout">
@@ -438,13 +517,13 @@
   </div>
 
   <ons-alert-dialog id="my-alert-dialog" modifier="success thick">
-    <div class="alert-dialog-title">Exit game!</div>
+    <div class="alert-dialog-title">End Quiz!</div>
     <div class="alert-dialog-content">
-      Are you sure you want to exit current game? Your progress might be lost!
+      Are you sure you want to end current quiz? Your progress wille be lost!
     </div>
     <div class="alert-dialog-footer">
-      <ons-alert-dialog-button onclick="alertChoice(false)">Cancel</ons-alert-dialog-button>
       <ons-alert-dialog-button onclick="alertChoice(true)">OK</ons-alert-dialog-button>
+      <ons-alert-dialog-button onclick="alertChoice(false)">Cancel</ons-alert-dialog-button>
     </div>
   </ons-alert-dialog>
 
