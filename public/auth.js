@@ -14,7 +14,7 @@ auth.onAuthStateChanged(user => {
 });
 
 const signupButton = document.getElementById("register");
-signupButton.addEventListener("click", function() {
+signupButton.addEventListener("click", function () {
   console.log("signig up!");
 
   const email = document.getElementById("signUpEmail").value;
@@ -46,7 +46,7 @@ signupButton.addEventListener("click", function() {
 
 // login
 const loginButton = document.getElementById("loginButton");
-loginButton.addEventListener("click", function() {
+loginButton.addEventListener("click", function () {
   //get user info
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -66,6 +66,11 @@ loginButton.addEventListener("click", function() {
 
 //logout
 const logout = document.getElementById("logout");
-logout.addEventListener("click", function() {
+logout.addEventListener("click", function () {
+  auth.signOut();
+});
+
+
+document.getElementById("logout2").addEventListener("click", function () {
   auth.signOut();
 });
