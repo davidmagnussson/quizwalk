@@ -2,6 +2,22 @@
 // Application object.
 var app = {};
 
+let onlyOneAnswer = [false, false, false];
+
+function getOnlyOneAnswer() {
+  return onlyOneAnswer;
+}
+
+function setOnlyOneAnswer(question) {
+  if (question == "first") {
+    onlyOneAnswer[0] = true;
+  } else if (question == "second") {
+    onlyOneAnswer[1] = true;
+  } else {
+    onlyOneAnswer[2] = true;
+  }
+}
+
 model = new QuizModel();
 const allQuestions = model.getAllQuestions();
 const historyQuestions = allQuestions[0].history;
@@ -43,6 +59,8 @@ function quizCompleted() {
   document.getElementById("displayResult").innerHTML = results;
   showEndScreen();
   results = 0;
+  answeredQuestions = [];
+  onlyOneAnswer = [false, false, false];
 }
 
 function correctAnswer() {
@@ -54,6 +72,8 @@ function alertChoice(choice) {
   if (choice) {
     dialog.hide();
     answeredQuestions = [];
+    results = 0;
+    onlyOneAnswer = [false, false, false];
     showStartScreen();
   } else {
     dialog.hide();
@@ -291,7 +311,7 @@ function initMap() {
     position: { lat: 59.34738170626336, lng: 18.073741370144717 },
     map: map
   });
-  marker1.addListener("click", function () {
+  marker1.addListener("click", function() {
     infomarker1.open(map, marker1);
   });
 
@@ -303,7 +323,7 @@ function initMap() {
     position: { lat: 59.34739947036459, lng: 18.07094813798676 },
     map: map
   });
-  marker2.addListener("click", function () {
+  marker2.addListener("click", function() {
     infomarker2.open(map, marker2);
   });
 
@@ -316,7 +336,7 @@ function initMap() {
     map: map
   });
 
-  marker3.addListener("click", function () {
+  marker3.addListener("click", function() {
     infomarker3.open(map, marker3);
   });
 
@@ -374,14 +394,14 @@ app.beaconRegions = [
 // Currently displayed page.
 app.currentPage = "page-default";
 
-app.initialize = function () {
+app.initialize = function() {
   document.addEventListener("deviceready", app.onDeviceReady, false);
   app.gotoPage(app.currentPage);
 };
 
 // Called when Cordova are plugins initialised,
 // the iBeacon API is now available.
-app.onDeviceReady = function () {
+app.onDeviceReady = function() {
   // Specify a shortcut for the location manager that
   // has the iBeacon functions.
   window.locationManager = cordova.plugins.locationManager;
@@ -390,21 +410,21 @@ app.onDeviceReady = function () {
   app.startScanForBeacons();
 };
 
-app.startScanForBeacons = function () {
+app.startScanForBeacons = function() {
   //console.log('startScanForBeacons')
 
   // The delegate object contains iBeacon callback functions.
   var delegate = new cordova.plugins.locationManager.Delegate();
 
-  delegate.didDetermineStateForRegion = function (pluginResult) {
+  delegate.didDetermineStateForRegion = function(pluginResult) {
     //console.log('didDetermineStateForRegion: ' + JSON.stringify(pluginResult))
   };
 
-  delegate.didStartMonitoringForRegion = function (pluginResult) {
+  delegate.didStartMonitoringForRegion = function(pluginResult) {
     //console.log('didStartMonitoringForRegion:' + JSON.stringify(pluginResult))
   };
 
-  delegate.didRangeBeaconsInRegion = function (pluginResult) {
+  delegate.didRangeBeaconsInRegion = function(pluginResult) {
     //console.log('didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult))
     app.didRangeBeaconsInRegion(pluginResult);
   };
@@ -438,7 +458,7 @@ app.startScanForBeacons = function () {
 };
 
 // Display pages depending of which beacon is close.
-app.didRangeBeaconsInRegion = function (pluginResult) {
+app.didRangeBeaconsInRegion = function(pluginResult) {
   //console.log('numbeacons in region: ' + pluginResult.beacons.length)
 
   // There must be a beacon within range.
@@ -475,7 +495,7 @@ app.didRangeBeaconsInRegion = function (pluginResult) {
   }
 };
 
-app.gotoPage = function (pageId) {
+app.gotoPage = function(pageId) {
   let check_if_answered = answeredQuestions.includes(pageId);
   console.log(pageId);
 
@@ -491,7 +511,7 @@ app.gotoPage = function (pageId) {
   }
 };
 
-app.showPage = function (pageId) {
+app.showPage = function(pageId) {
   document.getElementById(pageId).style.display = "block";
   $(".questions").css("color", "black");
   $(".questions").css("background-color", "white");
@@ -509,7 +529,7 @@ app.showPage = function (pageId) {
   }
 };
 
-app.hidePage = function (pageId) {
+app.hidePage = function(pageId) {
   document.getElementById(pageId).style.display = "none";
 };
 
@@ -521,52 +541,52 @@ showLoginScreen();
 // initMap();
 
 // Listeners for all buttons/events
-document.getElementById("historyQuiz").addEventListener("click", function () {
+document.getElementById("historyQuiz").addEventListener("click", function() {
   startQuiz("history");
   showGameScreen();
 });
-document.getElementById("scienceQuiz").addEventListener("click", function () {
+document.getElementById("scienceQuiz").addEventListener("click", function() {
   startQuiz("science");
   showGameScreen();
 });
-document.getElementById("sportsQuiz").addEventListener("click", function () {
+document.getElementById("sportsQuiz").addEventListener("click", function() {
   startQuiz("sports");
   showGameScreen();
 });
 
-document.getElementById('aboutButton').addEventListener("click", function () {
+document.getElementById("aboutButton").addEventListener("click", function() {
   showAboutScreen();
 });
 
-document.getElementById("aboutBack").addEventListener("click", function () {
+document.getElementById("aboutBack").addEventListener("click", function() {
   showLoginScreen();
 });
 
-document.getElementById("navMap").addEventListener("click", function () {
+document.getElementById("navMap").addEventListener("click", function() {
   showMapScreen();
 });
 
-document.getElementById("navQuiz").addEventListener("click", function () {
+document.getElementById("navQuiz").addEventListener("click", function() {
   showGameScreen();
 });
 
-document.getElementById("navProfile").addEventListener("click", function () {
+document.getElementById("navProfile").addEventListener("click", function() {
   showProfileScreen();
 });
 
-document.getElementById("exitGame").addEventListener("click", function () {
+document.getElementById("exitGame").addEventListener("click", function() {
   exitGame();
 });
 
-document.getElementById("signUpButton").addEventListener("click", function () {
+document.getElementById("signUpButton").addEventListener("click", function() {
   showSignUpScreen();
 });
 
-document.getElementById("backToLogin").addEventListener("click", function () {
+document.getElementById("backToLogin").addEventListener("click", function() {
   showLoginScreen();
 });
 
-document.getElementById("newQuiz").addEventListener("click", function () {
+document.getElementById("newQuiz").addEventListener("click", function() {
   showStartScreen();
 });
 
@@ -582,9 +602,13 @@ function setupUI(user) {
       .then(doc => {
         const scoreHtml = `<li class="list-group-item">History: <strong id='historyScore'>${
           doc.data().scores.history
-          }</strong></li>
-        <li class="list-group-item">Science: <strong id='scienceScore'>${doc.data().scores.science}</strong></li>
-        <li class="list-group-item">Sports: <strong id='sportsScore'>${doc.data().scores.sports}</strong></li>`;
+        }</strong></li>
+        <li class="list-group-item">Science: <strong id='scienceScore'>${
+          doc.data().scores.science
+        }</strong></li>
+        <li class="list-group-item">Sports: <strong id='sportsScore'>${
+          doc.data().scores.sports
+        }</strong></li>`;
         score.innerHTML = scoreHtml;
 
         //display account info
@@ -606,18 +630,23 @@ function updateDisplayScore(uid) {
     .doc(uid)
     .get()
     .then(doc => {
-      document.getElementById("historyScore").innerHTML = doc.data().scores.history;
-      document.getElementById("scienceScore").innerHTML = doc.data().scores.science;
-      document.getElementById("sportsScore").innerHTML = doc.data().scores.sports;
-    }).then(() => {
+      document.getElementById(
+        "historyScore"
+      ).innerHTML = doc.data().scores.history;
+      document.getElementById(
+        "scienceScore"
+      ).innerHTML = doc.data().scores.science;
+      document.getElementById(
+        "sportsScore"
+      ).innerHTML = doc.data().scores.sports;
+    })
+    .then(() => {
       console.log("updating displayed score");
     })
     .catch(err => {
       console.log(err);
     });
 }
-
-// document.getElementById("testAdd").addEventListener("click", registerAnswer);
 
 function registerAnswer(result) {
   let uid = auth.currentUser.uid;
@@ -637,6 +666,9 @@ function registerAnswer(result) {
           .update({
             "scores.history": result + oldCurrency
           });
+      })
+      .then(() => {
+        updateDisplayScore(uid);
       });
   } else if (currentQuiz == "science") {
     db.collection("users")
@@ -651,6 +683,9 @@ function registerAnswer(result) {
           .update({
             "scores.science": result + oldCurrency
           });
+      })
+      .then(() => {
+        updateDisplayScore(uid);
       });
   } else {
     db.collection("users")
@@ -665,8 +700,9 @@ function registerAnswer(result) {
           .update({
             "scores.sports": result + oldCurrency
           });
+      })
+      .then(() => {
+        updateDisplayScore(uid);
       });
   }
-
-  updateDisplayScore(uid);
 }

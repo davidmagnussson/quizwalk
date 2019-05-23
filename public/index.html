@@ -176,8 +176,11 @@
     }
 
     function checkAnswer(answer, question) {
-      let check = answer.classList.contains("right");
-      console.log(check);
+      let onlyOneAnswer = getOnlyOneAnswer()
+
+      if((question == "first" && !onlyOneAnswer[0]) || (question == "second" && !onlyOneAnswer[1]) || (question == "third" && !onlyOneAnswer[2])){
+        let check = answer.classList.contains("right");
+        console.log(check);
 
       if (check) {
         answer.style.backgroundColor = "#50C878";
@@ -197,6 +200,11 @@
       } else {
         answeredQuestions.push("thirdQuestion");
       }
+
+      setOnlyOneAnswer(question)
+      }
+
+     
     }
   </script>
 </head>
@@ -329,7 +337,6 @@
         <button type="button" class="btn btn-outline-info btn-lg subject" id="historyQuiz">
           History
         </button>
-        <!-- <ons-button id="testAdd">add data</ons-button> -->
       </li>
 
       <li>
