@@ -175,36 +175,36 @@
       console.log = hyper.log;
     }
 
-    function checkAnswer(answer, question) {
+    function checkAnswer(answer, question) {  // Handles the answer of a question. Checks if the question already has been answered, displays if it was correct, update the total gamescore etc.
       let onlyOneAnswer = getOnlyOneAnswer()
 
-      if((question == "first" && !onlyOneAnswer[0]) || (question == "second" && !onlyOneAnswer[1]) || (question == "third" && !onlyOneAnswer[2])){
+      if ((question == "first" && !onlyOneAnswer[0]) || (question == "second" && !onlyOneAnswer[1]) || (question == "third" && !onlyOneAnswer[2])) {
         let check = answer.classList.contains("right");
         console.log(check);
 
-      if (check) {
-        answer.style.backgroundColor = "#50C878";
-        answer.style.color = "#eee";
-        answer.style.fontWeight = "bold";
-        correctAnswer();
-      } else {
-        answer.style.backgroundColor = "#e94057";
-        answer.style.color = "#eee";
-        answer.style.fontWeight = "bold";
+        if (check) {
+          answer.style.backgroundColor = "#50C878";
+          answer.style.color = "#eee";
+          answer.style.fontWeight = "bold";
+          correctAnswer();
+        } else {
+          answer.style.backgroundColor = "#e94057";
+          answer.style.color = "#eee";
+          answer.style.fontWeight = "bold";
+        }
+
+        if (question == "first") {
+          answeredQuestions.push("firstQuestion");
+        } else if (question == "second") {
+          answeredQuestions.push("secondQuestion");
+        } else {
+          answeredQuestions.push("thirdQuestion");
+        }
+
+        setOnlyOneAnswer(question)
       }
 
-      if (question == "first") {
-        answeredQuestions.push("firstQuestion");
-      } else if (question == "second") {
-        answeredQuestions.push("secondQuestion");
-      } else {
-        answeredQuestions.push("thirdQuestion");
-      }
 
-      setOnlyOneAnswer(question)
-      }
-
-     
     }
   </script>
 </head>
@@ -249,6 +249,7 @@
       </button>
     </div>
   </div>
+
   <!-- Login -->
   <div id="login">
     <div style="text-align: center; margin-top: 100px">
@@ -298,6 +299,7 @@
   </div>
   </div>
 
+  <!-- About page -->
   <div id="about" style="display: none">
     <div style="margin-top: 20px;">
       <h2>What is QuizWalk?</h2>
@@ -330,6 +332,7 @@
     </div>
   </div>
 
+  <!-- Startpage, where you select subject or topic! -->
   <div id="startpage" style="display: none">
     <h2 class="my-5">Pick a subject!</h2>
     <ul>
@@ -362,6 +365,7 @@
     </nav>
   </div>
 
+  <!-- Is shown while playing (in the quiz tab) the page that is showing whilst not near a beacon -->
   <div id="game" style="display: none">
     <div class="my-page" id="page-default">
       <div class="my-header">
@@ -506,8 +510,10 @@
     </div>
   </div>
 
+  <!-- Displays the "Google map" and the locations of the questions -->
   <div id="map" style="display: none"></div>
 
+  <!-- Profilepage -->
   <div id="profile" style="display: none;">
     <h2 id="displayUser"></h2>
     <h4>Look up your highscore!</h4>
@@ -523,6 +529,7 @@
     </button>
   </div>
 
+  <!-- End quiz "alert/confirm" popup -->
   <ons-alert-dialog id="my-alert-dialog" modifier="success thick">
     <div class="alert-dialog-title">End Quiz!</div>
     <div class="alert-dialog-content">
@@ -559,6 +566,8 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
   </script>
+
+  <!-- Scripts -->
   <script src="lib/jquery.js"></script>
   <script src="cordova.js"></script>
   <script src="model.js"></script>

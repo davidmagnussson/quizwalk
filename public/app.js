@@ -1,8 +1,6 @@
-// JavaScript code for the Arduino Beon example app.
-// Application object.
 var app = {};
 
-let onlyOneAnswer = [false, false, false];
+let onlyOneAnswer = [false, false, false];  // error handling array thats changes when a question has beens answered. Denies the possibility to choose to alternatives
 
 function getOnlyOneAnswer() {
   return onlyOneAnswer;
@@ -18,6 +16,7 @@ function setOnlyOneAnswer(question) {
   }
 }
 
+// Fetches all of the quizzes
 model = new QuizModel();
 const allQuestions = model.getAllQuestions();
 const historyQuestions = allQuestions[0].history;
@@ -25,14 +24,12 @@ const scienceQuestions = allQuestions[0].science;
 const sportsQuestions = allQuestions[0].sports;
 const dialog = document.getElementById("my-alert-dialog");
 
-let anwerQuestion1 = false;
-let anwerQuestion2 = false;
-let anwerQuestion3 = false;
+// Keeps track of the current quiz, which questions that has alredy been answered and the current gamescore.
 let currentQuiz = "";
-
 let answeredQuestions = [];
 let results = 0;
 
+// Updates the current quiz
 function startQuiz(subject) {
   if (subject == "history") {
     loadInQuiz(historyQuestions);
@@ -45,34 +42,29 @@ function startQuiz(subject) {
   currentQuiz = subject;
 }
 
-function enterGame() {
-  // TODO: Fyll i, ska ankallas när man startar/trycker på en kategori och börjar spela!
-}
-
-function exitGame() {
-  // TODO: Fyll i, ska ankallas när man trycker exit game. Poängen resettas och man kommer tillbaka till startgamescreen
+function exitGame() { // Is called when you want to "End Quiz"
   dialog.show();
 }
 
-function clearVariables() {
+function clearVariables() {  // A function that resets all of the game specific variables. Is called everytime you exit or want to play a new quiz.
   results = 0;
   answeredQuestions = [];
   onlyOneAnswer = [false, false, false];
 }
 
-function quizCompleted() {
+function quizCompleted() {  // When the quiz is completed scores and saved, show endscreen and clear game variables
   registerAnswer(results);
   document.getElementById("displayResult").innerHTML = results;
   showEndScreen();
   clearVariables();
 }
 
-function correctAnswer() {
+function correctAnswer() {  // Correct answer
   results = results + 1;
   console.log(results);
 }
 
-function alertChoice(choice) {
+function alertChoice(choice) {  // Registers which button you press in the "End quiz"-confirm alert.
   if (choice) {
     dialog.hide();
     clearVariables();
@@ -82,11 +74,11 @@ function alertChoice(choice) {
   }
 }
 
+// Loads in the entire quiz. It updates div-elements with questions, answers and which answer is the correct one.
 function loadInQuiz(questions) {
   const firstQuestion = questions[0];
   const secondQuestion = questions[1];
   const thirdQuestion = questions[2];
-  let newElement = document.createElement("h2");
 
   // LOAD IN FIRST QUESTION -------------------------------
   let alternatives = firstQuestion.alternatives;
@@ -185,6 +177,7 @@ function loadInQuiz(questions) {
   alt4div.classList.add(alternatives.four.answer);
 }
 
+// These "show...Screen" functions is basically viewchangers. It displays different divs depending on which page we want to show
 function showEndScreen() {
   $("#login").hide();
   $("#startpage").hide();
@@ -294,6 +287,7 @@ function showProfileScreen() {
   $("#endQuiz").hide();
 }
 
+// Function handling the Google Map API. It creates the map, sets markers etc.
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     // center: {lat: 59.3498092, lng: 18.0684758},
@@ -313,7 +307,7 @@ function initMap() {
     position: { lat: 59.34738170626336, lng: 18.073741370144717 },
     map: map
   });
-  marker1.addListener("click", function() {
+  marker1.addListener("click", function () {
     infomarker1.open(map, marker1);
   });
 
@@ -325,7 +319,7 @@ function initMap() {
     position: { lat: 59.34739947036459, lng: 18.07094813798676 },
     map: map
   });
-  marker2.addListener("click", function() {
+  marker2.addListener("click", function () {
     infomarker2.open(map, marker2);
   });
 
@@ -338,40 +332,12 @@ function initMap() {
     map: map
   });
 
-  marker3.addListener("click", function() {
+  marker3.addListener("click", function () {
     infomarker3.open(map, marker3);
   });
-
-  //infoWindow = new google.maps.InfoWindow;
-
-  // Finding my locations  DOESN'T WORK BECAUSE OF SECURE ORIGIN FAILURE
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(success => {
-  //       console.log("success");
-
-  //     }, failure => {
-  //       if (failure.message.startsWith("Only secure origins are allowed")) {
-  //         console.log("failure");
-  //       } else {
-  //         console.log(failure.message);
-  //       }
-  //     });
-  //   } else {
-  //     // Browser doesn't support Geolocation
-  //     handleLocationError(false, infoWindow, map.getCenter());
-  //   }
-  // }
-
-  // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  //   infoWindow.setPosition(pos);
-  //   infoWindow.setContent(browserHasGeolocation ?
-  //     'Error: The Geolocation service failed.' :
-  //     'Error: Your browser doesn\'t support geolocation.');
-  //   infoWindow.open(map);
-  // }
 }
 
-// Regions that define which pa to show for each beacon.
+// This beacon skeleton is taken from lab 3 with certain modification!!
 app.beaconRegions = [
   {
     id: "firstQuestion",
@@ -396,14 +362,14 @@ app.beaconRegions = [
 // Currently displayed page.
 app.currentPage = "page-default";
 
-app.initialize = function() {
+app.initialize = function () {
   document.addEventListener("deviceready", app.onDeviceReady, false);
   app.gotoPage(app.currentPage);
 };
 
 // Called when Cordova are plugins initialised,
 // the iBeacon API is now available.
-app.onDeviceReady = function() {
+app.onDeviceReady = function () {
   // Specify a shortcut for the location manager that
   // has the iBeacon functions.
   window.locationManager = cordova.plugins.locationManager;
@@ -412,21 +378,21 @@ app.onDeviceReady = function() {
   app.startScanForBeacons();
 };
 
-app.startScanForBeacons = function() {
+app.startScanForBeacons = function () {
   //console.log('startScanForBeacons')
 
   // The delegate object contains iBeacon callback functions.
   var delegate = new cordova.plugins.locationManager.Delegate();
 
-  delegate.didDetermineStateForRegion = function(pluginResult) {
+  delegate.didDetermineStateForRegion = function (pluginResult) {
     //console.log('didDetermineStateForRegion: ' + JSON.stringify(pluginResult))
   };
 
-  delegate.didStartMonitoringForRegion = function(pluginResult) {
+  delegate.didStartMonitoringForRegion = function (pluginResult) {
     //console.log('didStartMonitoringForRegion:' + JSON.stringify(pluginResult))
   };
 
-  delegate.didRangeBeaconsInRegion = function(pluginResult) {
+  delegate.didRangeBeaconsInRegion = function (pluginResult) {
     //console.log('didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult))
     app.didRangeBeaconsInRegion(pluginResult);
   };
@@ -460,7 +426,7 @@ app.startScanForBeacons = function() {
 };
 
 // Display pages depending of which beacon is close.
-app.didRangeBeaconsInRegion = function(pluginResult) {
+app.didRangeBeaconsInRegion = function (pluginResult) {
   //console.log('numbeacons in region: ' + pluginResult.beacons.length)
 
   // There must be a beacon within range.
@@ -475,8 +441,6 @@ app.didRangeBeaconsInRegion = function(pluginResult) {
   // The region identifier is the page id.
   var pageId = pluginResult.region.identifier;
 
-  // console.log("ranged beacon: " + pageId + "" + beacon.major);
-
   // If the beacon is close and represents a new page, then show the page.
   if (
     beacon.proximity == "ProximityImmediate" &&
@@ -490,18 +454,18 @@ app.didRangeBeaconsInRegion = function(pluginResult) {
   if (
     (beacon.proximity == "ProximityFar" ||
       beacon.proximity == "ProximityNear") &&
-    (app.currentPage == pageId || app.currentPage == "alreadyAnswered")
+    (app.currentPage == pageId || app.currentPage == "alreadyAnswered")  // Checks if page has been alreadyanswered aswell
   ) {
     app.gotoPage("page-default");
     return;
   }
 };
 
-app.gotoPage = function(pageId) {
+app.gotoPage = function (pageId) {
   let check_if_answered = answeredQuestions.includes(pageId);
   console.log(pageId);
 
-  if (check_if_answered) {
+  if (check_if_answered) {  // If question already has been answered the same question can't be displayed again
     show = "alreadyAnswered";
     app.hidePage(app.currentPage);
     app.showPage(show);
@@ -513,7 +477,7 @@ app.gotoPage = function(pageId) {
   }
 };
 
-app.showPage = function(pageId) {
+app.showPage = function (pageId) {
   document.getElementById(pageId).style.display = "block";
   $(".questions").css("color", "black");
   $(".questions").css("background-color", "white");
@@ -521,7 +485,7 @@ app.showPage = function(pageId) {
 
   if (pageId == "page-default") {
     // Listener to check if answered all questions
-    if (
+    if ( // If all questions is answered the quizCompleted function is called
       answeredQuestions.includes("firstQuestion") &&
       answeredQuestions.includes("secondQuestion") &&
       answeredQuestions.includes("thirdQuestion")
@@ -531,71 +495,70 @@ app.showPage = function(pageId) {
   }
 };
 
-app.hidePage = function(pageId) {
+app.hidePage = function (pageId) {
   document.getElementById(pageId).style.display = "none";
 };
 
-// Set up the application...
-
+// Set up the application... Withh app.initialize as well as showing the loginscreen
 app.initialize();
 showLoginScreen();
-// showEndScreen();
-// initMap();
 
-// Listeners for all buttons/events
-document.getElementById("historyQuiz").addEventListener("click", function() {
+// This is listeners and controller for all events that can happen in the application. They call other functions depending on what event occured.
+document.getElementById("historyQuiz").addEventListener("click", function () {
   startQuiz("history");
   showGameScreen();
 });
-document.getElementById("scienceQuiz").addEventListener("click", function() {
+document.getElementById("scienceQuiz").addEventListener("click", function () {
   startQuiz("science");
   showGameScreen();
 });
-document.getElementById("sportsQuiz").addEventListener("click", function() {
+document.getElementById("sportsQuiz").addEventListener("click", function () {
   startQuiz("sports");
   showGameScreen();
 });
 
-document.getElementById("aboutButton").addEventListener("click", function() {
+document.getElementById("aboutButton").addEventListener("click", function () {
   showAboutScreen();
 });
 
-document.getElementById("aboutBack").addEventListener("click", function() {
+document.getElementById("aboutBack").addEventListener("click", function () {
   showLoginScreen();
 });
 
-document.getElementById("navMap").addEventListener("click", function() {
+document.getElementById("navMap").addEventListener("click", function () {
   showMapScreen();
 });
 
-document.getElementById("navQuiz").addEventListener("click", function() {
+document.getElementById("navQuiz").addEventListener("click", function () {
   showGameScreen();
 });
 
-document.getElementById("navProfile").addEventListener("click", function() {
+document.getElementById("navProfile").addEventListener("click", function () {
   showProfileScreen();
 });
 
-document.getElementById("exitGame").addEventListener("click", function() {
+document.getElementById("exitGame").addEventListener("click", function () {
   exitGame();
 });
 
-document.getElementById("signUpButton").addEventListener("click", function() {
+document.getElementById("signUpButton").addEventListener("click", function () {
   showSignUpScreen();
 });
 
-document.getElementById("backToLogin").addEventListener("click", function() {
+document.getElementById("backToLogin").addEventListener("click", function () {
   showLoginScreen();
 });
 
-document.getElementById("newQuiz").addEventListener("click", function() {
+document.getElementById("newQuiz").addEventListener("click", function () {
   showStartScreen();
 });
+
+
 
 const userName = document.getElementById("displayUser");
 const score = document.getElementById("displayScore");
 
-function setupUI(user) {
+function setupUI(user) {  // Sets up the user interface, in the profilpage
   if (user) {
     //display the users score
     db.collection("users")
@@ -604,13 +567,13 @@ function setupUI(user) {
       .then(doc => {
         const scoreHtml = `<li class="list-group-item">History: <strong id='historyScore'>${
           doc.data().scores.history
-        }</strong></li>
+          }</strong></li>
         <li class="list-group-item">Science: <strong id='scienceScore'>${
           doc.data().scores.science
-        }</strong></li>
+          }</strong></li>
         <li class="list-group-item">Sports: <strong id='sportsScore'>${
           doc.data().scores.sports
-        }</strong></li>`;
+          }</strong></li>`;
         score.innerHTML = scoreHtml;
 
         //display account info
@@ -627,7 +590,7 @@ function setupUI(user) {
   }
 }
 
-function updateDisplayScore(uid) {
+function updateDisplayScore(uid) { // Updates the score in the profile tab
   db.collection("users")
     .doc(uid)
     .get()
@@ -650,7 +613,7 @@ function updateDisplayScore(uid) {
     });
 }
 
-function registerAnswer(result) {
+function registerAnswer(result) {  // Registers the gameresult to firebase
   let uid = auth.currentUser.uid;
   let scores = 0;
   let oldCurrency = 0;
