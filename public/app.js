@@ -54,13 +54,17 @@ function exitGame() {
   dialog.show();
 }
 
+function clearVariables() {
+  results = 0;
+  answeredQuestions = [];
+  onlyOneAnswer = [false, false, false];
+}
+
 function quizCompleted() {
   registerAnswer(results);
   document.getElementById("displayResult").innerHTML = results;
   showEndScreen();
-  results = 0;
-  answeredQuestions = [];
-  onlyOneAnswer = [false, false, false];
+  clearVariables();
 }
 
 function correctAnswer() {
@@ -71,9 +75,7 @@ function correctAnswer() {
 function alertChoice(choice) {
   if (choice) {
     dialog.hide();
-    answeredQuestions = [];
-    results = 0;
-    onlyOneAnswer = [false, false, false];
+    clearVariables();
     showStartScreen();
   } else {
     dialog.hide();
