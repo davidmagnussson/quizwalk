@@ -6,6 +6,8 @@ QuizWalk is a mobile application for both _Android_ and _iOS_. It uses the techn
 ## File structure
 ```
 public/
+  photos/         # A folder that constains all of the images we're using in the application
+  
   app.js          # The main script file. Contains global variables, functions, beaconhandling, viewchangers etc.
   
   auth.js         # Handles the Firebase authentication. Also Login and Logout users
