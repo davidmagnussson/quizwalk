@@ -6,12 +6,16 @@ QuizWalk is a mobile application for both _Android_ and _iOS_. It uses the techn
 ## File structure
 ```
 public/
-  app.js
-  auth.js
-  evothings.json
-  index.html
-  model.js
+  app.js          # The main script file. Contains global variables, functions, beaconhandling, viewchangers etc.
+  
+  auth.js         # Handles the Firebase authentication. Also Login and Logout users
+  
+  index.html      # Contains all html elements and css regarding these elements
+  
+  model.js        # A model that stores all of the questions and information about the questions in a JSON-object
 ```
+
+
 
 ### Contributers
 * David Magnusson
